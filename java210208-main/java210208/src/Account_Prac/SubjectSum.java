@@ -1,8 +1,8 @@
 package Account_Prac;
 
 public class SubjectSum {
-	MainAcc main = new MainAcc();
 	public double sumMethod(double kor, double eng, double math) {
+//		MainAcc main = new MainAcc();
 		double sum = kor + eng + math;
 		return sum;
 	}

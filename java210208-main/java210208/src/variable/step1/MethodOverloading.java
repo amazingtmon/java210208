@@ -5,6 +5,7 @@ import com.vo.DeptVO;
 public class MethodOverloading {
 	DeptVO go(DeptVO pdvo) {
 		System.out.println(pdvo.getDeptno()+","+pdvo.getDname()+","+pdvo.getLoc());
+		System.out.println("DeptVO go");
 		DeptVO rdvo = null;
 		return rdvo;
 	}

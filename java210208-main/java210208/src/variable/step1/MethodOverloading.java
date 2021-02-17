@@ -1,7 +1,7 @@
 package variable.step1;
 
 import com.vo.DeptVO;
-
+// 메소드의 파라미터 개수나 파라미터의 타입이 다르면 같은이름의 메소드도 여러번 선언 가능하다.
 public class MethodOverloading {
 	DeptVO go(DeptVO pdvo) {
 		System.out.println(pdvo.getDeptno()+","+pdvo.getDname()+","+pdvo.getLoc());

@@ -14,7 +14,7 @@ public class WhileTest {
 		while(true) {//비권장.
 			
 		}
-		int i = 5;
+		
 		
 	}/////////////////////////end of main
 }/////////////////////////end of WhileTest

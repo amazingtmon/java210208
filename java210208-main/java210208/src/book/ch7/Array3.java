@@ -32,7 +32,7 @@ public class Array3 {
 		System.out.println("1 : "+eVOS[2]);
 		
 		//EmpVO타입의 변수 eVO2를 선언하고
-		//eVOS라는 배열이죠
+		//eVOS라는 배열.
 		//배열에 순차적으로 적용해서 출력하겠다
 		System.out.println("===================");
 		for(EmpVO eVO2:eVOS) { //eVOS[0<= eVO2 < eVOS.length]

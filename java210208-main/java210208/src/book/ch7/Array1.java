@@ -20,7 +20,7 @@ public class Array1 {
 		int i = 0;
 		while(i < empnos.length) {
 			System.out.println(++cnt + "번방 :" + empnos[i]);
-			
+			i++;
 		}
 	}
 	
@@ -28,7 +28,7 @@ public class Array1 {
 		int empnos[] = new int[10];
 		//초기값 14개의 방에는 어떤 값이 들어있을까요?
 		Array1 a1 = new Array1();
-		a1.printArray(empnos);
+//		a1.printArray(empnos);
 		a1.printArray2(empnos);
 		
 

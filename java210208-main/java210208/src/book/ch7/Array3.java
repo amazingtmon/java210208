@@ -35,7 +35,7 @@ public class Array3 {
 		//eVOS라는 배열.
 		//배열에 순차적으로 적용해서 출력하겠다
 		System.out.println("===================");
-		for(EmpVO eVO2:eVOS) { //eVOS[0<= eVO2 < eVOS.length]
+		for(EmpVO eVO2:eVOS) { //eVOS [0<= eVO2 < eVOS.length]
 			System.out.println("2 : "+eVO2);
 			System.out.println(eVO2.getEmpno()+","+eVO2.getEname()+","+eVO2.getSal());
 		}

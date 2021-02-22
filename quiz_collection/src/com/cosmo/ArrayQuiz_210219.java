@@ -65,7 +65,7 @@ public class ArrayQuiz_210219 {
 	
 	public static void main(String[] args) {
 		ArrayQuiz_210219 aq = new ArrayQuiz_210219();
-		int size = 10;
+		int size = 5;
 		aq.initArray(size);
 		System.out.printf("%n");
 		aq.printArray(size);

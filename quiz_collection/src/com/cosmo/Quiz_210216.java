@@ -9,12 +9,12 @@ public class Quiz_210216 {
 		Scanner sc = new Scanner(System.in);
 		
 		int a,b,c;
-		//a = sc.nextInt();
+//		a = sc.nextInt();
 		b = sc.nextInt();
 		c = 0;
-		for(int i=1; i <= b; i=i+1) {
+		for(int i=0; i <= b; i=i+1) {
 			if(i%3 == 0) {
-				System.out.println("3의배수");
+				System.out.println(i);
 			}
 		}
 		

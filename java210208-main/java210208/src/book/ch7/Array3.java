@@ -27,9 +27,6 @@ public class Array3 {
 		System.out.println(eVO.getEmpno()+","+eVO.getEname()+","+eVO.getSal());
 		
 		System.out.println("1 : "+eVOS);
-		System.out.println("1 : "+eVOS[0]);
-		System.out.println("1 : "+eVOS[1]);
-		System.out.println("1 : "+eVOS[2]);
 		
 		//EmpVO타입의 변수 eVO2를 선언하고
 		//eVOS라는 배열.

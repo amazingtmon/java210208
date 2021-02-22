@@ -2,7 +2,7 @@ package com.vo;
 
 public class Member80VO {
 	private String mem_id = null;//아이디담기 
-	private String mem_pw = null;//비번 담기             
+	private String mem_pw = null;//비번 담기            
 	private boolean gender = false;//성별 담기
 	
 	/*

@@ -31,8 +31,9 @@ public class Q36 {
 	//자바스크립트는 싱글 스레드이다.
 	public static void main(String[] args) {
 		System.out.println("static main");
+		Q36 q36 = new Q36();
+		q36.methodA();
 		methodB();
 
 	}
-	
 }

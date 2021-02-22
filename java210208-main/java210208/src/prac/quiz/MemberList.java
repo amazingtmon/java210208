@@ -9,11 +9,30 @@ public class MemberList {
 		mvo.setMem_pw("123");
 		mvo.setGender(true);
 		
-		mvo = new Member80VO("tmato", "123", true);
 		
 		Gson gson = new Gson();
-		String imsi = gson.toJson(mvo);
-		System.out.println(imsi);
+		String imsi = gson.toJson(mvo);//JSon 파일로 변경.
+		System.out.println("#1 "+imsi);
+		
+		mvo = new Member80VO("tmato", "123", true);
+		String imsi2 = gson.toJson(mvo);//JSon 파일로 변경.j
+		System.out.println("#2 "+imsi2);
+		
+		//=======================================================================
+		
+		Member80VO[] mvoar = new Member80VO[3];
+		
+		Member80VO mvoar1 = new Member80VO("mango","123",false);
+		mvoar[0] = mvoar1;
+		System.out.println(mvoar1.getMem_id()+","+mvoar1.getMem_pw()+","+mvoar1.isGender());
+		String mvoarJ1 = gson.toJson(mvoar1);
+		System.out.println(mvoarJ1);
+		
+		mvoar1 = new Member80VO("pepper","456",true);
+		mvoar[1] = mvoar1;
+		System.out.println(mvoar1.getMem_id()+","+mvoar1.getMem_pw()+","+mvoar1.isGender());
+		String mvoarJ2 = gson.toJson(mvoar1);
+		System.out.println(mvoarJ2);
 	}
 
 }

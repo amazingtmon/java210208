@@ -20,11 +20,13 @@ public class DeptVOSimulation {
 		int myDeptNo = dvo.getDeptno();//0이 출력됨.
 		//insert here - 부서번호 30을 출력하도록 코드를 추가하시오.
 		dvo.setDeptno(30);
+		System.out.println(dvo);//@15db9742
 		System.out.println("origin "+dvo.getDeptno());//30
 		
 		dvo = new DeptVO();
 		dvo.setDeptno(30);
 		myDeptNo = dvo.getDeptno();//0...?
+		System.out.println(dvo);//@6d06d69c
 		System.out.println("copy1 "+myDeptNo);//30
 		
 	}

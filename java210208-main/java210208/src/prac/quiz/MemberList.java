@@ -24,15 +24,17 @@ public class MemberList {
 		
 		Member80VO mvoar1 = new Member80VO("mango","123",false);
 		mvoar[0] = mvoar1;
+		System.out.println("@ " + mvoar1);//@15db9742
 		System.out.println(mvoar1.getMem_id()+","+mvoar1.getMem_pw()+","+mvoar1.isGender());
 		String mvoarJ1 = gson.toJson(mvoar1);
-		System.out.println(mvoarJ1);
+		System.out.println("J1: "+mvoarJ1);
 		
-		mvoar1 = new Member80VO("pepper","456",true);
+		mvoar1 = new Member80VO("mango","123",false);
 		mvoar[1] = mvoar1;
+		System.out.println("@ " + mvoar1);//@6d06d69c
 		System.out.println(mvoar1.getMem_id()+","+mvoar1.getMem_pw()+","+mvoar1.isGender());
 		String mvoarJ2 = gson.toJson(mvoar1);
-		System.out.println(mvoarJ2);
+		System.out.println("J2: "+mvoarJ2);
 	}
 
 }

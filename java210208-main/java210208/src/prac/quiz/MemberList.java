@@ -15,7 +15,7 @@ public class MemberList {
 		System.out.println("#1 "+imsi);
 		
 		mvo = new Member80VO("tmato", "123", true);
-		String imsi2 = gson.toJson(mvo);//JSon 파일로 변경.j
+		String imsi2 = gson.toJson(mvo);//JSon 파일로 변경.
 		System.out.println("#2 "+imsi2);
 		
 		//=======================================================================

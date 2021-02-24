@@ -91,7 +91,7 @@ public class SalaryMgr implements ActionListener{
 			dVO.setDeptno(20);
 			
 			eVO.setDvo(dVO);//Today's issue!!
-			System.out.println("#1 "+dVO);//dVO호출시 #100에 get으로 호출된 값이 넘어온다.
+			System.out.println("#1 "+dVO);//dVO호출시 #101에 get으로 호출된 값이 넘어온다.
 			
 //***********************************[ 중 요 ]***********************************		
 			//java.util에서 제공되는 클래스로, 타입에 대한 제약없이 늘었다 줄었다함.

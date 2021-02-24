@@ -1,16 +1,22 @@
 package Account_Prac;
 
+import java.util.Scanner;
+
 public class MainAcc {
+	SubjectSum sum = null;
+	
 	double korScore = 0;
 	double engScore = 0;
 	double mathScore = 0;
 	
 	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
 		MainAcc main = new MainAcc();
-		main.korScore = 86;
-		main.engScore = 75;
-		main.mathScore = 90;
-		int subject = 3;
+		
+		main.korScore = sc.nextDouble();
+		main.engScore = sc.nextDouble();
+		main.mathScore = sc.nextDouble();
+		int subject = sc.nextInt();
 		
 		SubjectSum sum = new SubjectSum();
 		double sumTotal = sum.sumMethod(main.korScore, main.engScore, main.mathScore);

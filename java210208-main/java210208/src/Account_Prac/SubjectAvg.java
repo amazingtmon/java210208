@@ -5,9 +5,4 @@ public class SubjectAvg {
 		double avg = sum/a;
 		return avg;
 	}
-	public static void main(String[] args) {
-		SubjectAvg testAvg = new SubjectAvg();
-		testAvg.avgMethod(30, 3);
-	}
-
 }

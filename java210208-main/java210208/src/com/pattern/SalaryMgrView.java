@@ -1,10 +1,7 @@
-package book.ch5;
+package com.pattern;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,11 +11,25 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
-import com.vo.DeptVO;
-import com.vo.EmpVO;
-
-public class SalaryMgr implements ActionListener{
+/*
+ * 클래스 쪼개기를 하면서 생성자에 대한 활용 능력을 키워본다.
+ * static을 사용하는 것은 반칙이다.(생성자 공부가 안되기 때문에).
+ * 뷰계층-업무처리계층-이벤트처리 핸들러(최소 3개 이상으로 쪼개보기)
+ * 
+ * 누가 누구를 인스턴스화 해야 하는가?
+ * 
+ * 생성자의 파라미터 자리에는 무엇을 써야 할까? - 생성자 오버로딩에 대해서는 알고 있는가?
+ * - SalaryMgrView
+ * - SalaryMgrHandler
+ * - SalaryMgrLogic
+ * - 한개만, 두개, 세개 다 필요한가?
+ * 세 개의 클래스를 그림으로 표시한 뒤 화살표를 통해서 객체 주입관계를 완성하시오.
+ * */
+public class SalaryMgrView {//main class Part.
 	//선언부
+	SalaryMgrHandler	smEvent = null;
+	SalaryMgrLogic		smLogic = null;
+	
 	JFrame 				jf_sal = null;
 	JTable 				jtb_sal = null;//화면, 양식, 폼 그리기.
 	//DefaultTableModel(DataSet역할-@param 2개: data[][], header[]) + JTable => 테이블의 형태 제공.
@@ -33,7 +44,10 @@ public class SalaryMgr implements ActionListener{
 	JPanel				jp_north = null;
 	
 	//생성자
-	public SalaryMgr() {
+	public SalaryMgrView() {
+		smEvent = new SalaryMgrHandler(this);//
+		smLogic = new SalaryMgrLogic(this);
+		
 		jf_sal = new JFrame();//선언과 생성을 분리해본다. - 메모리에 로딩됨.
 		dtm_sal = new DefaultTableModel(data,cols);
 		//테이블의 양식을 작성하는 클래스 생성.
@@ -51,7 +65,7 @@ public class SalaryMgr implements ActionListener{
 			jbtns[i] = jbtn;//버튼 객체 배열과 동기화 처리하기.
 			jp_north.add(jbtn);
 			//이벤트소스와 이벤트 처리 핸들러 메소드 매칭
-			jbtns[i].addActionListener(this);
+			jbtns[i].addActionListener(smEvent);
 		}
 		initDisplay();
 	}
@@ -66,50 +80,9 @@ public class SalaryMgr implements ActionListener{
 		jf_sal.setVisible(true);
 	}
 	
-	public void getEmpDetail(int pempno) {
-		//***********************************[ 중 요 ]***********************************
-		EmpVO eVO = new EmpVO();
-		eVO.setEname("이순신");
-		
-		DeptVO dVO = new DeptVO();
-		//dVO.setDname("개발1팀");
-		dVO.setDeptno(20);
-		
-		eVO.setDvo(dVO);//Today's issue!!
-		System.out.println("#1 "+dVO);//dVO호출시 oneRow에서 get으로 호출된 값이 넘어온다.
-		
-//***********************************[ 중 요 ]***********************************		
-		//java.util에서 제공되는 클래스로, 타입에 대한 제약없이 늘었다 줄었다함.
-		//연관있는 레코드를 한번에 밀어넣기 위해서 사용함.
-		Vector oneRow = new Vector();
-		oneRow.addElement(eVO.getEname());
-		oneRow.addElement(eVO.getDvo().getDeptno());
-		dtm_sal.addRow(oneRow);
-//		for(int r=0; r<1 ; r++) {
-//			dtm_sal.setValueAt(eVO.getEname(), r, 0);
-//			dtm_sal.setValueAt(eVO.getDvo().getDeptno(), r, 1);
-//		}
-	}
-	
 	//main
-	public static void main(String[] args) {
-		new SalaryMgr();
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent ae) {
-		Object obj = ae.getSource();//버튼의 주소번지를 출력함.
-		String command = ae.getActionCommand();//버튼의 라벨값을 출력함.
-		if("종료".equals(command)) {// 종료버튼 누렀을때.
-			//자바 가상머시과의 연결고리 끊어줌. - 가비지 컬렉터에 의해서 Candidate상태로 빠짐.
-			System.exit(0);
-			//쓰레기값 청소. 호출하더라도 스레드에 의해 순서대로 처리됨. 즉시 처리안됨.
-			System.gc();
-		} else if("조회".equals(command)) {
-			System.out.println("조회버튼 감지됨.");
-			getEmpDetail(7566);
-		}
-		
-	}
-
+	   public static void main(String[] args) {
+	      new SalaryMgrView();
+	   }   
 }
+

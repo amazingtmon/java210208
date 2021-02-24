@@ -28,10 +28,11 @@ public class ParameterTest {
 		ParameterTest pt = new ParameterTest();//인스턴스화.
 		
 		pt.methodA(7566, rdname);
-		// #33 -> new ParameterTest로 새로 만들어졌으나 void methodA를 경유하지 않았기 때문에 g_rdname의 값은 null로 나타난다.
+		// #32 -> new ParameterTest로 새로 만들어졌으나 void methodA를 경유하지 않았기 때문에 g_rdname의 값은 null로 나타난다.
 		System.out.println(new ParameterTest().g_rdname);//null
-		// #35 -> void methodA 에서 g_rdname이 파라미터값으로 초기화가 이뤄졌다. 
+		// #34 -> void methodA 에서 g_rdname이 파라미터값으로 초기화가 이뤄졌다. 
 		System.out.println(pt.g_rdname);//개발 2팀
+		new ParameterTest().methodA(7566);
 		
 	}
 

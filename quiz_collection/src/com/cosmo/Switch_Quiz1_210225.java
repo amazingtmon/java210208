@@ -30,25 +30,28 @@ public class Switch_Quiz1_210225 {
 		}
 		
 	}*/
-		int i;
-		int input = sc.nextInt();
+		int i,j;
+		int input = 100;
 		
-		for(i=1; i<=input; i++) {
-			switch(i%5) {
-				case 0:
-					System.out.println("fizz");
-					break;
-					
-				default:
-				System.out.println("i: "+i);
+		for(i=1; i <= input; i++) {
 			switch(i%7) {
 				case 0:
 					System.out.println("buzz");
 					break;
-					
+				
 				default:
-					System.out.println("i: "+i);
-			}
+					System.out.println(i);
+					
+				for(j=1; j <= input; j++) {
+					switch(j%5) {
+						case 0:
+							System.out.println("fizz");
+							break;
+							
+					}
+					
+				}
+				
 			}
 		}////////////////end of for
 	}////////////////////end of main

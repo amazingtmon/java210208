@@ -1,4 +1,4 @@
-package com.quiz_210222;
+package com.pop_quiz;
 /*
  * non-static 영역에서 static타입은 접근할 수 있다.
  * 그러나

@@ -1,4 +1,4 @@
-package com.quiz_210222;
+package com.pop_quiz;
 class Q39_1{
 	void methodA() {
 		Q39 a1 =new Q39();

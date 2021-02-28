@@ -30,7 +30,7 @@ public class Switch_Quiz1_210225 {
 		}
 		
 	}*/
-		int i,j;
+		int i;
 		int input = 100;
 		
 		for(i=1; i <= input; i++) {
@@ -41,18 +41,9 @@ public class Switch_Quiz1_210225 {
 				
 				default:
 					System.out.println(i);
+					break;
 					
-				for(j=1; j <= input; j++) {
-					switch(j%5) {
-						case 0:
-							System.out.println("fizz");
-							break;
-							
-					}
-					
-				}
-				
-			}
+			}/////////////end of switch
 		}////////////////end of for
 	}////////////////////end of main
 }///////////////////////end of class

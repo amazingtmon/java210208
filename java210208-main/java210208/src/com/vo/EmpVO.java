@@ -2,13 +2,16 @@ package com.vo;
 
 public class EmpVO {
 	public DeptVO getDvo() {
-		return dvo;
+		return dVO;
 	}
 	public void setDvo(DeptVO dvo) {
-		this.dvo = dvo;
+		this.dVO = dvo;
 	}
 	
-	private DeptVO dvo = null;
+	//이곳의 변수들은 모두 private으로 한다. - 캡슐레이션(은닉화) - 보호, 직접 값을 변경불가.
+	//각각의 값을 유지하거나 재사용하는 문제는 이스턴스화에 따라 각각 다르게 활용가능하다.
+	//값을 초기화하는 방법에 대해서는 두가지가 있다. 1)setter, 2)생성자 이용.
+	private DeptVO dVO = null;
 	private int empno = 0; //7566 
 	private String ename = null; //사원명 
 	private String job = null; // 
@@ -26,6 +29,19 @@ public class EmpVO {
 	public EmpVO() {}
 	public EmpVO(int empno) {
 		this.empno = empno; //대입연산자를 통해 그 값(지역변수)이 (다른 클래스에서)유지된다.
+	}
+	
+	public EmpVO(int empno, String ename, String job, int mgr, 
+			String hiredate, double sal, double comm, int deptno, DeptVO dVO) {
+		this.empno = empno;
+		this.ename = ename;
+		this.job = job;
+		this.mgr = mgr;
+		this.hiredate = hiredate;
+		this.comm = comm;
+		this.deptno = deptno;
+		this.sal = sal;
+		this.dVO = dVO; 
 	}
 	
 	//EmpVo get, set==============================================================

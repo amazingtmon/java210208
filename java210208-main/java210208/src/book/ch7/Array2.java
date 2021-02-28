@@ -6,13 +6,14 @@ public class Array2 {
 	
 	
 	public static void main(String[] args) {
-		Array2 a2 = new Array2();
-		boolean isOk[] = new boolean[a2.x];
+		Array2 a3 = new Array2();
+		boolean isOk[] = new boolean[a3.x];
 		for(boolean bo:isOk) {
 			System.out.println(bo);
 		}
-		a2.names = new String[a2.x];
-		a2.names = new String[] {"이순신", "강감찬", "홍길동"};
+		
+		a3.names = new String[a3.x];
+		a3.names = new String[] {"이순신", "강감찬", "홍길동"};
 	}
 
 }

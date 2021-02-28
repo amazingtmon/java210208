@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 public class SalaryMgrHandler implements ActionListener{
 	SalaryMgrView smView = null;
+	
 	public SalaryMgrHandler(SalaryMgrView smView) {//SalaryMgrHandler 생성자.
 		this.smView = smView;
 	}

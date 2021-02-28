@@ -33,6 +33,14 @@ public class DeptVO {
 	private String dname = null;//레퍼런스 타입 - 클래스 급이다. -> 값이아니라 주소번지가나옴.
 	private String loc = null;
 	
+	//생성자
+	public DeptVO() {}
+	public DeptVO(int deptno, String dname, String loc) {
+		this.deptno = deptno;
+		this.dname = dname;
+		this.loc = loc;
+	}
+	
 	//getter메소드 - Read
 	public int getDeptno() {
 		return deptno;

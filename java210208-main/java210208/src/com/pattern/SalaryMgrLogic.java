@@ -7,6 +7,7 @@ import com.vo.EmpVO;
 
 public class SalaryMgrLogic {
 	SalaryMgrView smView = null;
+	
 	public SalaryMgrLogic(SalaryMgrView smView) {//SalaryMgrHandler 생성자.
 		this.smView = smView;
 	}

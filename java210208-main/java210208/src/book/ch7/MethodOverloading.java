@@ -9,7 +9,7 @@ public class MethodOverloading {
 //	int go() {//리턴타입이 있고없고는 영향을 미치지 않는다.
 //		return 0;
 //	}
-	//public void go() {} -> 접근제한자는 영향이 없다.
+//	public void go() {} -> 접근제한자는 영향이 없다.
 //	public void go(int a[]) {} 이건 메소드 오버로딩이다. 파라미터의 갯수가 달라졌기 때문이다.		
 //	public void go(int b[]) {} 메소드 오버로딩 안됨. 파라미터 타입이 같기때문이다.
 		

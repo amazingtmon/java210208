@@ -5,13 +5,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
 
-public class Corona_JdbcTest {
+public class Corona_JdbcInsert {
 	//선언부
 	static final String _DRIVER = "oracle.jdbc.driver.OracleDriver";
 	static final String _URL = "jdbc:oracle:thin:@192.168.0.3:1521:orcl11";
 	String              _USER = "SCOTT";
 	String              _PW = "tiger";
+	Scanner 			sc = new Scanner(System.in);
 	
 	//물리적으로 떨어져 있는 서버에 연결통로 만들기
 	Connection			con = null;
@@ -22,31 +24,38 @@ public class Corona_JdbcTest {
 	//오라클의 커서를 조작하는 객체 선언
 	ResultSet			rs = null;
 	
-	//생성자
-	public Corona_JdbcTest() {
-		String sql = "SELECT * FROM CORONA";
+	public Corona_JdbcInsert() {
+		String sql = "INSERT INTO CORONA"
+					+"(SERIAL_NUM, CONFIRMATION_DAY, LOC, INFECTED_LOC)"
+					+"VALUES"
+					+"(?, ?, ?, ?)";
+		
+		System.out.println("CORONA확진자 데이터 입력");
+		
+		System.out.print("SERIAL_NUM > ");
+		int num = sc.nextInt();
+		System.out.print("CONFIRMATION_DAY > ");
+		String day = sc.next();
+		System.out.print("LOC > ");
+		String loc = sc.next();
+		System.out.print("INFECTED_LOC > ");
+		String inf_loc = sc.next();
 		
 		try {
 			//오라클 드라이버 클래스 로딩하기
-			Class.forName(Corona_JdbcTest._DRIVER);
+			Class.forName(Corona_JdbcInsert._DRIVER);
 			//연결통로 확보하기
 			con = DriverManager.getConnection(_URL, _USER, _PW);
 			//오라클 서버에 select문을 전달할 전령 객체 생성
 			pstmt = con.prepareStatement(sql);
-			//오라클에 살고 있는 커서 조작을 위해서 자바가 제공하는 객체 생성.
-			rs = pstmt.executeQuery();
-			Corona_eVO corona_eVO = null;
-			rs.next();
-			while(rs.next()) {
-				corona_eVO = new Corona_eVO();
-				corona_eVO.setSERIAL_NUM(rs.getInt("SERIAL_NUM"));
-				corona_eVO.setCONFIRMATION_DAY(rs.getString("CONFIRMATION_DAY"));
-				corona_eVO.setLOC(rs.getString("LOC"));
-				corona_eVO.setINFECTED_LOC(rs.getString("INFECTED_LOC"));
-				
-				System.out.println(corona_eVO.getSERIAL_NUM()+", "+corona_eVO.getCONFIRMATION_DAY()+
-									", "+corona_eVO.getLOC()+","+corona_eVO.getINFECTED_LOC());
-			}
+			
+			pstmt.setInt(1, num);
+			pstmt.setString(2, day);
+			pstmt.setString(3, loc);
+			pstmt.setString(4, inf_loc);
+			
+			int rowCount = pstmt.executeUpdate();
+			System.out.println(rowCount + "개의 행이 추가되었습니다.");
 			
 		} catch (ClassNotFoundException ce) {
 			System.out.println("드라이버 클래스 로딩 실패");
@@ -57,13 +66,4 @@ public class Corona_JdbcTest {
 		}
 		System.out.println("여기");
 	}
-	
-	//오라클 서버 접속
-	public static void main(String[] args) {
-		//Corona_JdbcDelete cojd = new Corona_JdbcDelete();
-		//Corona_JdbcInsert coji = new Corona_JdbcInsert();
-		//Corona_JdbcTest cojt = new Corona_JdbcTest();
-		Corona_JdbcProcedure cojp = new Corona_JdbcProcedure();
-	}
-
 }

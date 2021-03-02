@@ -5,19 +5,21 @@ import java.util.Random;
 public class Chebun {
 	int com[] = new int[3];
 	
-	void nansu() {
+	void nansu() {// nansu 메소드 생성.
 		Random r = new Random();
+		
 		com[0] = r.nextInt(10);
 		do {
 			com[1] = r.nextInt(10);
 		}while(com[0] == com[1]);
+		
 		do {
 			com[2] = r.nextInt(10);
 		}while(com[2] == com[0] || com[2] == com[1]);
 	}
 	
 	public static void main(String[] args) {
-		Chebun cb = new Chebun();
+		Chebun cb = new Chebun(); //인스턴스화.
 		int cnt = 0;
 		for(int i=0;i<10;i++) {
 			cb.nansu();

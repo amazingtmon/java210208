@@ -34,14 +34,21 @@ public class Switch_Quiz1_210225 {
 		int input = 100;
 		
 		for(i=1; i <= input; i++) {
-			switch(i%7) {
-				case 0:
+			switch(i%5) {
+			
+			default:
+				if(i%7 == 0 && i%5 == 0) {
+					System.out.println("fizzbuzz");
+				} else if(i%7 == 0 ) {
 					System.out.println("buzz");
-					break;
-				
-				default:
+				} else {
 					System.out.println(i);
-					break;
+				}
+				break;
+				
+			case 0:
+				System.out.println("fizz");
+				break;
 					
 			}/////////////end of switch
 		}////////////////end of for

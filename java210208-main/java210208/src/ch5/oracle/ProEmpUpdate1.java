@@ -23,7 +23,7 @@ public class ProEmpUpdate1 extends JFrame{
  * 
  * */
 	public void salUpdate(int p_empno) {
-        int result = 0;//0이면 수정 실패 1이면 수정 성공
+        int result = 0;//0이면 수정 실패, 1이면 수정 성공
         dbMgr = DBConnectionMgr.getInstance();
         try {
            con1 = dbMgr.getConnection();
@@ -83,7 +83,6 @@ public class ProEmpUpdate1 extends JFrame{
         	deptno = Integer.parseInt(user_input2);
         }
         neu1.salUpdate(deptno);
-        
         
      }
 

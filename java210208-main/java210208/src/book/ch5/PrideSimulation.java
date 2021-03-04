@@ -7,9 +7,6 @@ public class PrideSimulation {
 		Pride_single herCar = new Pride_single(4, 100);
 		Pride_single himCar = new Pride_single(10, 100);
 		Pride_single.wheelNum = 5;
-		herCar.print();
-		herCar.wheelNum = 10;
-		himCar.wheelNum = 9;
 		herCar.speed = 150;
 		himCar.speed = 130;
 		himCar.speed = 80;

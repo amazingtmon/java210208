@@ -2,17 +2,41 @@ package book.ch5;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import com.util.DBConnectionMgr;
 import com.vo.DeptVO;
 
 public class AddressDialog2 extends JDialog implements ActionListener{
+	static DBConnectionMgr dbMgr = null;// 오라클 서버 관련 클래스.
+	Connection			   con = null;
+	PreparedStatement	   ipstmt = null;
+	PreparedStatement	   upstmt = null;
+	
+	/*
+	 * INSERT INTO dept (deptno, dname, loc)
+		VALUES (50, 'ONLINE', 'TORONTO')
+	 * */
+	StringBuffer sql_ins2 = new StringBuffer(); // 멀티스레드에 안전. 속도 느림.
+	StringBuilder sql_ins = new StringBuilder(); // 싱글스레드에 안전. 속도 빠름.
+	/*
+	 *  UPDATE dept
+		SET
+		dname = 'OFFLINE',
+		loc = 'OTAWA'
+		WHERE deptno = 50
+	 * */
+	StringBuilder sql_upd = new StringBuilder();
+	
 	JScrollPane jsp 		= null;
 	JPanel jp_center 		= new JPanel();
 	JPanel jp_south 		= new JPanel();
@@ -35,6 +59,14 @@ public class AddressDialog2 extends JDialog implements ActionListener{
 	
 	//생성자
 	public AddressDialog2() {
+		dbMgr = DBConnectionMgr.getInstance();
+		try {
+			con = dbMgr.getConnection();
+			//자동커밋 모드를 켜둘때와 꺼둘때 - 디폴트 - true
+			con.setAutoCommit(false);
+		} catch(Exception e) {
+			System.out.println(e.toString());
+		}
 		initDisplay();
 	}
 
@@ -149,25 +181,58 @@ public class AddressDialog2 extends JDialog implements ActionListener{
 	    		 p_dVO.setDname(getJtf_dname());
 	    		 p_dVO.setLoc(getJtf_loc());
 	    		 
+	    		 sql_ins.append("INSERT INTO dept (deptno, dname, loc) VALUES (?, ?, ?)"); 
+	    		 
+	    		 try {
+	    			 ipstmt = con.prepareStatement(sql_ins.toString());
+	    			 int i = 0;
+	    			 ipstmt.setInt(++i, p_dVO.getDeptno());
+	    			 ipstmt.setString(++i, p_dVO.getDname());
+	    			 ipstmt.setString(++i, p_dVO.getLoc());
+	    			 int iresult = ipstmt.executeUpdate();
+	    			 if(iresult == 1) {
+	    				 JOptionPane.showMessageDialog(aBook.jf, "등록하였습니다.");
+	    			 }
+	    			 dbMgr.freeConnection(con, ipstmt);
+	    		 } catch (Exception e2) {
+	    			 JOptionPane.showMessageDialog(aBook.jf, "Exceprion"+e2.toString());
+	    		 }
+	    		 
 	    	 }
 	    	 else {//수정일때
 	    		 DeptVO p_dVO = new DeptVO();
 	    		 p_dVO.setDeptno(Integer.parseInt(getJtf_deptno()));//NumberFormatException
 	    		 p_dVO.setDname(getJtf_dname());
 	    		 p_dVO.setLoc(getJtf_loc());
+	    		 sql_upd.append("UPDATE dept SET dname = ?");
+	    		 sql_upd.append("WHERE deptno = ?");
+	    		 
+	    		 try {
+	    			 upstmt = con.prepareStatement(sql_upd.toString());
+	    			 int i = 0;
+	    			 upstmt.setString(++i, p_dVO.getDname());
+	    			 upstmt.setInt(++i, p_dVO.getDeptno());
+	    			 int uresult = upstmt.executeUpdate();
+	    			 if(uresult == 1) {
+	    				 JOptionPane.showMessageDialog(aBook.jf, "수정하였습니다.");
+	    			 }
+	    			 dbMgr.freeConnection(con, upstmt);
+	    		 } catch (Exception e2) {
+	    			 JOptionPane.showMessageDialog(aBook.jf, "Exceprion"+e2.toString());
+	    		 }
 	    	 }
 	         aBook.refresh();
-	      }else if("닫기".equals(command)) {
+	         setVisible(false);
+	      }/////////////////end of 처리 
+	      else if("닫기".equals(command)) {
 	         //닫기 버튼을 누르면 자바가상머신과의 연결 고리를 끊어서 강제 종료 시킴.
 	         this.dispose();
 	      }
-	      //닫기 버튼을 눌렀을 때
 	}
 	
 //	//main method
 //	public static void main(String[] args) {
 //		AddressDialog2 ad2 = new AddressDialog2();
-//		ad2.set("상세", ad2.dVO, aBook, false);
 //		ad2.initDisplay();
 //		ad2.setVisible(true);
 //	}

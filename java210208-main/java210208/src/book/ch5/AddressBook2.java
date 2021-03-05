@@ -56,6 +56,58 @@ public class AddressBook2 implements ActionListener{
 	//주소 목록 조회 - 새로고침처리
 	public void refresh() {
 		System.out.println("refresh 호출 성공");
+		//////////////////////////////////[[ 전체 조회하기 ]]////////////////////////
+  	  DBConnectionMgr dbMgr = DBConnectionMgr.getInstance();
+  	  Connection con = null;
+  	  PreparedStatement pstmt = null;
+  	  ResultSet rs = null;
+  	  //////////////////////////////////////////////////////
+  	  String sql = "SELECT deptno, dname, loc FROM dept";
+        dbMgr = DBConnectionMgr.getInstance();
+        DeptVO dVOS[] = null;
+        try {
+           //연결통로확보 하기
+      	 System.out.println("con before");
+           con = dbMgr.getConnection();
+           //오라클 서버에 select문을 전달할 전령 객체 생성
+           System.out.println("pstmt before");
+           pstmt = con.prepareStatement(sql);
+           System.out.println("pstmt after");
+           //오라클에 살고 있는 커서 조작  위해서 자바가 제공하는 객체 생성
+           System.out.println("rs before");
+           rs = pstmt.executeQuery();
+           System.out.println("rs after");
+           dVO = null;
+           Vector<DeptVO> al = new Vector<DeptVO>();
+           while(rs.next()) {
+              dVO = new DeptVO();
+              dVO.setDeptno(rs.getInt("deptno"));
+              dVO.setDname(rs.getString("dname"));
+              dVO.setLoc(rs.getString("loc"));
+              al.add(dVO);
+           }
+           System.out.println("al.size(): "+al.size());
+           dVOS = new DeptVO[al.size()];
+           //벡터에 담긴 정보를 꺼내서 객체 배열에 초기화하기.
+           al.copyInto(dVOS);
+           //주의 : 앞에 조회된 결과가 계속 남아있는상태에서 전체 조회를 누를때 마다 조회된 값이 자꾸만 쌓여갑니다.
+           //이것을 삭제하고 나서 새로 붓도록 해보자.
+           while(dtm_dept.getRowCount()>0) {
+              dtm_dept.removeRow(0);
+           }
+           for(int i=0;i<dVOS.length;i++) {
+              Vector oneRow = new Vector();
+              oneRow.add(dVOS[i].getDeptno());
+              oneRow.add(dVOS[i].getDname());
+              oneRow.add(dVOS[i].getLoc());
+              dtm_dept.addRow(oneRow);
+           }
+
+		} catch (SQLException se) {
+			//부적합한 식별자 입니다.
+			System.out.println("SQLException: "+se.getMessage());//좀 더 구체적인 예외처리 클래스 정보를 알 수 있다.
+		//////////////////////////////////[[ 전체 조회하기 ]]////////////////////////
+		}
 	}
 	
 	//화면처리부
@@ -91,58 +143,7 @@ public class AddressBook2 implements ActionListener{
 		Object obj = ae.getSource();
 		
 	      if(obj == jmi_selAll) {
-	    	  DBConnectionMgr dbMgr = DBConnectionMgr.getInstance();
-	    	  Connection con = null;
-	    	  PreparedStatement pstmt = null;
-	    	  ResultSet rs = null;
-	    	  //////////////////////////////////////////////////////
-	    	  String sql = "SELECT deptno, dname, loc FROM dept";
-	          dbMgr = DBConnectionMgr.getInstance();
-	          DeptVO dVOS[] = null;
-	          try {
-	             //연결통로확보 하기
-	        	 System.out.println("con before");
-	             con = dbMgr.getConnection();
-	             //오라클 서버에 select문을 전달할 전령 객체 생성
-	             System.out.println("pstmt before");
-	             pstmt = con.prepareStatement(sql);
-	             System.out.println("pstmt after");
-	             //오라클에 살고 있는 커서 조작  위해서 자바가 제공하는 객체 생성
-	             System.out.println("rs before");
-	             rs = pstmt.executeQuery();
-	             System.out.println("rs after");
-	             dVO = null;
-	             Vector<DeptVO> al = new Vector<DeptVO>();
-	             while(rs.next()) {
-	                dVO = new DeptVO();
-	                dVO.setDeptno(rs.getInt("deptno"));
-	                dVO.setDname(rs.getString("dname"));
-	                dVO.setLoc(rs.getString("loc"));
-	                al.add(dVO);
-	             }
-	             System.out.println("al.size(): "+al.size());
-	             dVOS = new DeptVO[al.size()];
-	             //벡터에 담긴 정보를 꺼내서 객체 배열에 초기화하기.
-	             al.copyInto(dVOS);
-	             //주의 : 앞에 조회된 결과가 계속 남아있는상태에서 전체 조회를 누를때 마다 조회된 값이 자꾸만 쌓여갑니다.
-	             //이것을 삭제하고 나서 새로 붓도록 해보자.
-	             while(dtm_dept.getRowCount()>0) {
-	                dtm_dept.removeRow(0);
-	             }
-	             for(int i=0;i<dVOS.length;i++) {
-	                Vector oneRow = new Vector();
-	                oneRow.add(dVOS[i].getDeptno());
-	                oneRow.add(dVOS[i].getDname());
-	                oneRow.add(dVOS[i].getLoc());
-	                dtm_dept.addRow(oneRow);
-	             }
-
-	  		} catch (SQLException se) {
-				//부적합한 식별자 입니다.
-				System.out.println("SQLException: "+se.getMessage());//좀 더 구체적인 예외처리 클래스 정보를 알 수 있다.
-			}
-	    	  //////////////////////////////////////////////////////
-
+	    	 refresh();
 	      }
 	    	else if(obj == jmi_dbTest) {
 	    		DBConnectionMgr dbMgr = DBConnectionMgr.getInstance();
@@ -276,10 +277,6 @@ public class AddressBook2 implements ActionListener{
 	      	else if(obj == jmi_del) {
 	          //삭제 처리는 화면 목록에서 직접 처리하기로 함.
 	       }
-	       if(obj == jmi_dbTest) {
-	    	   
-	       }
-
 	}
 
 	//main method

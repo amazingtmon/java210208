@@ -4,6 +4,7 @@ public class Fruit {
 	public Store getSt() {
 		return st;
 	}
+	
 	public void setSt(Store st) {
 		this.st = st;
 	}

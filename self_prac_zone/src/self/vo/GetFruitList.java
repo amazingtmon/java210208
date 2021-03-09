@@ -1,7 +1,9 @@
 package self.vo;
 
 public class GetFruitList {
-
+	
+	
+	
 	public static void main(String[] args) {
 		Store st = new Store("walmart", "LOS", "palmtree ave, LOS", 10000);
 		

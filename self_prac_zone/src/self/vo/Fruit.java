@@ -18,6 +18,10 @@ public class Fruit {
 	
 	//생성자 part========================================================
 	public Fruit() {}
+	public Fruit(String name, String loc) {
+		this.name = name;
+		this.loc = loc;
+	}
 	public Fruit(String name, String loc, String unit, int ea, int price, Store st) {
 		this.name = name;
 		this.loc = loc;

@@ -25,7 +25,7 @@ public class ZipCodeDao {
 	
 	//클래스 쪼개기에서 초급자가 항상 염두에 둘 사항은 배달 사고임.
 	public ArrayList<ZipCodeVO> getZipCodeList(String dong){
-		System.out.println("getZipCodeList call success "+dong);
+		System.out.println("getZipCodeList call success: "+dong);
 		ArrayList zipcodeList = null;
 		
 		return zipcodeList;

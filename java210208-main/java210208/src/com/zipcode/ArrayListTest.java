@@ -52,13 +52,29 @@ public class ArrayListTest {
 		System.out.println(my2);
 		System.out.println(obj2);
 		
-		ArrayList<ZipCodeVO> a3= new ArrayList();
+		ArrayList<ZipCodeVO> a3= new ArrayList<ZipCodeVO>();
 		ZipCodeVO zVO = new ZipCodeVO();
+		
 		zVO.setZipcode(12345);
 		zVO.setAptname("레미안아파트");
-		a3.add();
+		a3.add(zVO);
 		
+		ZipCodeVO zVO2 = new ZipCodeVO();
+		zVO2 = new ZipCodeVO();
+		zVO2.setZipcode(12367);
+		zVO2.setAptname("더샵아파트");
+		a3.add(zVO2);
 		
+		ZipCodeVO zVO3 = new ZipCodeVO();
+		zVO3 = new ZipCodeVO();
+		zVO3.setZipcode(12389);
+		zVO3.setAptname("현대아파트");
+		a3.add(zVO3);
+		
+		for(ZipCodeVO ar1 : a3) {
+			System.out.println(ar1);
+			System.out.println(ar1.getZipcode()+", "+ar1.getAptname());
+		}
 	}
 
 }

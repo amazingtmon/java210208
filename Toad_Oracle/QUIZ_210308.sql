@@ -1,0 +1,163 @@
+SELECT * FROM temp
+
+SELECT * FROM tdept
+
+SELECT EMP_ID, EMP_NAME, LEV, SALARY FROM temp WHERE LEV=:X
+
+1-1
+월 급여는 연봉을 18로 나누어 홀수 달에는 연봉의 1/18이 지급되고, 짝수달에는 연봉의
+2/18가 지급된다고 가정했을 때 홀수 달과 짝수 달에 받을 금액을 나타내시오.
+
+SELECT EMP_NAME, (SALARY/18) FROM temp
+SELECT EMP_NAME, (SALARY/9) FROM temp
+
+SELECT (SALARY/18) AS SAL1 
+      ,(SALARY/9) AS SAL2
+  FROM temp
+
+SELECT 
+     ROUND((SALARY/18), 2)||' WON' AS SAL1 
+      ,ROUND((SALARY/9), 0)||' WON' AS SAL2
+  FROM temp
+  
+SELECT 
+     TO_CHAR(ROUND((SALARY/18), 2), '999,999,999.99')||' WON' AS SAL1 
+      ,TO_CHAR(ROUND((SALARY/9), 0), '999,999,999.99')||' WON' AS SAL2
+  FROM temp
+
+2.위에서 구한 월 급여에 교통비가 10만원씩 지급된다면(짝수달은 20만원)위의 문장이
+어떻게 바뀔지 작성해 보시오.
+
+SELECT 
+     TO_CHAR(ROUND((SALARY/18), 2), '999,999,999.99')||' WON' AS SAL1 
+      ,TO_CHAR(ROUND((SALARY/9), 0), '999,999,999.99')||' WON' AS SAL2
+  FROM temp
+
+3. TEMP 테이블에서 취미가 NULL 이 아닌 사람의 성명을 읽어오시오.
+
+SELECT EMP_NAME FROM TEMP WHERE HOBBY IS NOT NULL;
+
+SELECT EMP_NAME FROM TEMP WHERE HOBBY IS NULL;
+
+SELECT EMP_NAME, HOBBY FROM TEMP
+MINUS
+SELECT EMP_NAME, HOBBY FROM TEMP
+WHERE HOBBY IS NULL; --전체집합에서 취미가 없는 사람을 제외한 사람들의 집합.
+
+SELECT EMP_NAME, HOBBY FROM TEMP
+ORDER BY HOBBY ASC--취미에 대한 오름차순.
+
+SELECT EMP_NAME, HOBBY FROM TEMP
+ORDER BY HOBBY DESC--취미에 대한 내림차순.
+
+4.TEMP 테이블에서 취미가 NULL인 사람은 모두 HOBBY를 “없음”이라고 값을 치환하여
+가져오고 나머지는 그대로 값을 읽어오시오.
+
+SELECT EMP_NAME, NVL(HOBBY, '없음')--실제 HOBBY의 값이 바뀌는 것은 아니다. 
+FROM TEMP
+
+5.TEMP의 자료 중 HOBBY의 값이 NULL인 사원을 ‘등산’으로 치환했을 때 HOBBY가 ‘등산인
+사람의 성명을 가져오는 문장을 작성하시오.
+
+SELECT EMP_NAME, HOBBY
+FROM TEMP
+WHERE HOBBY = '등산'
+
+SELECT EMP_NAME, NVL(HOBBY,'등산')
+FROM TEMP
+WHERE NVL(HOBBY, '등산') = '등산'
+
+6.TEMP의 자료를 직급 명(LEV)에 ASCENDING하면서 결과내에서 다시 사번 순으로
+DESCENDING하게 하는 ORDER BY하는 문장을 만들어 보시오.
+
+SELECT EMP_NAME, LEV
+  FROM TEMP
+  
+SELECT EMP_ID, EMP_NAME, LEV
+  FROM TEMP
+ORDER BY GRAVITY DESC, EMP_ID ASC
+---------------------------------------------------------
+
+SELECT * FROM T_LETITBE
+
+SELECT * FROM T_LETITBE
+WHERE MOD(SEQ_VC, 2)=0
+
+SELECT ROWNUM RNO, WORDS_VC FROM T_LETITBE
+WHERE MOD(SEQ_VC, 2)=1
+
+SELECT RNO, WORDS_VC
+FROM ( SELECT ROWNUM RNO, WORDS_VC FROM T_LETITBE)
+WHERE RNO = 1
+
+-------------------------------------------
+
+SELECT * FROM T_GIFTPOINT
+ORDER BY POINT_NU ASC
+
+SELECT * FROM T_GIFTMEM
+
+
+SELECT NAME_VC, POINT_NU FROM T_GIFTMEM
+WHERE POINT_NU > 15000
+
+Q1. 영화 티켓을 받을 수 있는 사람의 명단과 현재 가지고 있는 포인트, 
+영화 티켓의 포인트 그리고 그 티켓을 사용한 후 남은 예상 포인트를 출력하시오.
+
+--내가 한거
+SELECT NAME_VC, POINT_NU FROM T_GIFTPOINT 
+WHERE NAME_VC = '영화티켓'
+UNION ALL
+SELECT NAME_VC, (POINT_NU - 15000) FROM T_GIFTMEM
+WHERE POINT_NU > 15000
+
+--문제풀이
+SELECT * FROM T_GIFTMEM M
+             ,(SELECT POINT_NU FROM T_GIFTPOINT
+                 WHERE NAME_VC ='영화티켓') P
+WHERE M.POINT_NU >= P.POINT_NU 
+
+1.2
+SELECT M.NAME_VC, P.NAME_VC
+ FROM T_GIFTMEM M
+             ,(SELECT POINT_NU FROM T_GIFTPOINT
+                 WHERE NAME_VC ='영화티켓') P
+ WHERE M.POINT_NU >= P.POINT_NU
+
+1.3 
+SELECT M.NAME_VC, M.POINT_NU-P.POINT_NU AS "잔여포인트"
+       ,P.POINT_NU AS "적용포인트"
+ FROM T_GIFTMEM M
+             ,(SELECT POINT_NU FROM T_GIFTPOINT
+                 WHERE NAME_VC ='영화티켓') P
+ WHERE M.POINT_NU >= P.POINT_NU
+
+Q2. 김유신씨가 보유하고 있는 마일리지 포인트로 얻을 수 있는 상품 중 
+가장 포인트가 높은 것은 무엇인가?
+
+--내가 한거
+SELECT NAME_VC, POINT_NU 
+   FROM (SELECT POINT_NU FROM T_GIFTPOINT)
+  WHERE   
+
+--문제풀이
+SELECT MAX(SALARY) FROM TEMP
+
+1.1
+SELECT P.POINT_NU
+  FRMO T_GIFTMEM M, T_GIFTPOINT P
+  WHERE M.POINT_NU >= P.POINT_NU
+  
+1.2
+SELECT MAX(P.POINT_NU)
+  FROM (SELECT POINT_NU FROM T_GIFTMEM WHERE NAME_VC = '김유신') M
+        , T_GIFTPOINT P
+WHERE M.POINT_NU >= P.POINT_NU
+
+1.3
+SELECT NAME_VC, POINT_NU
+  FROM T_GIFTPOINT
+  WHERE POINT_NU = ( SELECT MAX(P.POINT_NU)
+                        FROM (SELECT POINT_NU FROM T_GIFTMEM WHERE NAME_VC = '김유신') M
+                                , T_GIFTPOINT P
+                     WHERE M.POINT_NU >= P.POINT_NU)

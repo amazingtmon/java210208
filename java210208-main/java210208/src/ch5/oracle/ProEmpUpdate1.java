@@ -18,7 +18,7 @@ public class ProEmpUpdate1 extends JFrame{
 	DBConnectionMgr    dbMgr = null;
 /*
  * proc_salIncrease 프로시저 호출 테스트
- * @param p_empno -> 사우너번호를 입력받아서 단일 레코드 처리 실습.
+ * @param p_empno -> 사원번호를 입력받아서 단일 레코드 처리 실습.
  * @result 프로시저 처리 결과를 int값으로 확인해 본다.
  * 
  * */

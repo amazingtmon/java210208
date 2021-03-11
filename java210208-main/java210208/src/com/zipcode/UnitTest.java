@@ -1,18 +1,20 @@
 package com.zipcode;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class UnitTest {
 
 	public static void main(String[] args) {
-		ZipCodeDao zcd = new ZipCodeDao();
+		ArrayList<ZipCodeVO> zc = new ArrayList<>();//ArrayList 초기화.
+		ZipCodeVO z = null;
+		String[] ad = {"대치동","면목동","상도동","행당동"};
+		Random r = new Random();
 		
-		ArrayList<ZipCodeVO> zipcodeList = null;
-		zipcodeList = zcd.getZipCodeList("상봉동");
-		zipcodeList = zcd.getZipCodeList("상암동");
-		zipcodeList = zcd.getZipCodeList("상도동");
-		System.out.println(zipcodeList);
-
+		for(int i=0; i<4; i++) {
+		}
+		
+		
+		
 	}
-
 }

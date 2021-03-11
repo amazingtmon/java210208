@@ -1,4 +1,4 @@
-package com.zipcode;
+package design2020.book;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -9,6 +9,9 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
@@ -44,14 +47,19 @@ false이면이 Window, 하위 구성 요소 및 모든 소유 자식을 숨 깁�
 요소는 #setVisible (true)를 호출하여 다시 표시 할 수 있습니다.
  */
 
-public class ZipCodeSearch extends JFrame implements MouseListener
+public class ZipCodeSearch2 extends JFrame implements MouseListener
                                                    , ItemListener
                                                    , FocusListener
                                                    , ActionListener {
 	//선언부
 	String zdo = null;
+	//물리적으로 떨어져 있는 db서버와 연결통로 만들기
+	Connection 			con 	= null;
+	//위에서 연결되면 쿼리문을 전달할 전령의 역할을 하는 인터페이스 객체 생성하기
+	PreparedStatement 	pstmt 	= null;
+	//조회된 결과를 화면에 처리해야 하므로 오라클에 커서를 조작하기 위해 ResultSet추가
+	ResultSet 			rs 		= null;
 	JPanel jp_north = new JPanel();
-	
 	//insert here
 	String zdos[] = {"전체","서울","경기","강원"};
 	String zdos2[] = {"전체","부산","전남","대구"};
@@ -73,11 +81,11 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 	
 	
 	//생성자
-	public ZipCodeSearch() {
+	public ZipCodeSearch2() {
 		zdos3 = getZdoList();
 	}
 	
-	public ZipCodeSearch(MemberShip memberShip) {
+	public ZipCodeSearch2(MemberShip memberShip) {
 		this();
 		this.memberShip = memberShip;
 	}
@@ -119,11 +127,8 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 		this.setSize(430, 400);
 		this.setVisible(true);
 	}
-	
 	//메인메소드
 	public static void main(String[] args) {
-		ZipCodeSearch zcs = new ZipCodeSearch();
-		zcs.initDisplay();
 	}
 	
 	@Override
@@ -136,14 +141,13 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 	
 	@Override
 	public void focusLost(FocusEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 	
 	public String[] getZdoList() {
 		//원격에 있는 오라클 서버에 접속하기 위해 DBConnectionMgr객체 생성하기
-		//콤보 박스에 도에 대한 정보를 가져오기
 		try {
-			
 		}
 		catch (Exception e) {
 			System.out.println("Exceptioin : "+e.toString());
@@ -155,11 +159,10 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 	public void refreshData(String zdo, String dong) {
 		System.out.println("zdo:"+zdo+", dong:"+dong);
 		try {
-			
 		} 
 //		catch (SQLException se) {
 //			System.out.println(se.toString());
-//			System.out.println("[[query]]=="+sql.toString());
+//			//System.out.println("[[query]]=="+sql.toString());
 //		}
 		catch (Exception e) {
 			System.out.println(e.toString());			
@@ -183,14 +186,17 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 	@Override
@@ -202,6 +208,7 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 	}
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 }

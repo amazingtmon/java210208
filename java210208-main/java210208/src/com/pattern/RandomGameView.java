@@ -71,7 +71,6 @@ public class RandomGameView extends JFrame implements ActionListener {
 	public static void main(String[] args) {
 		RandomGameView rgView = new RandomGameView();
 		rgView.initDisplay();
-
 	}
 
 

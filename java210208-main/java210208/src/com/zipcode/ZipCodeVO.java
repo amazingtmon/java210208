@@ -13,7 +13,6 @@ public class ZipCodeVO {
 	private String address = null;
 	
 	//생성자
-	
 	public ZipCodeVO() {}
 	public ZipCodeVO(int uid_no, int zipcode, String zdo, String sigu, 
 					String dong, String ri, String bungi, String aptname, 

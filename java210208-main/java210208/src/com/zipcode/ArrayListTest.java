@@ -53,28 +53,60 @@ public class ArrayListTest {
 		System.out.println(obj2);
 		
 		ArrayList<ZipCodeVO> a3= new ArrayList<ZipCodeVO>();
-		ZipCodeVO zVO = new ZipCodeVO();
+		ZipCodeVO zVO = null;
 		
+		zVO = new ZipCodeVO();
 		zVO.setZipcode(12345);
 		zVO.setAptname("레미안아파트");
 		a3.add(zVO);
+		zVO.setAptname("신사아파트");
 		
-		ZipCodeVO zVO2 = new ZipCodeVO();
-		zVO2 = new ZipCodeVO();
-		zVO2.setZipcode(12367);
-		zVO2.setAptname("더샵아파트");
-		a3.add(zVO2);
+		zVO = new ZipCodeVO();
+		zVO = new ZipCodeVO();
+		zVO.setZipcode(12367);
+		zVO.setAptname("더샵아파트");
+		a3.add(zVO);
+		zVO.setAptname("신사아파트");
 		
-		ZipCodeVO zVO3 = new ZipCodeVO();
-		zVO3 = new ZipCodeVO();
-		zVO3.setZipcode(12389);
-		zVO3.setAptname("현대아파트");
-		a3.add(zVO3);
+		zVO = new ZipCodeVO();
+		zVO = new ZipCodeVO();
+		zVO.setZipcode(12389);
+		zVO.setAptname("현대아파트");
+		a3.add(zVO);
+		zVO.setAptname("신사아파트");
+		
 		
 		for(ZipCodeVO ar1 : a3) {
-			System.out.println(ar1);
-			System.out.println(ar1.getZipcode()+", "+ar1.getAptname());
+			System.out.println("ar1: "+ar1);
+			System.out.println("ar1: "+ar1.getZipcode()+", "+ar1.getAptname());
 		}
+		
+		System.out.println("==========================================");
+		
+		System.out.println(a3);
+		
+		/*ArrayList<ZipCodeVO> a4= new ArrayList<ZipCodeVO>();
+		
+		zVO = new ZipCodeVO();
+		zVO.setZipcode(12345);
+		zVO.setAptname("레미안아파트");
+		a4.add(zVO);
+		
+		ZipCodeVO zVO2 = new ZipCodeVO();
+		zVO2.setZipcode(12367);
+		zVO2.setAptname("더샵아파트");
+		a4.add(zVO2);
+		
+		ZipCodeVO zVO3 = new ZipCodeVO();
+		zVO3.setZipcode(12389);
+		zVO3.setAptname("현대아파트");
+		a4.add(zVO3);
+		
+		for(ZipCodeVO ar2 : a4) {
+			System.out.println("ar2: "+ar2);
+			System.out.println("ar2: "+ar2.getZipcode()+", "+ar2.getAptname());
+		}*/
+		
 	}
 
 }

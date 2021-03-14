@@ -1,4 +1,4 @@
-package Account_Prac;
+package account_Prac;
 
 import java.util.Scanner;
 

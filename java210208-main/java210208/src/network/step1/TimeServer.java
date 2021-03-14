@@ -29,31 +29,6 @@ public class TimeServer extends Thread{
 	public TimeServer(Socket socket) {
 		this.socket = socket;
 	}
-	/*
-	 * 스레드 기동시 호출 되는 메소드이다.
-	 * */
-	@Override
-	public void run() {
-		boolean isFlag = false;
-		try {
-			//socket에 대한 객체 주입은 인스턴스화를 통해서 생성자가 호출되었을 때 객체 주입이 이루어짐.
-			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-			while(!isFlag) {
-				if(out!=null) {
-					out.println(getTimer());
-				}
-				//1초동안 기다린후 진행....
-				try {
-					sleep(1000);//밀리세크 단위 설정. 지연하기 - 스레드.
-				} catch (InterruptedException ie) {
-					System.out.println("Who are you!?");
-				}
-			}
-		} catch (Exception e) {
-			
-		}
-		System.out.println("run call....");
-	}
 	
 	public String getTimer() {
 		Calendar cal = Calendar.getInstance();
@@ -92,4 +67,29 @@ public class TimeServer extends Thread{
 		}
 	}
 
+	/*
+	 * 스레드 기동시 호출 되는 메소드이다.
+	 * */
+	@Override
+	public void run() {
+		boolean isFlag = false;
+		try {
+			//socket에 대한 객체 주입은 인스턴스화를 통해서 생성자가 호출되었을 때 객체 주입이 이루어짐.
+			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+			while(!isFlag) {
+				if(out!=null) {
+					out.println(getTimer());
+				}
+				//1초동안 기다린후 진행....
+				try {
+					sleep(1000);//밀리세크 단위 설정. 지연하기 - 스레드.
+				} catch (InterruptedException ie) {
+					System.out.println("Who are you!?");
+				}
+			}
+		} catch (Exception e) {
+			
+		}
+		System.out.println("run call....");
+	}
 }

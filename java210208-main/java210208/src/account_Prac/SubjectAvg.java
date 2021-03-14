@@ -1,4 +1,4 @@
-package Account_Prac;
+package account_Prac;
 
 public class SubjectAvg {
 	public double avgMethod(double sum, int a) {

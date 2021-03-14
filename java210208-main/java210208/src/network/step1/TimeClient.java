@@ -30,7 +30,7 @@ public class TimeClient extends Thread{
 		BufferedReader br = null;
 		boolean isFlag = false;
 		try {
-			socket = new Socket("192.168.0.128", 3344);//local port 1996
+			socket = new Socket("192.168.0.128", 3344);//local port
 			out = new PrintWriter(socket.getOutputStream(), true);
 			br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			//내 소켓에 대한 포트번호는 따로 할당된다.

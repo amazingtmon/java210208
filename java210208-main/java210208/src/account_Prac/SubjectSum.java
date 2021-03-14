@@ -1,4 +1,4 @@
-package Account_Prac;
+package account_Prac;
 
 public class SubjectSum {
 	public double sumMethod(double kor, double eng, double math) {

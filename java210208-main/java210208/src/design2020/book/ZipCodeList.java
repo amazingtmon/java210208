@@ -29,9 +29,11 @@ public class ZipCodeList {
 			ZipCodeVO zVO = v.get(x);
 			System.out.println(zVO);
 		}
+		
 		zcVOs = new ZipCodeVO[v.size()];//객체배열이 3개 만들어진다.
 		System.out.println("배열의 크기는 "+zcVOs.length);//3이 출력됨.
 		v.copyInto(zcVOs);//벡터에 담긴 것을 배열에 담아준다.
+		
 		for(int y=0; y<zcVOs.length ;y++) {
 			System.out.println(zcVOs[y]+", "+zcVOs[y].getAddress());//객체 배열의 주소번지가 3개 출력된다.
 		}

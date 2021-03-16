@@ -6,25 +6,24 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class DBConnectionMgr {
+public class DBConnectionMgr2 {
 	private static final String _DRIVER = "oracle.jdbc.driver.OracleDriver";
-	private static final String _URL = "jdbc:oracle:thin:@192.168.0.3:1521:orcl11";
-	private static final String _USER = "client";
-	private static final String _PW = "abcd1234";
+	private static final String _URL = "jdbc:oracle:thin:@192.168.0.128:1521:orcl11";
+	private static final String _USER = "scott";
+	private static final String _PW = "tiger";
 	Connection con = null;
 	
-	private static DBConnectionMgr dbMgr = null;
+	private static DBConnectionMgr2 dbMgr = null;
 	//이른 인스턴스화
-	private static DBConnectionMgr dbMgr2 = new DBConnectionMgr();
+	private static DBConnectionMgr2 dbMgr2 = new DBConnectionMgr2();
 	
 	//게으른 인스턴스화 - 선언과 생성이 따로 쓰여졌을때.
-	private DBConnectionMgr() {}
+	private DBConnectionMgr2() {}
 	
-	//싱글톤
-	public static DBConnectionMgr getInstance() {
-		DBConnectionMgr dbMgr = null;
+	public static DBConnectionMgr2 getInstance() {
+		DBConnectionMgr2 dbMgr = null;
 		if(dbMgr == null) {
-			dbMgr = new DBConnectionMgr();
+			dbMgr = new DBConnectionMgr2();
 		}
 		return dbMgr;
 	}
@@ -46,7 +45,6 @@ public class DBConnectionMgr {
 		}
 		return con;
 	}
-	
 	//사용한 자원 반남하기.
 	//이것을 하지 않으면 오라클 서버에 접속할 때 세션 수의 제한 때문에 오라클서버를 제기동해야 할 수도 있음.
 	//Select 일때 사용.

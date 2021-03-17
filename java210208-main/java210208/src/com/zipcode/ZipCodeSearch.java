@@ -1,6 +1,8 @@
 package com.zipcode;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -12,22 +14,22 @@ import java.awt.event.MouseListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+
 import com.util.DBConnectionMgr;
+
 import design2020.book.MemberShip;
-import com.zipcode.ZipCodeVO;
 
 /*
  * dispose에 대한 설명임
@@ -60,14 +62,16 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 	String zdos2[] = {"전체","부산","전남","대구"};
 	Vector<String> vzdos = new Vector<>();//vzdos.size()==>0
 	
-	JComboBox jcb_zdo = new JComboBox(zdos);//West
+	JComboBox jcb_zdo = null;//West
 	JComboBox jcb_zdo2 = null;//West
 	
 	JTextField jtf_search = new JTextField("동이름을 입력하세요.");//Center
 	JButton jbtn_search = new JButton("조회");//East
+	
 	String cols[] = {"우편번호","주소"};
 	String data[][] = new String[0][2];
 	DefaultTableModel dtm_zipcode = new DefaultTableModel(data,cols);
+	
 	JTable jtb_zipcode = new JTable(dtm_zipcode);
 	JTableHeader jth = jtb_zipcode.getTableHeader();
 	JScrollPane jsp_zipcode = new JScrollPane(jtb_zipcode
@@ -85,7 +89,8 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 	
 	//생성자
 	public ZipCodeSearch() {
-		zdos3 = getZdoList();
+		zdos3 = getZDOList();
+		jcb_zdo = new JComboBox(zdos3);
 	}
 	
 	public ZipCodeSearch(MemberShip memberShip) {
@@ -95,6 +100,11 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 	
 	//화면처리부
 	public void initDisplay() {
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		
+		jth.setBackground(Color.orange);
+		jth.setFont(new Font("맑은고딕",Font.BOLD,18));
+		
 		jtb_zipcode.requestFocus();
 		jtb_zipcode.addMouseListener(this);
 		jbtn_search.addActionListener(this);
@@ -193,30 +203,48 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 		
 	}
 	
-	public String[] getZdoList() {
-		//원격에 있는 오라클 서버에 접속하기 위해 DBConnectionMgr객체 생성하기
-		//콤보 박스에 도에 대한 정보를 가져오기
-		try {
-			
-		}
-		catch (Exception e) {
-			System.out.println("Exceptioin : "+e.toString());
-		}
-		return zdos;
-	}
-	
-	
 	public void refreshData(String zdo, String dong) {
 		System.out.println("zdo:"+zdo+", dong:"+dong);
-		try {
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT ADDRESS, ZIPCODE");
+		sql.append("  FROM ZIPCODE_T");
+		sql.append(" WHERE 1=1");
+		if(zdo!=null && zdo.length()>0) {
+			sql.append(" AND ZDO=?");
+		}
+		if(dong!=null && dong.length()>0) {
+			sql.append(" AND DONG LIKE '%'||?||'%'");
+		}
+		
+		int i = 1;
+		try{
+			con = dbMgr.getConnection();
+			pstmt = con.prepareStatement(sql.toString());
+			if(zdo!=null && zdo.length()>0) {
+				pstmt.setString(i++,zdo);
+			}
+			if(dong!=null && dong.length()>0) {
+				pstmt.setString(i++, dong);
+			}
+			rs = pstmt.executeQuery();
+			Vector<ZipCodeVO> v = new Vector<>();
+			ZipCodeVO[] zVOS = null;
+			ZipCodeVO zVO = null;
+			while(rs.next()) {
+				zVO = new ZipCodeVO();
+				zVO.setAddress(rs.getNString("address"));
+				zVO.setZipcode(rs.getInt("zipcode"));
+				v.add(zVO);
+			}
+			zVOS = new ZipCodeVO[v.size()];
+			v.copyInto(zVOS);
+			if(v.size() > 0) {
+				
+			}
+		} catch(Exception e) {
 			
-		} 
-//		catch (SQLException se) {
-//			System.out.println(se.toString());
-//			System.out.println("[[query]]=="+sql.toString());
-//		}
-		catch (Exception e) {
-			System.out.println(e.toString());			
+		} finally {
+			
 		}
 	}
 	
@@ -232,6 +260,7 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 	public void itemStateChanged(ItemEvent e) {
 		Object obj = e.getSource();
 		if(obj == jcb_zdo2) {
+			
 		}
 		
 	}

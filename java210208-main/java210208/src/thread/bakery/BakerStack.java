@@ -8,6 +8,7 @@ public class BakerStack {
 	
 	public synchronized String pop() {
 		String bread = null;
+		
 		//빵이 진열대에 없나요?
 		if(v.size() == 0) {
 			try {
@@ -16,6 +17,8 @@ public class BakerStack {
 			} catch(Exception e) {
 				System.out.println("Exception : "+e.toString());
 			}
+		} else {
+			System.out.println("빵 구입 완료!!");
 		}
 		bread = v.remove(v.size()-1);
 		return bread;

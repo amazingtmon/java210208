@@ -71,6 +71,18 @@ public class DBConnectionMgr2 {
 	}
 	
 	//procedure 생성시 사용.
+	public void freeConnection(Connection con, CallableStatement cstmt, ResultSet rs) {
+		try {
+			if(rs != null) rs.close();
+			if(cstmt != null) cstmt.close();
+			if(con != null) con.close();
+			
+		} catch (Exception e) {
+			
+		}
+	}
+	
+	//procedure 생성시 사용.
 	public void freeConnection(Connection con, CallableStatement cstmt) {
 		try {
 			if(cstmt != null) cstmt.close();

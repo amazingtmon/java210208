@@ -26,7 +26,7 @@ public class JFrameMain extends JFrame implements ActionListener{
 		jbtn.addActionListener(this);
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		this.setLayout(new BorderLayout());
+		this.setLayout(new BorderLayout());//동,서,남,북
 		
 		jp.setLayout(new BorderLayout());
 		jp.add("Center", jta);

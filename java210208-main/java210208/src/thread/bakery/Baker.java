@@ -27,6 +27,7 @@ public class Baker extends Thread {
 	public void run() {
 		String bread = null;
 		bread = getBread();
+		System.out.println("bread : "+bread);
 		bs.push(bread);
 		
 		try {

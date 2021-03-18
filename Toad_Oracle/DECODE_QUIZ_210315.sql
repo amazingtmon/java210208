@@ -50,10 +50,6 @@ SELECT TO_CHAR(SYSDATE, 'YYYY')
       ,TO_CHAR(SYSDATE, 'DAY')
   FROM DUAL
 
-
-
-
-
 실전문제
 문제 : 사원테이블에서 job이 clerk인 사람의 급여 합,  salesman인 사람의
 급여의 합을 구하고 나머지 job에 대해서는 기타 합으로 구하시오.

@@ -8,15 +8,16 @@ public class Customer extends Thread{
 		this.bs = bs;
 	}
 
+	@Override
 	public void run() {
 		String bread = null;
 		bread = bs.pop();
 		
-		try {
-			Thread.sleep();
-		} catch(Exception e) {
-			System.out.println("Exception : "+e.toString());
-		}
+	      try {
+	          sleep((int)(Math.random()*1000));
+	       } catch (InterruptedException e) {
+	          System.out.println("누구...?");
+	       }
 	}
 }
 

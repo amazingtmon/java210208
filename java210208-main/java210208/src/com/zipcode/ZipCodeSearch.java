@@ -1,7 +1,7 @@
 package com.zipcode;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +14,7 @@ import java.awt.event.MouseListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
 
@@ -55,15 +56,22 @@ public class ZipCodeSearch extends JFrame implements MouseListener
                                                    , ActionListener {
 	//선언부
 	String zdo = null;
+	String sigu = null;
+	String dong = null;
+	
+	//물리적으로 떨어져 있는 db서버와 연결통로 만들기.
 	JPanel jp_north = new JPanel();
 	
 	//insert here
-	String zdos[] = {"전체","서울","경기","강원"};
-	String zdos2[] = {"전체","부산","전남","대구"};
+	String zdos3[] = null;//zdoList가 담겨있음.
+	String sigus[] = null;
+	String dongs[] = null;
+	String totals[] = {"전체"};
 	Vector<String> vzdos = new Vector<>();//vzdos.size()==>0
 	
 	JComboBox jcb_zdo = null;//West
-	JComboBox jcb_zdo2 = null;//West
+	JComboBox jcb_sigu = null;//West
+	JComboBox jcb_dong = null;//West
 	
 	JTextField jtf_search = new JTextField("동이름을 입력하세요.");//Center
 	JButton jbtn_search = new JButton("조회");//East
@@ -78,7 +86,6 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 			,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED
 			,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 	
-	String zdos3[] = null;
 	MemberShip memberShip = null;
 	
 	//DB연동에 필요한 변수들.
@@ -90,9 +97,14 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 	//생성자
 	public ZipCodeSearch() {
 		zdos3 = getZDOList();
+		sigus = getSIGUList();
+		sigus = getDONGList();
 		jcb_zdo = new JComboBox(zdos3);
+		jcb_sigu = new JComboBox(totals);
+		jcb_dong = new JComboBox(totals);
 	}
 	
+
 	public ZipCodeSearch(MemberShip memberShip) {
 		this();
 		this.memberShip = memberShip;
@@ -108,14 +120,9 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 		jtb_zipcode.requestFocus();
 		jtb_zipcode.addMouseListener(this);
 		jbtn_search.addActionListener(this);
-		jtf_search.addFocusListener(this);
 		jtf_search.addActionListener(this);
-		jp_north.setLayout(new BorderLayout());
-		/*	*/
-		//vzdos.copyInto(zdos2);
-		for(int x=0;x<zdos2.length;x++) {
-			vzdos.add(zdos2[x]);
-		}
+		jtf_search.addFocusListener(this);
+		jp_north.setLayout(new FlowLayout());
 		for(String s:vzdos) {
 			System.out.println("s===>"+s);
 		}
@@ -128,13 +135,16 @@ public class ZipCodeSearch extends JFrame implements MouseListener
  * 그 후에 콤보박스를 생성하고 화면에 장착해야 리스트에서 값을 볼 수 있을 것이다.
  * 	
  */
-//		jcb_zdo2 = new JComboBox(vzdos);//West
-		jcb_zdo2 = new JComboBox(zdos3);//West
-		jcb_zdo2.addItemListener(this);
+
+		jcb_zdo.addItemListener(this);
+		jcb_sigu.addItemListener(this);
+		jcb_dong.addItemListener(this);
 		
-		jp_north.add("West",jcb_zdo2);
-		jp_north.add("Center",jtf_search);
-		jp_north.add("East",jbtn_search);
+		jp_north.add(jcb_zdo);
+		jp_north.add(jcb_sigu);
+		jp_north.add(jcb_dong);
+		jp_north.add(jtf_search);
+		jp_north.add(jbtn_search);
 		
 		this.add("North",jp_north);
 		this.add("Center",jsp_zipcode);
@@ -143,7 +153,6 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 		this.setVisible(true);
 	}
 	
-	//콤보박스에 나타낼 ZDO컬럼의 정보를 오라클 서버에서 가져오기.
 	public String[] getZDOList() {
 		String zdos[] = null;
 		dbMgr = DBConnectionMgr.getInstance();
@@ -183,6 +192,19 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 		return zdos;
 	}
 	
+	private String[] getSIGUList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	private String[] getDONGList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	//콤보박스에 나타낼 ZDO컬럼의 정보를 오라클 서버에서 가져오기.
+	
 	//메인메소드
 	public static void main(String[] args) {
 		JFrame.setDefaultLookAndFeelDecorated(true);
@@ -194,6 +216,7 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 	public void focusGained(FocusEvent e) {
 		System.out.println("focusGained 호출 성공");
 		if(e.getSource() == jtf_search) {
+			jtf_search.setText("");
 		}
 		
 	}
@@ -205,6 +228,7 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 	
 	public void refreshData(String zdo, String dong) {
 		System.out.println("zdo:"+zdo+", dong:"+dong);
+		
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT ADDRESS, ZIPCODE");
 		sql.append("  FROM ZIPCODE_T");
@@ -239,28 +263,50 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 			zVOS = new ZipCodeVO[v.size()];
 			v.copyInto(zVOS);
 			if(v.size() > 0) {
-				
+				//조회 버튼을 연달아서 눌렀을 경우 기존에 조회 결과는 클리어 시키자
+				while(dtm_zipcode.getRowCount() > 0) {
+					dtm_zipcode.removeRow(0);
+				}
+				//새로 조회된 결과를 출력하기
+				for(int x=0; x<v.size(); x++) {
+					Vector<Object> oneRow = new Vector<>();
+					//ArrayList<Object> oneRow2 = new ArrayList<>();
+					//List<Object>	  oneRow3 = new ArrayList<>();
+					//List<Object>	  oneRow4 = new Vector<>();
+					oneRow.add(0, zVOS[x].getZipcode());
+					oneRow.add(0, zVOS[x].getAddress());
+					//dtm_zipcode.addRow(zVOS);
+//오라클에서 조회된 결과가 담기는 부분이 바로 여기.
+					
+					dtm_zipcode.addRow(oneRow);//오직 객체 배열과 벡터 뿐이다. 선택은 항상 벡터가 옳다.
+				}
 			}
+		} catch(SQLException se) {
+			System.out.println("[[ query ]]"+sql.toString());
 		} catch(Exception e) {
-			
+			//에러메세지만 쌓아두는 스택이 있는데 그 스택의 history를 다 보여준다.
+			//라인 번호까지도 알려준다.
+			e.printStackTrace();//힌트를 얻는다.
 		} finally {
-			
+			dbMgr.freeConnection(con, pstmt, rs);
 		}
 	}
-	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();
 		if(obj == jbtn_search || obj == jtf_search) {
+			String myDong = jtf_search.getText();
+			refreshData(zdo, myDong);
 		}
-		
 	}
+	
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		Object obj = e.getSource();
-		if(obj == jcb_zdo2) {
-			
+		if(obj == jcb_zdo) {
+			if(e.getStateChange() == jcb_zdo.getSelectedIndex());
+			zdo = zdos3[jcb_zdo.getSelectedIndex()];
 		}
 		
 	}

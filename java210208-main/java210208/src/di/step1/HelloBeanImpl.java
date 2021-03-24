@@ -17,7 +17,7 @@ public class HelloBeanImpl implements HelloBean {
 	
 	@Override
 	public String getGreeting(String msg) {
-		return "Spring"+this.msg;
+		return "Spring "+this.msg;
 	}
 
 	//Bean이 초기화 된 후 호출되는 메소드

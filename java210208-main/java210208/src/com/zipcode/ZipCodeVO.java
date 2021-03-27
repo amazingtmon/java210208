@@ -11,6 +11,7 @@ public class ZipCodeVO {
 	private String aptname = null; 
 	private String upd_date= null; 
 	private String address = null;
+	private boolean chkBox = false;
 	
 	//생성자
 	public ZipCodeVO() {}
@@ -90,5 +91,12 @@ public class ZipCodeVO {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public void setChkBox(Boolean chkBox) {
+		this.chkBox = chkBox;
+		
+	}
+	public Object getChkBox() {
+		return chkBox;
 	}
 }

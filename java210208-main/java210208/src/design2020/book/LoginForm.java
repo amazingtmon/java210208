@@ -2,12 +2,12 @@ package design2020.book;
 
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -16,8 +16,9 @@ import javax.swing.JTextField;
 
 import common.jdbc.MemberDao;
 
-public class LoginForm extends JFrame implements ActionListener {
+public class LoginForm extends JDialog implements ActionListener {
 	String imgPath = "src\\design2020\\book\\";
+	MemberShip memship = new MemberShip();
 	ImageIcon ig 		= new ImageIcon(imgPath+"main.png");
 	JLabel jlb_id 		= new JLabel("아이디");
 	JTextField jtf_id 	= new JTextField("test");
@@ -48,6 +49,7 @@ public class LoginForm extends JFrame implements ActionListener {
 	
 	public void initDisplay() {
 		jbtn_login.addActionListener(this);
+		jbtn_join.addActionListener(this);
 		
 		this.setContentPane(new MyPanel());
 		this.setLayout(null);//디폴트 - BorderLayout
@@ -80,7 +82,12 @@ public class LoginForm extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();
 		
-		if(jbtn_login == obj) {
+		if(jbtn_join == obj) {
+			memship.initDisplay();
+			this.dispose();
+			
+		}
+		else if(jbtn_login == obj) {
 			MemberDao md = new MemberDao();
 			
 			if("".equals(jtf_id.getText()) || "".equals(jtf_pw.getText())) {

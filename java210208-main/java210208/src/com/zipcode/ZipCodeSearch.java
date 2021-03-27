@@ -97,8 +97,6 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 	//생성자
 	public ZipCodeSearch() {
 		zdos3 = getZDOList();
-		sigus = getSIGUList();
-		sigus = getDONGList();
 		jcb_zdo = new JComboBox(zdos3);
 		jcb_sigu = new JComboBox(totals);
 		jcb_dong = new JComboBox(totals);
@@ -149,7 +147,7 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 		this.add("North",jp_north);
 		this.add("Center",jsp_zipcode);
 		this.setTitle("우편번호 검색");
-		this.setSize(430, 400);
+		this.setSize(630, 400);
 		this.setVisible(true);
 	}
 	
@@ -192,18 +190,77 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 		return zdos;
 	}
 	
-	private String[] getSIGUList() {
-		// TODO Auto-generated method stub
-		return null;
+	private String[] getSIGUList(String pzdo) {
+		System.out.println("getSiguList 호출 성공");
+		//리턴타입을 1차 배열로 했으므로 1차배열 선언하기
+		String sigus[] = null;
+		//오라클 서버에게 보낼 select문 작성하기
+		//String은 원본이 바뀌지 않음.
+		StringBuilder sb = new StringBuilder();
+		//자바코드는 이클립스에서 디버깅하고 select문 토드에서 디버깅하기
+		sb.append("SELECT '전체' sigu FROM dual      ");
+		sb.append("UNION ALL                        ");
+		sb.append("SELECT sigu                       ");
+		sb.append("  FROM (                         ");
+		sb.append("        SELECT distinct(sigu) sigu ");
+		sb.append("          FROM zipcode_t         ");
+		sb.append("         WHERE zdo=?         ");
+		sb.append("        ORDER BY sigu asc         ");
+		sb.append("       )                         ");
+		try {
+			con = dbMgr.getConnection();
+			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setString(1,pzdo);
+			rs = pstmt.executeQuery();
+			Vector<String> v = new Vector<>();
+			while(rs.next()) {
+				String sigu = rs.getString("sigu");
+				v.add(sigu);
+			}
+			sigus = new String[v.size()];
+			v.copyInto(sigus);
+		} catch (Exception e) {
+			//stack영역에 관리되는 에러메시지 정보를 라인번호와 이력까지 출력해줌.			
+			e.printStackTrace();
+		}
+		return sigus;
 	}
 	
-	private String[] getDONGList() {
-		// TODO Auto-generated method stub
-		return null;
+	private String[] getDONGList(String psigu) {
+		System.out.println("getDongList 호출 성공");
+		//리턴타입을 1차 배열로 했으므로 1차배열 선언하기
+		String dongs[] = null;
+		//오라클 서버에게 보낼 select문 작성하기
+		//String은 원본이 바뀌지 않음.
+		StringBuilder sb = new StringBuilder();
+		//자바코드는 이클립스에서 디버깅하고 select문 토드에서 디버깅하기
+		sb.append("SELECT '전체' dong FROM dual      ");
+		sb.append("UNION ALL                        ");
+		sb.append("SELECT dong                       ");
+		sb.append("  FROM (                         ");
+		sb.append("        SELECT distinct(dong) dong ");
+		sb.append("          FROM zipcode_t         ");
+		sb.append("         WHERE sigu=?         ");
+		sb.append("        ORDER BY dong asc         ");
+		sb.append("       )                         ");
+		try {
+			con = dbMgr.getConnection();
+			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setString(1,psigu);
+			rs = pstmt.executeQuery();
+			Vector<String> v = new Vector<>();
+			while(rs.next()) {
+				String dong = rs.getString("dong");
+				v.add(dong);
+			}
+			dongs = new String[v.size()];
+			v.copyInto(dongs);
+		} catch (Exception e) {
+			//stack영역에 관리되는 에러메시지 정보를 라인번호와 이력까지 출력해줌.			
+			e.printStackTrace();
+		}
+		return dongs;
 	}
-	
-	
-	//콤보박스에 나타낼 ZDO컬럼의 정보를 오라클 서버에서 가져오기.
 	
 	//메인메소드
 	public static void main(String[] args) {
@@ -302,13 +359,37 @@ public class ZipCodeSearch extends JFrame implements MouseListener
 	}
 	
 	@Override
-	public void itemStateChanged(ItemEvent e) {
-		Object obj = e.getSource();
-		if(obj == jcb_zdo) {
-			if(e.getStateChange() == jcb_zdo.getSelectedIndex());
-			zdo = zdos3[jcb_zdo.getSelectedIndex()];
-		}
+	public void itemStateChanged(ItemEvent ie) {
+		Object obj = ie.getSource();
 		
+		if(obj == jcb_zdo) {
+			if(ie.getStateChange() == ItemEvent.SELECTED) {
+				System.out.println("선택한 ZDO ===> "+zdos3[jcb_zdo.getSelectedIndex()]);
+				zdo = zdos3[jcb_zdo.getSelectedIndex()];
+				sigus = getSIGUList(zdo);
+				jcb_sigu.removeAllItems();
+				for(int i=0;i<sigus.length;i++) {
+					jcb_sigu.addItem(sigus[i]);
+				}
+			}
+		}
+		if(obj == jcb_sigu) {
+			if(ie.getStateChange() == ItemEvent.SELECTED) {
+				System.out.println("선택한 SIGU ===> "+sigus[jcb_sigu.getSelectedIndex()]);
+				sigu = sigus[jcb_sigu.getSelectedIndex()];
+				dongs = getDONGList(sigu);
+				jcb_dong.removeAllItems();
+				for(int i=0;i<dongs.length;i++) {
+					jcb_dong.addItem(dongs[i]);
+				}
+			}
+		}
+		if(obj == jcb_dong) {
+			if(ie.getStateChange() == ItemEvent.SELECTED) {
+				System.out.println("선택한 DONG ===> "+dongs[jcb_dong.getSelectedIndex()]);
+				dong = dongs[jcb_dong.getSelectedIndex()];
+			}
+		}
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {

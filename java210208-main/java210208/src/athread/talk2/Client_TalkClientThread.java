@@ -30,6 +30,7 @@ public class Client_TalkClientThread extends Thread{
 					protocol = Integer.parseInt(st.nextToken());//100
 				}
 				switch(protocol) {
+				
 					case 100:{//100#apple
 						String nickName = st.nextToken();
 						tc.jta_display.append(nickName+"님이 입장하였습니다.\n");
@@ -37,15 +38,31 @@ public class Client_TalkClientThread extends Thread{
 						v.add(nickName);
 						tc.dtm.addRow(v);
 					}break;
+					
 					case 200:{
 						
 					}break;
-					case 201:{
 					
+					case 201:{
+						String nickName = st.nextToken();
+						String afterName = st.nextToken();
+						String message = st.nextToken();
+						//테이블에 대화명 변경하기
+						for(int i=0;i<tc.dtm.getRowCount();i++) {
+							String imsi = (String)tc.dtm.getValueAt(i, 0);
+							if(nickName.equals(imsi)) {
+								tc.dtm.setValueAt(afterName, i, 0);
+								break;
+							}
+						}
+						//채팅창에 타이틀바에도 대화명을 변경처리 한다.
+						if(nickName.equals(tc.nickName)) {
+							tc.setTitle(afterName+"님의 대화창");
+							tc.nickName = afterName;
+						}
+						tc.jta_display.append(message+"\n");
 					}break;
-					case 202:{
-
-					}break;
+					
 					case 500:{
 						String nickName = st.nextToken();
 						tc.jta_display.append(nickName+"님이 퇴장 하였습니다.\n");

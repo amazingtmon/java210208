@@ -75,12 +75,26 @@ public class Client_TalkServerThread extends Thread{
 					case 200:{
 						
 					}break;
+					
 					case 201:{
-						
+						String nickName = st.nextToken();
+						String message = st.nextToken();
+						broadCasting(201
+								   +"#"+nickName
+								   +"#"+message);
 					}break;
+					
 					case 202:{
-
+						String nickName = st.nextToken();
+						String afterName = st.nextToken();
+						String message = st.nextToken();
+						this.chatName = afterName;
+						broadCasting(202
+								+"#"+nickName
+								+"#"+afterName
+        						+"#"+message);
 					}break;
+					
 					case 500:{
 						String nickName = st.nextToken();
 						ts.globalList.remove(this);

@@ -38,7 +38,7 @@ public class TalkServerThread extends Thread {
 				g_title =st.nextToken();
 				ts.jta_log.append("위치:"+g_title+"\n");
 			}
-			for(TalkServerThread tst:ts.globalList) {
+	 /*???*/for(TalkServerThread tst:ts.globalList) {
 				String currentName = tst.nickName;
 				String currentState = tst.g_title;
 			//this를 사용할 때와 tst를 사용할 때 차이점에 대해서 생각해 보세요.	
@@ -111,6 +111,8 @@ public class TalkServerThread extends Thread {
 			}
 		}
 	}//////////////end of roomCast 톡방에 방송
+	
+	/*서버에서 클라이언트로 보내는 모든 oos를 이곳에서 처리함.*/
 	private void send(String msg) {
 		try {
 			oos.writeObject(msg);
@@ -118,6 +120,7 @@ public class TalkServerThread extends Thread {
 			e.printStackTrace();
 		}
 	}
+	
 	@Override
 	public void run() {
 		boolean isStop = false;

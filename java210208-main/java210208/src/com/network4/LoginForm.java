@@ -146,7 +146,7 @@ public class LoginForm extends JFrame implements ActionListener {
 					jtf_id.setText("");
 					jpf_pw.setText("");
 					tcv = new TalkClientVer2(this);
-					//new WaitingRoom(this);
+					new WaitRoom(this);
 				}
 			} catch (Exception ae) { 
 				ae.printStackTrace();

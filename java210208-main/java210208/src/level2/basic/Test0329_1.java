@@ -5,7 +5,8 @@ import java.util.Vector;
 public class Test0329_1 {
 	
 	Vector<String> vc = new Vector<String>();
-	
+	Vector<String> result = new Vector<String>();
+	String [] end = null;
 	public void print() {
 		vc.add("apple");
 		vc.add("banana");
@@ -13,16 +14,19 @@ public class Test0329_1 {
 		vc.add("raisin");
 		vc.add("lemon");
 		
-		if(vc != null) {
-			String a = null;
-			String[] msg = null;
+		try {
+			
 			for(int i=0; i<vc.size(); i++) {
-				a = vc.get(i);
-				
-				System.out.println(msg);
+				String fruit = vc.get(i);
+				result.add(fruit);
 			}
-			System.out.println(msg);
-		}	
+			end = new String[result.size()];
+			result.copyInto(end);
+			System.out.println(end[0]);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public Test0329_1 () {

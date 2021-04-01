@@ -15,14 +15,13 @@ public class Test0329_1 {
 		vc.add("lemon");
 		
 		try {
-			
-			for(int i=0; i<vc.size(); i++) {
-				String fruit = vc.get(i);
-				result.add(fruit);
-			}
-			end = new String[result.size()];
-			result.copyInto(end);
-			System.out.println(end[0]);
+//			for(int i=0; i<vc.size(); i++) {
+//				String fruit = vc.get(i);
+//				result.add(fruit);
+//			}
+//			end = new String[result.size()];
+//			result.copyInto(end);
+//			System.out.println(end[0]);
 			
 		} catch(Exception e) {
 			e.printStackTrace();

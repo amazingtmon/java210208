@@ -20,7 +20,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.DefaultStyledDocument;
+import javax.swing.text.StyleContext;
+import javax.swing.text.StyledDocument;
 
 public class Client_TalkClient extends JFrame implements ActionListener{
 	////////////////통신과 관련한 전역변수 추가 시작//////////////
@@ -37,6 +41,8 @@ public class Client_TalkClient extends JFrame implements ActionListener{
 	JButton jbtn_change	  = new JButton("대화명변경");
 	JButton jbtn_font	  = new JButton("글자색");
 	JButton jbtn_exit	  = new JButton("나가기");
+	JButton jbtn_emoji	  = new JButton("이모티콘");
+	JButton jbtn_fontSize = new JButton("폰트");
 	
 	String cols[] 		  = {"대화명"};
 	String data[][] 	  = new String[0][1];
@@ -47,8 +53,13 @@ public class Client_TalkClient extends JFrame implements ActionListener{
 	JPanel jp_first_south 	= new JPanel();
 	JTextField jtf_msg = new JTextField(20);//south속지 center
 	JButton jbtn_send  = new JButton("전송");//south속지 east
-	JTextArea jta_display = null;
-	JScrollPane jsp_display = null;
+	//JTextArea에는 문자열을 그리는 개념이 아니라 출력하는 개념이라 부분 색상변경, 문자열 그리기 등이 안됨.
+	StyledDocument sd_display = new DefaultStyledDocument(new StyleContext());
+	
+	JTextPane jtp_display = new JTextPane(sd_display);
+	JScrollPane jsp_display = new JScrollPane(jtp_display);
+	//JTextArea jta_display = null;
+	//JScrollPane jsp_display = null;
 	//배경 이미지에 사용될 객체 선언-JTextArea에 페인팅
 	Image back = null;
 	
@@ -64,31 +75,21 @@ public class Client_TalkClient extends JFrame implements ActionListener{
 		this.setLayout(new GridLayout(1,2));
 		jp_second.setLayout(new BorderLayout());
 		jp_second.add("Center",jsp);
-		jp_second_south.setLayout(new GridLayout(2,2));
+		jp_second_south.setLayout(new GridLayout(3,2));
 		jp_second_south.add(jbtn_one);
 		jp_second_south.add(jbtn_change);
 		jp_second_south.add(jbtn_font);
 		jp_second_south.add(jbtn_exit);
+		jp_second_south.add(jbtn_emoji);
+		jp_second_south.add(jbtn_fontSize);
 		jp_second.add("South",jp_second_south);
 		jp_first.setLayout(new BorderLayout());
 		jp_first_south.setLayout(new BorderLayout());
 		jp_first_south.add("Center",jtf_msg);
 		jp_first_south.add("East",jbtn_send);
 		back = getToolkit().getImage("src\\athread\\talk2\\cherie.jpg");
-		jta_display = new JTextArea() {
-			private static final long serialVersionUID = 1L;
-			public void paint(Graphics g) {
-				g.drawImage(back, 0, 0, this);
-				Point p = jsp_display.getViewport().getViewPosition();
-				g.drawImage(back, p.x, p.y, null);
-				paintComponent(g);
-			}
-		};
-		jta_display.setLineWrap(true);
-		jta_display.setOpaque(false);
 		Font font = new Font("돋움",Font.BOLD,25);
-		jta_display.setFont(font);
-		jsp_display = new JScrollPane(jta_display);		
+		jtp_display.setFont(font);
 		jp_first.add("Center",jsp_display);
 		jp_first.add("South",jp_first_south);
 		this.add(jp_first);
@@ -118,7 +119,7 @@ public class Client_TalkClient extends JFrame implements ActionListener{
 	public void init() {
 		try {
 			//서버측의 ip주소 작성하기
-			socket = new Socket("192.168.0.3", 3344);
+			socket = new Socket("192.168.0.9", 3344);
 			//TS serversocket 감지 -> client = server.accept(); -> 클라이언트 소켓에 대한 정보 갖음.
 			//홀수 수켓에 대한 처리
 			oos = new ObjectOutputStream(socket.getOutputStream());
@@ -126,12 +127,12 @@ public class Client_TalkClient extends JFrame implements ActionListener{
 			ois = new ObjectInputStream(socket.getInputStream());
 			//initDisplay에서 닉네임이 결정된 후 init메소드가 호출되므로
 			//서버에게 내가 입장한 사실을 알린다.(말하기)
-			oos.writeObject(100+"#"+nickName);
+			oos.writeObject(Protocol.ROOM_IN+"#"+nickName);
 			//Client_TalkServerThread의 생성자가 듣기.
 			
 			//서버에 말을 한 후 들을 준비를 한다. - 대기중. -> 메시지가 와서 듣게되면 프로토콜을 비교한다.
 			//프로토콜 설계필요.
-			Client_TalkClientThread tct = new Client_TalkClientThread(this);
+			Client_TalkClientThread_2 tct = new Client_TalkClientThread_2(this);
 			tct.start();
 		} catch (Exception e) {
 			//예외가 발생했을 때 직접적인 원인되는 클래스명 출력하기
@@ -143,22 +144,23 @@ public class Client_TalkClient extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent ae) {
 		Object obj = ae.getSource();
 		String msg = jtf_msg.getText();
+		
 		if(jbtn_one == obj) {
 			
 		}
-		else if(jtf_msg==obj) {
+		else if(jtf_msg==obj || jbtn_send == obj) {
 			try {
-				oos.writeObject(201
-						   +"#"+nickName
-						   +"#"+msg);
+				oos.writeObject(Protocol.MESSAGE
+						   +Protocol.seperator+nickName
+						   +Protocol.seperator+msg);
 				jtf_msg.setText("");
 			} catch (Exception e) {
-				// TODO: handle exception
+				e.printStackTrace();
 			}
 		}
 		else if(jbtn_exit==obj) {
 			try {
-				oos.writeObject(500+"#"+this.nickName);
+				oos.writeObject(Protocol.ROOM_OUT+"#"+this.nickName);
 				//자바가상머신과 연결고리 끊기
 				System.exit(0);
 			} catch (Exception e) {
@@ -174,12 +176,12 @@ public class Client_TalkClient extends JFrame implements ActionListener{
 				return;
 			}
 			try {
-				oos.writeObject(202
-						   +"#"+nickName
-						   +"#"+afterName
-						   +"#"+nickName+"의 대화명이 "+afterName+"으로 변경되었습니다.");
+				oos.writeObject(Protocol.CHANGE
+						   +Protocol.seperator+nickName
+						   +Protocol.seperator+afterName
+						   +Protocol.seperator+nickName+"의 대화명이 "+afterName+"으로 변경되었습니다.");
 			} catch (Exception e) {
-				// TODO: handle exception
+				e.printStackTrace();
 			}
 		}
 	}//////////////////////end of actionPerformed

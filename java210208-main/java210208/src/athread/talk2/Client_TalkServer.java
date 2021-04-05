@@ -99,7 +99,7 @@ public class Client_TalkServer extends JFrame implements Runnable {
 					jta_log.append("Server Ready.........\n");
 					while(!isStop) {
 						socket = server.accept();
-						jta_log.append("client info:"+socket+"\n");				
+						jta_log.append("client info:"+socket+"\n");//유저의 정보				
 						tst = new Client_TalkServerThread(this);
 						tst.start();
 					}

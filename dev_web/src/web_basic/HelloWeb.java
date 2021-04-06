@@ -15,6 +15,10 @@ public class HelloWeb extends HttpServlet {
 				throws ServletException, IOException
 	{
 		PrintWriter out = res.getWriter();
+		String mem_id = req.getParameter("mem_id");
+		String mem_pw = req.getParameter("mem_pw");
+		System.out.println("사용자가 입력한 id: "+mem_id);
+		System.out.println("사용자가 입력한 pw: "+mem_pw);
 		out.println("<b>Hello Web Service!!!</b>");
 	}
 }

@@ -11,16 +11,22 @@ public class FruitList {
 	
 	List<String> fruit = new ArrayList<>();
 	Map<String, Object> fruit2 = new HashMap<>();
+	String[] name = null;
+	
+	public String[] callName() {
+		name = new String[6];
+		String[] candi = {"mike", "john", "julie", "moon", "kelly", "shan"};
+		for(int i=0;i<candi.length;i++) {
+			name[i] = candi[i];
+			System.out.println(name[i]);
+		}
+		return name;
+	}
 	
 	public void addFruit() {
 		fruit.add("apple");
 		fruit.add("banana");
 		fruit.add("peach");
-		
-		for(String fr:fruit) {
-			System.out.println(fr);
-		}
-		
 	}
 	
 	public void putFruit2() {
@@ -63,6 +69,9 @@ public class FruitList {
 	}
 	
 	public static void main(String[] args) {
+		FruitList fruit = new FruitList();
 		new FruitList();
+		
+		fruit.callName();
 	}
 }

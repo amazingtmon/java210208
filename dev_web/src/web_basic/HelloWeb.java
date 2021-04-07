@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns="/hello")
 public class HelloWeb extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
+				//예외처리를 미룬다.
 				throws ServletException, IOException
 	{
 		PrintWriter out = res.getWriter();

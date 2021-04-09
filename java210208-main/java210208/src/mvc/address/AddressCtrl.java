@@ -49,9 +49,13 @@ public class AddressCtrl {
 		return returnVO;
 	}
 
-	public AddressVO[] send() throws Exception {
-		AddressVO[] returnVOs = null;
+	public AddressVO[] send() {
 		System.out.println("send() 호출 성공 - AddressVo[]");
+		AddressVO[] returnVOs = null;
+		RetrieveEntity ret = new RetrieveEntity();
+		AddressVO pVO = new AddressVO();
+		pVO.setCommand("select");
+		ret.selectList(pVO);
 		return returnVOs;
 	}
 	public List<AddressVO> sendAll() {
@@ -64,8 +68,8 @@ public class AddressCtrl {
 		return selectAll;
 	}
 	public List<Map<String, Object>> sendAllMap() throws Exception {
-		List<Map<String, Object>> selectAll = null;
 		System.out.println("sendAllMap() 호출 성공 - List<Map<String, Object>>");
+		List<Map<String, Object>> selectAll = null;
 		return selectAll;
 	}
 }

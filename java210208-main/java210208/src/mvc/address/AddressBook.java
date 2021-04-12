@@ -401,7 +401,7 @@ public class AddressBook extends JFrame {
 	// 전체 데이터를 다시 조회합니다.
 	public void refreshData() {
 		AddressVO paVO = new AddressVO();
-		paVO.setCommand("select");
+		paVO.setCommand("selectall");
 		AddressCtrl abCtrl = new AddressCtrl();
 		List<AddressVO> list = abCtrl.sendAll();
 	}

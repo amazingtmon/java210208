@@ -99,11 +99,13 @@ public class DeptList extends JFrame implements ActionListener{
 			Object keys[] = null;
 			while(iter.hasNext()) {
 				Map<String, Object> data = iter.next();
+				System.out.println(data);
 				keys = data.keySet().toArray();
+				System.out.println(keys[0]+", "+keys[1]+", "+keys[2]);
 				Vector oneRow = new Vector();
-				oneRow.add(data.get(keys[2]));
-				oneRow.add(data.get(keys[1]));
-				oneRow.add(data.get(keys[0]));
+				oneRow.add(data.get(keys[2]));//deptno
+				oneRow.add(data.get(keys[1]));//dname
+				oneRow.add(data.get(keys[0]));//loc
 				dtm.addRow(oneRow);
 			}
 		}

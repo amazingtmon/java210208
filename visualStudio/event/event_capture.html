@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Capture</title>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+      width: 300px;
+      height: 250px;
+    }
+
+    .outter{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 200px;
+      height: 200px;
+      background-color: cadetblue;
+      border-radius: 50%;
+    }
+
+    .middle{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      height: 50%;
+      background-color: coral;
+      border-radius: 50%;
+    }
+
+    .button{
+      padding: 10%;
+      border-radius: 50%;
+    }
+
+    .result{
+      width: 100px;
+      height: 50px;
+      text-align: center;
+      align-content: center;
+      border-radius: 30%
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="outter">
+      <div class="middle">
+        <button class="button">Click Me!!</button>
+      </div>
+    </div>
+    <div class="result"></div>
+  </div>
+  <script>
+    const container = document.querySelector('.container');
+    const outter = document.querySelector('.outter');
+    const middle = document.querySelector('.middle');
+    const button = document.querySelector('.button');
+    const result = document.querySelector('.result');
+
+    document.addEventListener('click', (event)=>{
+      console.log(event.target);
+      console.log('clicked');
+      if(event.target == outter){
+        console.log(result.style);
+        container.style.border = `3px solid yellow`;
+        result.innerHTML = 'outter';
+        result.style.backgroundColor = 'yellow';
+      } else if(event.target == middle){
+        container.style.border = `3px solid pink`;
+        result.innerHTML = 'middle';
+        result.style.backgroundColor = 'pink';
+      } else if(event.target == button){
+        container.style.border = `3px solid blue`;
+        result.innerHTML = 'button';
+        result.style.backgroundColor = 'blue';
+      } else {
+        container.style.border = 'none';
+        result.innerHTML = '';
+        result.style.display = 'none';
+      }
+    })
+
+
+  </script>
+</body>
+</html>

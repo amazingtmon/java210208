@@ -9,8 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 @WebServlet(urlPatterns="/hello")
+//서블릿이 되기 위해서는 HttpServlet을 상속해야 한다.
 public class HelloWeb extends HttpServlet {
+	Logger logger = Logger.getLogger(HelloWeb.class);
+	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 				//예외처리를 미룬다.
 				throws ServletException, IOException

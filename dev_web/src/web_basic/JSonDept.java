@@ -15,7 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+//@ 어노테이션 방식이 먼저 발생하고 
+//xml 방식이 그후에 발생한다.
 @WebServlet(urlPatterns="/dept.nhn")
+//서블릿이 되기 위해서는 HttpServlet을 상속해야 한다.
 public class JSonDept extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 				//예외처리를 미룬다.

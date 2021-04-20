@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>deptView</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css">   
+    <link rel="stylesheet" type="text/css" href="../demo/demo.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+    <script>
+        /* 
+        ust strict 반드시 작성.
+        변수 선언시 let, const 사용.
+        hoisting 규칙이 적용된다.
+        */
+        'use strict';
+        
+        function methodB(){
+            console.log('methodB called');
+        }
+    </script>
+    <style>
+        span {
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .first {
+            color: #ff0000;
+        }
+
+        .second {
+            color: #ffa500;
+        }
+
+        .third {
+            color: #ffff00;
+        }
+
+        .forth {
+            color: #008000;
+        }
+    </style>
+</head>
+<body>
+    <!--  -->
+    <span class="first">Moooo</span>
+    <span class="second">Yahhhhhhh</span>
+    <span class="third">Hoooo</span>
+    <span class="forth">Woooo~~~~!!</span>
+
+    <script>
+        const span = document.querySelectorAll('span');
+        console.dir(span);
+
+
+        $(document).ready(function(){
+            //alert('test');
+            $('#dg_dept').datagrid({
+                columns:[[
+                {field:'deptno',title:'부서번호1',width:100},
+                {field:'dname',title:'부서명2',width:100},
+                {field:'loc',title:'지역3',width:100,align:'left'}
+                ]]
+            });
+        });
+    </script>
+
+    <table id="dg_dept" class="easyui-datagrid" title="부서관리">
+        <thead>
+            <tr>
+                <th data-options="field:'deptno',width:100">부서번호</th>
+                <th data-options="field:'dname',width:100">부서명</th>
+                <th data-options="field:'loc',width:100,align:'center'">지역</th>
+            </tr>
+        </thead>
+    </table>
+</body>
+</html>

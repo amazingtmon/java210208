@@ -14,7 +14,7 @@ public class MovieCenter extends JPanel {
 	JButton jbtn1 = new JButton("button1");
 	JButton jbtn2 = new JButton("button2");
 	JLabel  jbl	  = new JLabel("Center label");
-	JLabel  jbl2	  = new JLabel("Center label");
+	JLabel  jbl2  = new JLabel("Center label");
 	
 	public MovieCenter() {
 		mvw = new MovieWest();

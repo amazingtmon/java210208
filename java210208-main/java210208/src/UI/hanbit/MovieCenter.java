@@ -23,7 +23,7 @@ public class MovieCenter extends JPanel {
 		this.setBackground(Color.gray);
 		this.setLayout(new BorderLayout());
 		this.add("Center", jbl);
-		this.add("West", mvw);
+		this.add("South", mvw);
 	}
 	
 }

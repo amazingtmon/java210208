@@ -18,6 +18,7 @@ public class MovieSouth extends JPanel {
 		
 		this.setLayout(new BorderLayout());
 		this.add("Center", jbl);
+		this.add("South", jbtn1);
 	}
 	
 }

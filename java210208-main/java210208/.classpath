@@ -2,16 +2,16 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="D:/java_ysc/gson-2.8.6.jar"/>
-	<classpathentry kind="lib" path="C:/app/oradata/orcl11/jdbc/lib/ojdbc6.jar"/>
-	<classpathentry kind="lib" path="D:/java_ysc/spring-beans-4.3.30.RELEASE.jar"/>
-	<classpathentry kind="lib" path="D:/java_ysc/spring-context-4.3.30.RELEASE.jar"/>
-	<classpathentry kind="lib" path="D:/java_ysc/spring-core-4.3.30.RELEASE.jar"/>
-	<classpathentry kind="lib" path="D:/java_ysc/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="D:/java_ysc/spring-expression-4.3.30.RELEASE.jar"/>
-	<classpathentry kind="lib" path="D:/java_ysc/mybatis-3.5.6.jar"/>
-	<classpathentry kind="lib" path="D:/java_ysc/javax.mail-1.5.6.jar"/>
-	<classpathentry kind="lib" path="D:/java_ysc/log4j-core-2.14.1.jar"/>
-	<classpathentry kind="lib" path="D:/java_ysc/log4j-api-2.14.1.jar"/>
+	<classpathentry kind="lib" path="E:/java210208_master/gson-2.8.6.jar"/>
+	<classpathentry kind="lib" path="E:/app/webtr/product/11.1.0/db_1/jdbc/lib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="E:/java210208_master/spring-beans-4.3.30.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/java210208_master/spring-context-4.3.30.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/java210208_master/spring-core-4.3.30.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/java210208_master/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="E:/java210208_master/spring-expression-4.3.30.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/java210208_master/mybatis-3.5.6.jar"/>
+	<classpathentry kind="lib" path="E:/java210208_master/javax.mail-1.5.6.jar"/>
+	<classpathentry kind="lib" path="E:/java210208_master/log4j-core-2.14.1.jar"/>
+	<classpathentry kind="lib" path="E:/java210208_master/log4j-api-2.14.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

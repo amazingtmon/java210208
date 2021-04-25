@@ -53,19 +53,43 @@
     <span class="forth">Woooo~~~~!!</span>
 
     <script>
-        const span = document.querySelectorAll('span');
-        console.dir(span);
-
-
         $(document).ready(function(){
             //alert('test');
+            // "$" 를 사용한 경우 jquery를 이용한 것이다.
             $('#dg_dept').datagrid({
+                onDblClickCell: function(index,field,value){
+                console.log(index+', '+field+', '+value);
+                $(this).datagrid(index);
+                let ed = $(this).datagrid({index:index,field:field});
+                console.dir(ed);
+                $(ed).focus();
+                },
+
                 columns:[[
-                {field:'deptno',title:'부서번호1',width:100},
-                {field:'dname',title:'부서명2',width:100},
-                {field:'loc',title:'지역3',width:100,align:'left'}
+                    {field:'deptno',title:'부서번호1',width:100},
+                    {field:'dname',title:'부서명2',width:100},
+                    {field:'loc',title:'지역3',width:100,align:'left'}
                 ]]
+                ,
+
+	            data: [
+                    {deptno:10, dname:'영업부', loc: '서울'},
+                    {deptno:20, dname:'생산부', loc: '청주'},
+                    {deptno:30, dname:'개발부', loc: '제주'},
+	            ],
+                
+                toolbar: [{
+                    iconCls: 'icon-edit',
+                    handler: function(){alert('edit')}
+                    },'-',{
+                    iconCls: 'icon-help',
+                    handler: function(){alert('help')}
+                }],
+
             });
+
+            const imsi = document.querySelector('.easyui-datagrid');
+            console.log('imsi: '+imsi);
         });
     </script>
 

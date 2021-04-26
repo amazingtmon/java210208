@@ -1,0 +1,122 @@
+body {
+  margin: 0;
+}
+
+container {
+  display: block;
+  text-align: center;
+}
+
+.divide_line {
+  display: block;
+  margin: auto;
+  height: 5px;
+  width: 80%;
+  background-color: dimgray;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: darkviolet;
+  color: white;
+}
+
+.navbar_logo {
+  margin-left: 0.5em;
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.nav__menu {
+  margin-right: 1em;
+  margin-top: 0.5em;
+  width: 20rem;
+}
+.navbar__menus {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1em;
+  font-family: 'Bangers', cursive;
+}
+
+.navbar__menus__item {
+  margin-right: 2em;
+}
+
+/* Home */
+.home {
+  margin-bottom: 3em;
+}
+
+.home__profile_img {
+  width: 20em;
+  height: 20em;
+}
+
+.home__title {
+  margin: 0;
+  font-size: 5rem;
+  font-family: 'Pacifico', cursive;
+}
+
+
+.home__describe {
+  font-size: 1.5rem;
+  font-family: 'Bangers', cursive;
+}
+
+.home__click {
+  padding: 1em;
+  border: none;
+  border-radius: 35%;
+  background-color: black;
+  color: white;
+}
+
+/* About me */
+.about{
+  margin-bottom: 3em;
+}
+
+.about_title {
+  font-family: 'Pacifico', cursive;
+}
+
+.about_describe {
+  margin: auto;
+  margin-bottom: 1em;
+  width: 60%;
+  font-family: 'Inconsolata', monospace;
+}
+
+.about__major__img {
+  font-size: 3rem;
+}
+
+.front {
+  color: blue;
+}
+
+.back {
+  color: midnightblue;
+}
+
+.mobile {
+  color: goldenrod;
+}
+
+/* Skills */
+.skills__title {
+  font-family: 'Pacifico', cursive;
+}
+
+.skills__describe {
+  margin: auto;
+  margin-bottom: 1em;
+  width: 60%;
+  font-family: 'Inconsolata', monospace;
+}

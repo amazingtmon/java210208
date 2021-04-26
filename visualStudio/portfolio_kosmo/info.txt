@@ -1,0 +1,18 @@
+//구글폰트
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
+
+//font awsome
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
+//svg to png
+https://svgtopng.com/
+
+//about design
+https://www.canva.com/ko_kr/
+
+//random text <p>
+http://www.lipsum.com/
+
+//remove white background
+https://www.remove.bg/ko

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Box</title>
+  <style>
+  div {
+    margin-bottom: 1em;
+    width: 200px;
+    height: 200px;
+    background-color: green;
+    border: 3px solid orangered;
+    font-size: 1.5rem;
+    font-weight: bold;
+  } 
+
+  .box2 {
+    box-sizing: border-box;
+    padding: 10px;
+    border: 10px solid red;
+  }
+
+  .box3 {
+    box-sizing: content-box;
+    border: 10px solid blue;
+    padding: 10px;
+  }
+  </style>
+</head>
+<body>
+  <container class="container">
+    <div class="box box1">box1</div>
+    <div class="box box2">box2</div>
+    <div class="box box3">box3</div>
+  </container>
+</body>
+</html>

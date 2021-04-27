@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Transition</title>
+  <style>
+      .box{
+      width: 100px;
+      height: 100px;
+      background-color: navy;
+      margin-bottom: 2em;
+    }
+
+    .box1:hover {
+      background-color: orangered;
+      transition: background-color 500ms linear;
+    }
+
+    .box2:hover {
+      border-radius: 50%;
+      background-color: orchid;
+      transition: all 500ms linear ;
+    }
+
+    .box3:hover {
+      border-radius: 50%;
+      background-color: orchid;
+      transition: all 5s linear ;
+      transform: translateX(200px);
+    }
+  </style>
+</head>
+<body>
+  <div class="box box1"></div>
+  <div class="box box2"></div>
+  <div class="box box3"></div>
+</body>
+</html>

@@ -23,10 +23,10 @@
       </div>
       <div class="nav__menu">
         <ul class="navbar__menus">
-          <li class="navbar__menus__item">Home</li>
-          <li class="navbar__menus__item">About</li>
-          <li class="navbar__menus__item">Skills</li>
-          <li class="navbar__menus__item">My work</li>
+          <li class="navbar__menus__item li_home"><a href="#">Home</a></li>
+          <li class="navbar__menus__item li_about"><a href="#">About</a></li>
+          <li class="navbar__menus__item li_skills"><a href="#">Skills</a></li>
+          <li class="navbar__menus__item li_work"><a href="#">My Work</a></li>
         </ul>
       </div>
     </nav>
@@ -58,26 +58,43 @@
         sometimes by accident, sometimes on purpose (injected humour and the like).
       </p>
       <div class="about__majors">
-        <div class="about__major__img front">
-          <i class="fab fa-html5"></i>
+        <div class="major_box">
+          <div class="about__major__img front">
+            <i class="fab fa-html5"></i>
+          </div>
+          <div class="major">
+            Front_end : HTMl, CSS, JavaScript, TypeScript, React, Vue
+          </div>
         </div>
-        <div class="major">
-          Front_end : HTMl, CSS, JavaScript, TypeScript, React, Vue
+        <div class="major_box">
+          <div class="about__major__img back">
+            <i class="fas fa-cubes"></i>
+          </div>
+          <div class="major">
+            Back_end : Java, Servlet, JSP, Oracle, Firebase, Youtube APIs
+          </div>
         </div>
-        <div class="about__major__img back">
-          <i class="fas fa-cubes"></i>
-        </div>
-        <div class="major">
-          Back_end : Java, Servlet, JSP, Oracle, Firebase, Youtube APIs
-        </div>
-        <div class="about__major__img mobile">
-          <i class="fas fa-mobile-alt"></i>
-        </div>
-        <div class="major">
-          Mobile : React Mobile, JQuery Mobile, Android Studio Code
+        <div class="major_box">
+          <div class="about__major__img mobile">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <div class="major">
+            Mobile : React Mobile, JQuery Mobile, Android Studio Code
+          </div>
         </div>
       </div>
-
+      <div class="about__school">
+        <div class="school">
+          <img src="images/kosmo_logo.png" alt="kosmo_logo" class="school__logo">
+          <div class="school__describe">
+            There are many variations of passages of Lorem Ipsum available, 
+            but the majority have suffered alteration in some form, by injected 
+            humour, or randomised words which don't look even slightly believable.
+            If you are going to use a passage of Lorem Ipsum, you need to be sure 
+            there isn't anything embarrassing hidden in the middle of text.
+          </div>
+        </div>
+      </div>
     </section>
 
       <!-- Skills -->
@@ -95,6 +112,10 @@
         </section>
 
       <!-- My Work -->
+      <section class="work">
+        <div class="divide_line"></div>
+        <h1 class="work__title"></h1>
+      </section>
     </div>
   </container>
 </body>

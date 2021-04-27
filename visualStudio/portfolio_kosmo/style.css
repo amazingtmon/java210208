@@ -1,3 +1,30 @@
+/* Global */
+:root {
+  /* Color */
+  --color-white: white;
+  --color-darkviolet: darkviolet;
+  --color-dimgray: dimgray;
+
+  /* Font Style */
+  --font-title: 'Pacifico', cursive;
+  --font-describe: 'Inconsolata', monospace;
+
+  /* Font Size */
+  --font-logo: 3rem;
+  --font-title: 5rem;
+  --font-subtitle: 3rem;
+  --font-describe: 1.5rem;
+  --font-nav-menu: 1.5rem;
+
+  /* Font weight */
+
+  /* Size */
+  --size-margin-bottom: 3em;
+  --size-margin-logo: 0.1em;
+  /* Annimation */
+  --animation-duration: 300ms;
+}
+
 body {
   margin: 0;
 }
@@ -5,6 +32,16 @@ body {
 container {
   display: block;
   text-align: center;
+}
+
+a{
+  text-decoration-line: none;
+  color: white;
+}
+
+a:active{
+  color: blue;
+  transition: color 50ms linear;
 }
 
 .divide_line {
@@ -19,37 +56,66 @@ container {
 .navbar {
   display: flex;
   justify-content: space-between;
-  background-color: darkviolet;
-  color: white;
+  background-color: var(--color-darkviolet);
+  color: var(--color-white);
 }
 
 .navbar_logo {
   margin-left: 0.5em;
-  font-size: 3em;
+  font-size: 3rem;
   font-weight: bold;
 }
 
+.navbar_logo:hover {
+  animation-name: navbar_logo;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes navbar_logo{
+  from {
+    transform: rotate(0deg);
+  }
+
+  75%{
+    transform: rotate(20deg);
+  }
+
+  to{
+    transform: rotate(-20deg);
+  }
+}
+
 .nav__menu {
-  margin-right: 1em;
-  margin-top: 0.5em;
-  width: 20rem;
+  margin: 0.5em 1em 0 1em;
+  width: 30em;
 }
 .navbar__menus {
+  margin: 0.3em;
   padding: 0;
   list-style: none;
   display: flex;
   justify-content: space-around;
-  font-size: 1em;
+  font-size: var(--font-nav-menu);
   font-family: 'Bangers', cursive;
 }
 
 .navbar__menus__item {
-  margin-right: 2em;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0.3em;
+}
+
+.navbar__menus__item:hover {
+  border: 1px solid white;
+  transform: scale(1.1);
+  transition: transform 200ms ease-in;
 }
 
 /* Home */
 .home {
-  margin-bottom: 3em;
+  margin-bottom: var(--size-margin-bottom);;
 }
 
 .home__profile_img {
@@ -59,10 +125,9 @@ container {
 
 .home__title {
   margin: 0;
-  font-size: 5rem;
+  font-size: var(--font-title);
   font-family: 'Pacifico', cursive;
 }
-
 
 .home__describe {
   font-size: 1.5rem;
@@ -71,30 +136,67 @@ container {
 
 .home__click {
   padding: 1em;
+  cursor: pointer;
   border: none;
+  font-size: 0.8em;
   border-radius: 35%;
+  background-color: white;
+  color: black;
+}
+
+.home__click:hover {
   background-color: black;
-  color: white;
+  color: var(--color-white);
+  transition: all 500ms linear;
 }
 
 /* About me */
 .about{
-  margin-bottom: 3em;
+  margin-bottom: var(--size-margin-bottom);;
 }
 
 .about_title {
+  margin: 0;
+  font-size: var(--font-subtitle);
   font-family: 'Pacifico', cursive;
 }
 
 .about_describe {
   margin: auto;
-  margin-bottom: 1em;
+  margin-bottom: var(--size-margin-bottom);
   width: 60%;
   font-family: 'Inconsolata', monospace;
 }
 
+.about__majors {
+  width: 70%;
+  margin: auto;
+  margin-bottom: var(--size-margin-bottom);
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.major_box {
+  width: 50%;
+  height: 50%;
+  margin: var(--size-margin-logo);
+}
+
 .about__major__img {
-  font-size: 3rem;
+  margin: auto;
+  margin-bottom: 0.2em;
+  width: 70%;
+  padding: 0.5em 0;
+  font-size: 7rem;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+.major {
+  margin: auto;
+  width: 50%;
+  font-family: 'Inconsolata', monospace;
 }
 
 .front {
@@ -109,14 +211,23 @@ container {
   color: goldenrod;
 }
 
+.school__describe {
+  margin: auto;
+  margin-bottom: 1em;
+  width: 60%;
+  font-family: 'Inconsolata', monospace;
+}
+
 /* Skills */
 .skills__title {
+  margin: 0;
+  font-size: var(--font-subtitle);
   font-family: 'Pacifico', cursive;
 }
 
 .skills__describe {
   margin: auto;
-  margin-bottom: 1em;
+  margin-bottom: var(--size-margin-bottom);;
   width: 60%;
   font-family: 'Inconsolata', monospace;
 }

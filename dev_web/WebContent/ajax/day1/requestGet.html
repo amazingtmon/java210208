@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>콜백함수 추적</title>
+<style>
+	#d_data {
+		border : 1px solid red;
+		width : 200px;
+		height : 200px;
+	}
+</style>
+<script>
+	'use strict';
+	let xhrObject = null;//변수 선언
+	function createRequest(){
+		try {
+			//IE8.0이상, 사파리, 오페라, 크롬, 파이어폭스
+			xhrObject = new XMLHttpRequest();
+		} catch (trymicrosoft) {
+			try {
+				xhrObject = new ActiveObject("Msxml2.XMLHTTP");		//IE6.0	
+			} catch (e) {
+				xhrObject = null;
+			}
+		}
+		if(xhrObject==null){
+			alert("비동기통신 객체 생성 에러.");
+		}
+	}
+	/*
+	readyState:onreadystatechange에서 사용할 수 있는 HTTP요청 상태의 코드값입니다.
+	​
+	- 0(uninitialized):open메소드가 호출되기 이전
+	
+	- 1(loading):HTTP요청 준비가 된 상태
+	하지만 아직 보내지 않은 상태 - send메소드 호출 직전 상태
+	
+	- 2(loaded):HTTP요청을 보내어 처리하고 있는 중. 헤더는 읽을 수 있는 상태
+	get방식인지 post방식인지
+	http프로토콜에대한 버전 1.1
+	브라우저의 타입
+	
+	- 3(interactive):데이터를 받고 있는 중. 하지만 아직 완전히 받지는 못한 상태
+	
+	- 4(complete): 데이터까지 완전히 받은 상태
+	비로서 responseText나  혹은 responseXML 속성으로 데이터를 읽을 수 있는 상태
+	status : HTTP상태 코드를 숫자로 반환함. 200  404
+	statusText:HTTP상태 코드에 대한 문자열 반환함.  OK Not Found
+	예를들면 200, 304, 404, 405 , 500 등등
+	*/
+	function startMethod(){
+		console.log('startMethod 호출 성공');
+		//비동기 통신 객체 생성됨.
+		createRequest();/*여기서 xmlHttpRequest 주입됨.*/
+		xhrObject.open("GET","lecture.xml",true);
+		xhrObject.onreadystatechange = result_access;/*콜백함수*/
+		xhrObject.send(null);
+	}
+	
+	function result_access(){
+		alert("상태값은 "+xhrObject.readyState);
+		console.log(xhrObject);
+		console.dir(xhrObject);
+		if(xhrObject.readyState == 4){
+			if(xhrObject.status == 200){/*200번 = 요청에 대한 응답이 양호하다는 뜻. OK*/
+			document.querySelector('#d_data').innerHTML = xhrObject.responseText;
+			}
+		}
+	}
+	
+	function deleteText(){
+		document.querySelector('#d_data').innerText = "";
+	}
+</script>
+</head>
+<body>
+	<div id="d_data">TEST</div>
+	<button onClick="startMethod()">전송</button>
+	<button	onClick="deleteText()">지우기</button>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- 
+    뷰포트란?
+    웹페이지에서 사용자에게 보여지는 영역이다.
+    전자기기마다 다르며, 컴퓨터 화면보다는 휴대폰에서 더 적게 나타난다.
+    태블릿과 휴대폰이 보급되고 컴퓨터 화면보다 작은 기기들로 웹서핑을
+    시작하니 뷰포트가 안맞는 이슈가 발생함.
+    이 문제해결을 위해 기기 브라우저는 전체 웹 페이지를 자신의 화면에 맞게
+    축소하게됨.
+
+    반응형 웹 제작시 지켜야 할 규칙
+    1. 큰 고정 너비 요소를 사용하지 말것.
+    2. 콘텐츠가 렌더링 되기 위해 특정 뷰포트 너비에 의존하지 않도록 할것.
+    3. CSS미디어 쿼리를 사용하여 작은 화면과 큰 화면에 다른 스타일을 적용할것.
+    4. 세로방향으로는 스크롤 가능하게. 가로방향으로는 스크롤하게 만드는 것을 지양.
+
+    minimum-scale : 양수 - 뷰포트의 최소 축소비율을 지정한다. (default = 0.25)
+    maximum-scale : 뷰포트의 최대 확대비율을 지정한다. (default = 5.0)
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/visualStudio/portfolio_kosmo/images/mountain.png">
+  <title>Window Size</title>
+  <style>
+    .tag {
+      display: inline-block; /* display 옵션을 통해 컨텐츠를 감싸준다. 외적변화가 없는 태그이기 때문.*/
+      background-color:darkcyan;
+      font-size: 48px;
+    }
+  </style>
+</head>
+<body>
+  <div class="tag">Window Size</div>
+  <button onclick="window_close();">close</button>
+  <script>
+    const tag = document.querySelector('.tag');
+    console.dir(tag.style);
+
+    window.addEventListener('resize', () => {
+      console.log(`window screen : ${window.screenX}, ${window.screenY}`);
+      console.log(`document screen : ${document.defaultView.innerWidth}, ${document.defaultView.innerHeight}`);
+    });
+    
+    function window_close() {
+      console.log('close!!');
+      window.close();
+    }
+  </script>
+</body>
+</html>

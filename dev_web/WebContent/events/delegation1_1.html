@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events Party</title>
+  <style>
+    .selected {
+      background-color:palevioletred;
+      list-style: none;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>one</li>
+    <li>two</li>
+    <li>three</li>
+    <li>four</li>
+    <li>five</li>
+    <li>six</li>
+    <li>seven</li>
+    <li>eight</li>
+    <li>nine</li>
+    <li>ten</li>
+  </ul>
+  <script>
+    /************* Bad way *****************
+    const lis = document.querySelectorAll('li');
+    lis.forEach(li => {
+      li.addEventListener('click', () => {
+        li.classList.add('selected');
+      });
+    });
+    */
+  
+    const ul = document.querySelector('ul');
+    /*
+    ul.addEventListener('click', (event) => {
+      if(event.target.className !== 'selected') {
+        event.target.classList.add('selected');
+        console.dir(event.target);
+      } else {
+        event.target.classList.remove('selected');
+      }
+    });
+    */
+    
+    //조건을 걸어줘야하는 대상이 중요함.
+    ul.addEventListener('click', (event)=>{
+      if(event.target.tagName === "LI"){
+        const checkClass = event.target.classList.contains('selected');
+        if(!checkClass){
+          event.target.classList.add('selected');
+          console.dir(event.target);
+        } else {
+          event.target.classList.remove('selected');
+        }
+      } else {
+        return;
+      }
+    });
+  </script>
+</body>
+</html>

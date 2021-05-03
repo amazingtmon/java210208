@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Point</title>
+</head>
+<style>
+  body {
+    background-color: darkgray;
+  }
+
+  div{
+    margin-bottom: 1em;
+    width: 200px;
+    height: 200px;
+    background-color: darkslateblue;
+  }
+
+  div.flag {
+    background-color: orange;
+  }
+</style>
+<body>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div class="flag"></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+
+  <script>
+    const flag = document.querySelector('.flag');
+
+    flag.addEventListener('click', (event) => {
+      const rect = flag.getClientRects();
+      console.log(rect);
+      console.log(event.pageX);
+      console.log(event.pageY);
+      console.log(event.clientX);
+      console.log(event.clientY);
+      flag.innerHTML = `
+      page (X, Y) = ${event.pageX}, ${event.pageY},
+      client (X, Y) = ${event.clientX}, ${event.clientY}
+      `;
+    });
+  </script>
+</body>
+</html>

@@ -37,6 +37,8 @@
   
     const ul = document.querySelector('ul');
     /*
+    * 특별한 API 사용하지않고 담백한 방법으로.
+    
     ul.addEventListener('click', (event) => {
       if(event.target.className !== 'selected') {
         event.target.classList.add('selected');
@@ -47,7 +49,9 @@
     });
     */
     
-    //조건을 걸어줘야하는 대상이 중요함.
+    /*
+    * 조건을 걸어줘야하는 대상이 중요함.
+    * event.target의 classList에 contatins API를 사용함.
     ul.addEventListener('click', (event)=>{
       if(event.target.tagName === "LI"){
         const checkClass = event.target.classList.contains('selected');
@@ -56,6 +60,20 @@
           console.dir(event.target);
         } else {
           event.target.classList.remove('selected');
+        }
+      } else {
+        return;
+      }
+    });
+    */
+
+    //toggle API 사용.
+    ul.addEventListener('click', (event)=> {
+      if(event.target.tagName === 'LI') {
+        if(event.target){
+          //event.target에 'selected'라는 클래스가 없으면 추가해주고
+          //'selected' 클래스가 있으면 제거해준다.
+          event.target.classList.toggle('selected');
         }
       } else {
         return;

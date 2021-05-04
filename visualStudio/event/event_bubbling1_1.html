@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Capture</title>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+      width: 300px;
+      height: 250px;
+    }
+
+    .outer{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 200px;
+      height: 200px;
+      background-color: cadetblue;
+      border-radius: 50%;
+    }
+
+    .middle{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      height: 50%;
+      background-color: coral;
+      border-radius: 50%;
+    }
+
+    .button{
+      padding: 10%;
+      border-radius: 50%;
+    }
+
+    .result{
+      width: 100px;
+      height: 50px;
+      text-align: center;
+      align-content: center;
+      border-radius: 30%
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="outer">
+      <div class="middle">
+        <button class="button">Click<br/> Me!!</button>
+      </div>
+    </div>
+    <div class="result"></div>
+  </div>
+  <script>
+    const container = document.querySelector('.container');
+    const outer = document.querySelector('.outer');
+    const middle = document.querySelector('.middle');
+    const button = document.querySelector('.button');
+    const result = document.querySelector('.result');
+
+    outer.addEventListener('click', (event) => {
+      console.log(`outer : ${event.target}, ${event.currentTarget}`);
+    });
+
+    middle.addEventListener('click', (event)=> {
+      console.log(`middle : ${event.target}, ${event.currentTarget}`);
+    });
+
+    button.addEventListener('click', (event)=> {
+      console.log(`button : ${event.target}, ${event.currentTarget}`);
+      //event.stopPropagation();//이벤트 버블링을 방지하는 API.
+      event.stopImmediatePropagation();
+    });
+
+    button.addEventListener('click', (event)=> {
+      console.log(`button2 : ${event.target}, ${event.currentTarget}`);
+    });
+  </script>
+</body>
+</html>

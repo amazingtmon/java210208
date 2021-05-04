@@ -1,0 +1,17 @@
+body {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+img {
+  border: white solid 1px;
+  width: 30%;
+  height: 30%;
+  will-change: opacity;
+  /*will-change 옵션을 주고 투명도가 바뀔것을 암시하니 브라우저에서 레이어를 분리함.*/
+}
+
+h1 {
+  font-family: cursive;
+}

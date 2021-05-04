@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Prevent</title>
+  <!--
+    이벤트에 있는 preventDefault()는 브라우저에서 기본적으로 발생하는 동작을
+    취소하는 API이다.
+  -->
+</head>
+<style>
+  div {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 0.5em;
+    background-color: coral;
+  }
+</style>
+<body>
+  <div>
+    <input type="checkbox">
+  </div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <script>
+    document.addEventListener('wheel', (event) => {
+      console.log('scrolling');
+      //event.preventDefault();
+    },
+    //{ passive : false }//보통 사용하지 않음.
+    );
+
+    const ck = document.querySelector('input');
+    ck.addEventListener('click', (event) => {
+      console.log('checked');
+      //event.preventDefault();
+    });
+  </script>
+</body>
+</html>

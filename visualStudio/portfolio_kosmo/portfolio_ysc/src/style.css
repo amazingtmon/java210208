@@ -1,0 +1,43 @@
+:root {
+  /*navbar*/
+  --nav-logo-fontsize: 2.5rem;
+  --nav-menu-width: 40em;
+  --nav-menus-fontsize: 1.5rem;
+}
+
+body {
+  margin: 0;
+}
+
+/*<a> tag text decoration edit*/
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.navbar {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: firebrick;
+  color: aliceblue;
+}
+
+.nav__logo {
+  font-size: var(--nav-logo-fontsize);
+}
+
+.nav__menu {
+  width: var(--nav-menu-width);
+}
+
+.navbar__menus {
+  margin: 0;
+  margin-top: 0.3em;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  font-size: var(--nav-menus-fontsize);
+}

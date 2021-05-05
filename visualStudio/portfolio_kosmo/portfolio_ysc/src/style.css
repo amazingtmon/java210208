@@ -1,43 +1,111 @@
 :root {
-  /*navbar*/
-  --nav-logo-fontsize: 2.5rem;
-  --nav-menu-width: 40em;
-  --nav-menus-fontsize: 1.5rem;
+  /* Font Size */
+  --font-navmenus: 1.3rem;
+  --font-navtitle: 2.5rem;
+  --font-title: 5rem;
+  --font-describe: 2rem;
+
+  /* Font Family */
+  --font-family-navmenus: "Krona One", sans-serif;
+  --font-family-title: "Orelega One", cursive;
+  --font-family-describe: "Yanone Kaffeesatz", sans-serif;
+  /* Font Weight */
 }
 
 body {
   margin: 0;
 }
 
+container {
+  display: block;
+}
+
 /*<a> tag text decoration edit*/
-a {
+a.navbar__menus__a {
   text-decoration: none;
-  color: white;
+  color: whitesmoke;
+}
+
+/* Navbar section */
+
+.navbar__menus__a:hover {
+  color: darkorange;
+  background-color: floralwhite;
+  border-radius: 10%;
 }
 
 .navbar {
-  position: fixed;
+  /* make navbar sticky => position: sticky; top: 0; */
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
-  background-color: firebrick;
+  background-color: rgb(165, 43, 43);
   color: aliceblue;
 }
 
 .nav__logo {
-  font-size: var(--nav-logo-fontsize);
+  margin-left: 0.3em;
+  font-size: 2.5rem;
+}
+
+.nav__logo:hover {
+  color: yellow;
+}
+
+.navbar__title {
+  margin-left: 10em;
+  text-align: center;
+  font-size: var(--font-navtitle);
+  font-family: var(--font-family-title);
+  font-weight: bold;
 }
 
 .nav__menu {
-  width: var(--nav-menu-width);
+  width: 30em;
+}
+
+.navbar__menus__divider {
+  width: 0.5%;
+  background-color: rgb(206, 207, 218);
 }
 
 .navbar__menus {
   margin: 0;
-  margin-top: 0.3em;
   padding: 0;
   display: flex;
   justify-content: space-around;
   list-style: none;
-  font-size: var(--nav-menus-fontsize);
+  font-size: var(--font-navmenus);
+  font-family: var(--font-family-navmenus);
+}
+
+.navbar__menus__item {
+  box-sizing: border-box;
+}
+
+/* Home section */
+
+.home {
+  width: 100vw;
+  background-color: lightsalmon;
+  text-align: center;
+}
+
+.home__profile {
+  width: 20rem;
+  height: 20rem;
+}
+
+.home__title {
+  margin: 0;
+  font-size: var(--font-title);
+  font-family: var(--font-family-title);
+}
+
+.home__describe {
+  font-size: var(--font-describe);
+  font-family: var(--font-family-describe);
 }

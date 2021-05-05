@@ -6,23 +6,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="../images/peace-solid.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orelega+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300;400&display=swap" rel="stylesheet">
   <title>포트폴리오 - YangSangChul</title>
 </head>
 <body>
+  <container class="contents">
     <!-- Navbar -->
     <nav class="navbar">
       <div class="nav__logo">
         <i class="fab fa-angellist"></i>
       </div>
+      <div class="navbar__title">SangChul's Portfolio Page</div>
       <div class="nav__menu">
         <ul class="navbar__menus">
-          <li class="navbar__menus__item li_home"><a href="#">Home</a></li>
-          <li class="navbar__menus__item li_about"><a href="#">About</a></li>
-          <li class="navbar__menus__item li_skills"><a href="#">Skills</a></li>
-          <li class="navbar__menus__item li_work"><a href="#">My Work</a></li>
+          <li class="navbar__menus__item li_home">
+            <a class="navbar__menus__a" href="#">Home</a>
+          </li>
+          <div class="navbar__menus__divider"></div>
+          <li class="navbar__menus__item li_about">
+            <a class="navbar__menus__a"href="#">About</a>
+          </li>
+          <div class="navbar__menus__divider"></div>
+          <li class="navbar__menus__item li_skills">
+            <a class="navbar__menus__a"href="#">Skills</a>
+          </li>
+          <div class="navbar__menus__divider"></div>
+          <li class="navbar__menus__item li_work">
+            <a class="navbar__menus__a"href="#">My Work</a>
+          </li>
         </ul>
       </div>
     </nav>
+
+    <!-- Home -->
+    <div class="home">
+      <img class="home__profile" src="../images/kiwi-bird-solid.png" alt="profile">
+      <h1 class="home__title">Home</h1>
+      <p class="home__describe">
+        Hllo, Welcome to my portfolio page.<br>
+        I'm a man who wants to be a Software Engineer.<br>
+        Now living in Seoul, no own car, no own house, not enough money.<br>
+        But I have a passion and curiosity for learning something new.<br>
+        Also, love teamWork.
+
+      </p>
+    </div>
+  </container>
 </body>
 </html>

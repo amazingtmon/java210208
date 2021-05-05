@@ -6,8 +6,8 @@
   --color-dimgray: dimgray;
 
   /* Font Style */
-  --font-title: 'Pacifico', cursive;
-  --font-describe: 'Inconsolata', monospace;
+  --font-title: "Pacifico", cursive;
+  --font-describe: "Inconsolata", monospace;
 
   /* Font Size */
   --font-logo: 3rem;
@@ -21,6 +21,7 @@
   /* Size */
   --size-margin-bottom: 3em;
   --size-margin-logo: 0.1em;
+
   /* Annimation */
   --animation-duration: 300ms;
 }
@@ -34,12 +35,12 @@ container {
   text-align: center;
 }
 
-a{
+a {
   text-decoration-line: none;
   color: white;
 }
 
-a:active{
+a:active {
   color: blue;
   transition: color 50ms linear;
 }
@@ -73,16 +74,16 @@ a:active{
   animation-direction: alternate;
 }
 
-@keyframes navbar_logo{
+@keyframes navbar_logo {
   from {
     transform: rotate(0deg);
   }
 
-  75%{
+  75% {
     transform: rotate(20deg);
   }
 
-  to{
+  to {
     transform: rotate(-20deg);
   }
 }
@@ -98,7 +99,7 @@ a:active{
   display: flex;
   justify-content: space-around;
   font-size: var(--font-nav-menu);
-  font-family: 'Bangers', cursive;
+  font-family: "Bangers", cursive;
 }
 
 .navbar__menus__item {
@@ -115,7 +116,7 @@ a:active{
 
 /* Home */
 .home {
-  margin-bottom: var(--size-margin-bottom);;
+  margin-bottom: var(--size-margin-bottom);
 }
 
 .home__profile_img {
@@ -126,12 +127,12 @@ a:active{
 .home__title {
   margin: 0;
   font-size: var(--font-title);
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
 }
 
 .home__describe {
   font-size: 1.5rem;
-  font-family: 'Bangers', cursive;
+  font-family: "Bangers", cursive;
 }
 
 .home__click {
@@ -151,21 +152,21 @@ a:active{
 }
 
 /* About me */
-.about{
-  margin-bottom: var(--size-margin-bottom);;
+.about {
+  margin-bottom: var(--size-margin-bottom);
 }
 
 .about_title {
   margin: 0;
   font-size: var(--font-subtitle);
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
 }
 
 .about_describe {
   margin: auto;
   margin-bottom: var(--size-margin-bottom);
   width: 60%;
-  font-family: 'Inconsolata', monospace;
+  font-family: "Inconsolata", monospace;
 }
 
 .about__majors {
@@ -196,7 +197,7 @@ a:active{
 .major {
   margin: auto;
   width: 50%;
-  font-family: 'Inconsolata', monospace;
+  font-family: "Inconsolata", monospace;
 }
 
 .front {
@@ -215,19 +216,19 @@ a:active{
   margin: auto;
   margin-bottom: 1em;
   width: 60%;
-  font-family: 'Inconsolata', monospace;
+  font-family: "Inconsolata", monospace;
 }
 
 /* Skills */
 .skills__title {
   margin: 0;
   font-size: var(--font-subtitle);
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
 }
 
 .skills__describe {
   margin: auto;
-  margin-bottom: var(--size-margin-bottom);;
+  margin-bottom: var(--size-margin-bottom);
   width: 60%;
-  font-family: 'Inconsolata', monospace;
+  font-family: "Inconsolata", monospace;
 }

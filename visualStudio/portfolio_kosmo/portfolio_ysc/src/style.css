@@ -57,7 +57,7 @@ a.navbar__menus__a {
 }
 
 .nav__logo:hover {
-  color: yellow;
+  color: darkorange;
 }
 
 .navbar__title {
@@ -69,7 +69,7 @@ a.navbar__menus__a {
 }
 
 .nav__menu {
-  width: 30em;
+  width: 25em;
 }
 
 .navbar__menus__divider {

@@ -1,35 +1,44 @@
 const navbar = document.querySelector('.navbar');
-const scrolly = window.scrollY;
+const start_pageYOffset = window.pageYOffset;
 
-function scrollAction() {
-  console.log('scrolled');
-  console.log(window.scrollY);
-  if (window.scrollY > 0) {
-    navbar.classList.add('nav_opacity');
-  } else if (window.scrollY === 0) {
+export default class Navbar {
+  constructor(){
+    this.navbar = document.querySelector('.navbar');
+  }
+  
+  scrollAction() {
+    let current_value = window.pageYOffset;
+    let moved_value = start_pageYOffset;
+    console.log('start '+start_pageYOffset);
+    console.log('current '+current_value);
+    console.log(window.innerHeight);
+    if (window.pageYOffset > 0) {
+      navbar.classList.add('nav_opacity');
+      navbar.classList.add('nav_hide');
+    } else if (window.pageYOffset === 0) {
+      navbar.classList.remove('nav_opacity');
+    }
+  }
+
+  mouseOverAction() {
+    console.log('mouse on');
     navbar.classList.remove('nav_opacity');
   }
-}
-
-function mouseOverAction() {
-  console.log('mouse on');
-  console.log(window);
-  navbar.classList.remove('nav_opacity');
-}
-
-function mouseLeaveAction() {
-  console.log('mouse leave');
-  if (window.scrollY === 0) {
-    return;
-  } else if (window.scrollY > 0){
-    navbar.classList.add('nav_opacity');
+  
+  mouseLeaveAction() {
+    console.log('mouse leave');
+    if (window.pageYOffset === 0) {
+      return;
+    } else if (window.pageYOffset > 0){
+      navbar.classList.add('nav_opacity');
+    }
   }
+  
+  init() {
+    window.addEventListener('scroll', this.scrollAction);
+    navbar.addEventListener('mouseover', this.mouseOverAction);
+    navbar.addEventListener('mouseleave', this.mouseLeaveAction);
+  }
+  
+  //init();
 }
-
-function init() {
-  window.addEventListener('scroll', scrollAction);
-  navbar.addEventListener('mouseover', mouseOverAction);
-  navbar.addEventListener('mouseleave', mouseLeaveAction);
-}
-
-init();

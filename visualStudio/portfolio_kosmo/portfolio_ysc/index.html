@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
   <link rel="icon" type="image/png" href="../images/peace-solid.png">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Orelega+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300;400&display=swap" rel="stylesheet">
-  <script defer src="main.js"></script>
-  <script defer src="scrollAction.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <script type="module" src="./src/main.js" defer></script>
   <title>포트폴리오 - YangSangChul</title>
 </head>
 <body>
@@ -43,7 +43,7 @@
         </ul>
       </div>
     </nav>
-
+    
     <!-- Home -->
     <div class="home">
       <img class="home__profile" src="../images/kiwi-bird-solid.png" alt="profile">
@@ -54,9 +54,53 @@
         Now living in Seoul, no own car, no own house, not enough money.<br>
         But I have a passion and curiosity for learning something new.<br>
         Also, love teamWork.
-
       </p>
     </div>
+
+    <!-- About me -->
+    <section class="about__section">
+      <div class="about__left">
+        <p class="about__title">A</p>
+        <p class="about__subtitle">About Me</p>
+      </div>
+      <div class="about__right">
+        <div class="about__describe">
+          <p class="about__describe__p">
+            It is a long established fact that a reader will be distracted by the readable
+            content of a page when looking at its layout. The point of using Lorem Ipsum 
+            is that it has a more-or-less normal distribution of letters, as opposed to 
+            using 'Content here, content here', making it look like readable English. 
+            Many desktop publishing packages and web
+          </p>
+        </div>
+        <div class="about__majors">
+          <div class="major__box">
+            <div class="about__major__img front">
+              <i class="fab fa-html5"></i>
+            </div>
+            <div class="major">
+              Front_end : HTMl, CSS, JavaScript, TypeScript, React, Vue
+            </div>
+          </div>
+          <div class="major_box">
+            <div class="about__major__img back">
+              <i class="fas fa-cubes"></i>
+            </div>
+            <div class="major">
+              Back_end : Java, Servlet, JSP, Oracle, Firebase, Youtube APIs
+            </div>
+          </div>
+          <div class="major_box">
+            <div class="about__major__img mobile">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <div class="major">
+              Mobile : React Mobile, JQuery Mobile, Android Studio Code
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </container>
 </body>
 </html>

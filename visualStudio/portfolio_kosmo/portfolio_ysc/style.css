@@ -1,14 +1,17 @@
 :root {
   /* Font Size */
-  --font-navmenus: 1.3rem;
+  --font-navmenus: 1rem;
   --font-navtitle: 2.5rem;
   --font-title: 5rem;
+  --font-title-alpha: 8rem;
+  --font-subtitle: 3rem;
   --font-describe: 2rem;
 
   /* Font Family */
   --font-family-navmenus: "Krona One", sans-serif;
   --font-family-title: "Orelega One", cursive;
   --font-family-describe: "Yanone Kaffeesatz", sans-serif;
+  --font-family-alpha: "Lobster", cursive;
   /* Font Weight */
 }
 
@@ -42,13 +45,19 @@ a.navbar__menus__a {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background-color: rgb(165, 43, 43);
+  background-color: cadetblue;
   color: aliceblue;
+  transition: 500ms;
 }
 
 /* scroll 움직였을 때 navbar opacity 적용*/
 .nav_opacity {
   opacity: 0.7;
+}
+
+/* scroll 움직였을 때 navbar hide 적용*/
+.nav_hide {
+  top: -130px;
 }
 
 .nav__logo {
@@ -61,7 +70,7 @@ a.navbar__menus__a {
 }
 
 .navbar__title {
-  margin-left: 10em;
+  margin-left: 8em;
   text-align: center;
   font-size: var(--font-navtitle);
   font-family: var(--font-family-title);
@@ -94,6 +103,7 @@ a.navbar__menus__a {
 /* Home section */
 
 .home {
+  margin-bottom: 40px;
   width: 100vw;
   background-color: lightsalmon;
   text-align: center;
@@ -111,6 +121,42 @@ a.navbar__menus__a {
 }
 
 .home__describe {
+  margin: 40px 0 0 0;
   font-size: var(--font-describe);
   font-family: var(--font-family-describe);
+}
+
+/* About section */
+
+.about__section {
+  margin: 0 20em 3% 5%;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.about__left {
+  display: flex;
+  padding: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  background-color: #5f9ea0;
+  text-align: center;
+}
+
+.about__title {
+  margin: 0;
+  font-size: var(--font-title-alpha);
+  font-family: var(--font-family-alpha);
+}
+
+.about__subtitle {
+  font-size: var(--font-subtitle);
+  font-family: var(--font-family-title);
+}
+
+.about__right {
+  padding: 1rem;
+  background-color: #ffa07a;
 }

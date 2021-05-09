@@ -28,7 +28,7 @@ XMLHttpRequest
 	}
 </style>
 <script type="text/javascript">
-	var xhrObject = null;//변수 선언
+	let xhrObject = null;//변수 선언
 	
 	function createRequest(){
 		try {
@@ -65,7 +65,7 @@ statusText:HTTP상태 코드에 대한 문자열 반환함.  OK Not Found
 	function getBoardSold(){
 		alert("getBoardSold 호출 성공");
 		createRequest();//비동기통신객체 생성
-		var url = "boardAction.jsp";//목적지 정보 기록
+		let url = "boardAction.jsp";//목적지 정보 기록
 		xhrObject.open("GET",url,true);//통신 전에 필요한 상수값을 지정
 		//0-1-2-3-4
 		//onreadystatechange속성은 HTTP요청의 상태 변화에 따라 호출되는 이벤트 핸들러 임.
@@ -78,21 +78,21 @@ statusText:HTTP상태 코드에 대한 문자열 반환함.  OK Not Found
 		//alert(xhrObject.readyState);//0->1->2->3->4
 		if(xhrObject.readyState == 4){
 			if(xhrObject.status == 200){
-				var newTotal = xhrObject.responseText;//15
+				let newTotal = xhrObject.responseText;//15
 				//alert("newTotal : "+newTotal);
-				var boardSoldEl = document.getElementById("boardSold");
+				let boardSoldEl = document.getElementById("boardSold");
 				replaceText(boardSoldEl,newTotal);
 				//보드 한개당 마진 금액 계산
 				//구매가 구하기
-				var costEl = document.getElementById("cost");
-				var cost = getText(costEl);
+				let costEl = document.getElementById("cost");
+				let cost = getText(costEl);
 				//소비자가 구하기
-				var	priceEl = document.getElementById("price");
-				var price = getText(priceEl);
+				let	priceEl = document.getElementById("price");
+				let price = getText(priceEl);
 				alert("구매가는 "+cost+", 소비자가 "+price);
 				//보드 한 개당 마진 금액
-				var cashPerBoard = price-cost;
-				var cash = cashPerBoard*newTotal;
+				let cashPerBoard = price-cost;
+				let cash = cashPerBoard*newTotal;
 				alert("전체 마진은 ? "+cash);
 				let cashEl = document.getElementById("cash");
 				replaceText(cashEl,cash);
@@ -101,11 +101,11 @@ statusText:HTTP상태 코드에 대한 문자열 반환함.  OK Not Found
 	}
 	//span태그가 가지고 있는 텍스트 노드값을 읽어오기
 	function getText(el){
-		var text="";
+		let text="";
 		if(el!=null){
 			if(el.childNodes){
-				for(var i=0;i<el.childNodes.length;i++){
-					var childNode = el.childNodes[i];
+				for(let i=0;i<el.childNodes.length;i++){
+					let childNode = el.childNodes[i];
 					//너 텍스트 노드니?
 					if(childNode.nodeValue !=null){
 						text = text+childNode.nodeValue;
@@ -124,7 +124,7 @@ statusText:HTTP상태 코드에 대한 문자열 반환함.  OK Not Found
 		if(el !=null){
 			clearText(el);//기존에 있던 10을 지워주세요.
 			//새로운 텍스트 노드 15를 생성하기
-			var newNode = document.createTextNode(value);//15
+			let newNode = document.createTextNode(value);//15
 			//위에서 생성한 텍스트 노드 값을 el에 붙이는 함수 호출하기
 			el.appendChild(newNode);
 		}
@@ -133,8 +133,8 @@ statusText:HTTP상태 코드에 대한 문자열 반환함.  OK Not Found
 	function clearText(el){
 		if(el !=null){
 			if(el.childNodes){
-				for(var i=0;i<el.childNodes.length;i++){
-					var childNode = el.childNodes[i];
+				for(let i=0;i<el.childNodes.length;i++){
+					let childNode = el.childNodes[i];
 					el.removeChild(childNode);
 				}
 			}

@@ -5,3 +5,4 @@ const page_navbar = new Navbar();
 const testing = new Test();
 
 page_navbar.init();
+testing.init();

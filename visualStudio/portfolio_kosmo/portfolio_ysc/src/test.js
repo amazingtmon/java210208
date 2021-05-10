@@ -1,18 +1,19 @@
 const title = document.querySelector('.navbar_title');
+const about_left = document.querySelector('.about__left');
 
 export default class Test {
   constructor(){
-    this.navbar_title = document.querySelector('.navbar_title');
+    this.about_left = document.querySelector('.about__left');
     this.name = title;
   }
 
-  /*
-  handleClick(){
-    console.log(this.navbar_title);
+  showConsole(){
+    console.log(this.about_left);
+    console.log(about_left);
   }
 
   init(){
-    this.navbar_title.addEventListener('click', this.handleClick);
+    this.about_left.addEventListener('click', this.showConsole);
   }
-  */
+  
 }

@@ -12,7 +12,7 @@ export default class Navbar {
     console.log('start '+start_pageYOffset);
     console.log('current '+current_value);
     console.log(window.innerHeight);
-    if (window.pageYOffset > 0) {
+    if (window.pageYOffset > navbar.clientHeight) {
       navbar.classList.add('nav_opacity');
       navbar.classList.add('nav_hide');
     } else if (window.pageYOffset === 0) {
@@ -29,7 +29,7 @@ export default class Navbar {
     console.log('mouse leave');
     if (window.pageYOffset === 0) {
       return;
-    } else if (window.pageYOffset > 0){
+    } else if (window.pageYOffset > navbar.clientHeight){
       navbar.classList.add('nav_opacity');
     }
   }

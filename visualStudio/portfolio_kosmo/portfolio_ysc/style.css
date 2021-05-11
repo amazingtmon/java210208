@@ -42,10 +42,11 @@ a.navbar__menus__a {
   position: sticky;
   top: 0;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 10rem;
+  height: 5rem;
   background-color: cadetblue;
   color: aliceblue;
   transition: 500ms;
@@ -62,6 +63,7 @@ a.navbar__menus__a {
 }
 
 .nav__logo {
+  display: inline-block;
   margin-left: 0.3em;
   font-size: 2.5rem;
 }
@@ -71,7 +73,7 @@ a.navbar__menus__a {
 }
 
 .navbar__title {
-  margin-left: 8em;
+  margin-left: 0em;
   text-align: center;
   font-size: var(--font-navtitle);
   font-family: var(--font-family-title);
@@ -108,22 +110,53 @@ a.navbar__menus__a {
   margin-bottom: 40px;
   width: 100%;
   height: 49rem;
-  background-color: lightsalmon;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-image: url(https://images.pexels.com/photos/1537875/pexels-photo-1537875.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+  background-attachment: fixed;
   text-align: center;
+  color: whitesmoke;
+}
+
+.home__glass__box {
+  margin-top: 5rem;
+  border-radius: 20%;
+  width: 45rem;
+  height: 40rem;
+  position: relative;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+}
+
+.home__glass__box:before {
+  border-radius: 20%;
+  background-color: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(10px) saturate(100%) contrast(45%) brightness(130%);
+  content: "";
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  transform: translateX(-12.5rem);
 }
 
 .home__profile {
+  position: relative;
+  z-index: 1;
   width: 20rem;
   height: 20rem;
 }
 
 .home__title {
+  position: relative;
+  z-index: 1;
   margin: 0;
   font-size: var(--font-title);
   font-family: var(--font-family-title);
 }
 
 .home__describe {
+  position: relative;
+  z-index: 1;
   margin: 40px 0 0 0;
   font-size: var(--font-describe);
   font-family: var(--font-family-describe);
@@ -136,6 +169,7 @@ a.navbar__menus__a {
   width: 70%;
   display: flex;
   justify-content: space-between;
+  box-shadow: 14px 13px 2px 7px rgb(148, 148, 148);
 }
 
 .about__left {

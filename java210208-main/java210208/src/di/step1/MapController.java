@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
+/*
 
 //웹에서 찍어보기
 public class MapController extends AbstractController {
@@ -30,3 +31,4 @@ public class MapController extends AbstractController {
       return mav;
    }
 }
+*/

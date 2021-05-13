@@ -13,6 +13,8 @@
 		</property>
 	</bean>
 	
+	<!-- 
+	
 	<bean id="insaMap" class="di.step1.InsaMap">
 		<property name="mapBean">
 			<map>
@@ -31,5 +33,6 @@
 			</map>
 		</property>
 	</bean>
+	 -->
 
 </beans>

@@ -29,6 +29,7 @@
       href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
     <script type="module" src="./src/main.js" defer></script>
     <title>포트폴리오 - YangSangChul</title>
   </head>
@@ -73,19 +74,24 @@
             src="../images/kiwi-bird-solid.png"
             alt="profile"
           />
-          <h1 class="home__title">Home</h1>
-          <p class="home__describe">
-            Hllo, Welcome to my portfolio page.<br />
-            I'm a man who wants to be a Software Engineer.<br />
-            Now living in Seoul, no own car, no own house, not enough money.<br />
-            But I have a passion and curiosity for learning something new.<br />
-            Also, love teamWork.
-          </p>
+          <div class="home__rightSide">
+            <h1 class="home__title">Home</h1>
+            <p class="home__describe">
+              Hllo, Welcome to my portfolio page.<br />
+              I'm a man who wants to be a Software Engineer.<br />
+              Now I'm living in Seoul, no own car, <br /> no own house, not enough money.<br />
+              But I have a <b>passion</b> and <b>curiosity</b> <br /> for learning something new.<br />
+              Also, love teamWork.
+            </p>
+          </div>
         </div>
       </div>
 
       <!-- About me -->
       <section class="about__section" id="about__section">
+        <div class="about__background__title">
+          About Me
+        </div>
         <div class="about__box">
           <div class="about__left">
             <p class="about__title">A</p>
@@ -128,6 +134,13 @@
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- Career -->
+      <section class="career__section" id="career__section">
+        <div class="career__background__title">
+          Career
         </div>
       </section>
     </container>

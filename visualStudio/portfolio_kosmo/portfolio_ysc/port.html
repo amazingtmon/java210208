@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/fullpage/fullpage.min.css">
+  <link rel="stylesheet" href="./portfolio.css">
+  <link rel="icon" type="image/png" href="../images/peace-solid.png" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orelega+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
+  <script defer src="./src/fullpage/fullpage.min.js"></script>
+  <script defer type="module" src="src/portfolio_main.js"></script>
+  <title>YangSangChul</title>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar__title">
+      SangChul's Portfolio Page
+      <div class="nav__logo">
+        <i class="fab fa-angellist"></i>
+      </div>
+    </div>
+    <div class="nav__menu">
+      <ul class="navbar__menus">
+        <li class="navbar__menus__item li_home">
+          <a class="navbar__menus__a" href="#homePage">Home</a>
+        </li>
+        <div class="navbar__menus__divider"></div>
+        <li class="navbar__menus__item li_about">
+          <a class="navbar__menus__a" href="#aboutPage">About</a>
+        </li>
+        <div class="navbar__menus__divider"></div>
+        <li class="navbar__menus__item li_skills">
+          <a class="navbar__menus__a" href="#">Skills</a>
+        </li>
+        <div class="navbar__menus__divider"></div>
+        <li class="navbar__menus__item li_work">
+          <a class="navbar__menus__a" href="#">My Work</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class='fullpage' id="fullpage">
+    <!-- Home -->
+    <section class="section home__section" data-anchor="homePage">
+      <div class="home" id="home__section">
+        <div class="home__background__title bgTitle">
+          Home
+        </div>
+        <div class="home__glass__box">
+          <img
+            class="home__profile"
+            src="../images/kiwi-bird-solid.png"
+            alt="profile"
+          />
+          <div class="home__rightSide">
+            <p class="home__describe">
+              Hllo, Welcome to my portfolio page.<br />
+              I'm a man who wants to be a Software Engineer.<br />
+              Now I'm living in Seoul, no own car, <br /> no own house, not enough money.<br />
+              But I have a <b>passion</b> and <b>curiosity</b> <br /> for learning something new.<br />
+              Also, love teamWork.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About me -->
+    <section class="section" data-anchor="aboutPage">
+            <div class="about__section" id="about__section">
+              <div class="about__background__title bgTitle">
+                About Me
+              </div>
+              <div class="about__box">
+                <div class="about__right">
+                  <div class="about__describe">
+                    <p class="about__describe__p">
+                      It is a long established fact that a reader will be distracted by
+                      the readable content of a page when looking at its layout. The
+                      point of using Lorem Ipsum is that it has a more-or-less normal
+                      distribution of letters, as opposed to using 'Content here,
+                      content here',
+                    </p>
+                  </div>
+                  <div class="about__majors">
+                    <div class="major__box">
+                      <div class="about__major__img front">
+                        <i class="fab fa-html5"></i>
+                      </div>
+                      <div class="major">
+                        Front_end : HTMl, CSS, JavaScript, TypeScript, React, Vue
+                      </div>
+                    </div>
+                    <div class="major_box">
+                      <div class="about__major__img back">
+                        <i class="fas fa-cubes"></i>
+                      </div>
+                      <div class="major">
+                        Back_end : Java, Servlet, JSP, Oracle, Firebase, Youtube APIs
+                      </div>
+                    </div>
+                    <div class="major_box">
+                      <div class="about__major__img mobile">
+                        <i class="fas fa-mobile-alt"></i>
+                      </div>
+                      <div class="major">
+                        Mobile : React Mobile, JQuery Mobile, Android Studio Code
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+    </section>
+
+    <!-- Career -->
+    <section class="section" data-anchor="careerPage">
+            <section class="career__section section" id="career__section">
+              <div class="career__background__title bgTitle">
+                Career
+              </div>
+            </section>
+    </section>
+    <section class="section">Some section4</section>
+  </div>
+</body>
+</html>

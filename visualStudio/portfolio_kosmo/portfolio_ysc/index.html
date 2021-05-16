@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./src/fullpage/fullpage.min.css">
     <link rel="icon" type="image/png" href="../images/peace-solid.png" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -31,14 +32,14 @@
     />
     <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
     <script type="module" src="./src/main.js" defer></script>
+    <script defer src="src/portfolio_main.js"></script>
+    <script defer src="./src/fullpage/fullpage.min.js"></script>
     <title>포트폴리오 - YangSangChul</title>
   </head>
   <body>
-    <container class="contents">
+    <div class="contents" id="#full-page">
       <!-- Navbar -->
       <nav class="navbar">
-        <!--
-      -->
         <div class="navbar__title">
           SangChul's Portfolio Page
           <div class="nav__logo">
@@ -67,7 +68,7 @@
       </nav>
 
       <!-- Home -->
-      <div class="home" id="home__section">
+      <div class="home section" id="home__section">
         <div class="home__glass__box">
           <img
             class="home__profile"
@@ -88,7 +89,7 @@
       </div>
 
       <!-- About me -->
-      <section class="about__section" id="about__section">
+      <section class="about__section section" id="about__section">
         <div class="about__background__title">
           About Me
         </div>
@@ -138,11 +139,11 @@
       </section>
 
       <!-- Career -->
-      <section class="career__section" id="career__section">
+      <section class="career__section section" id="career__section">
         <div class="career__background__title">
           Career
         </div>
       </section>
-    </container>
+    </div>
   </body>
 </html>

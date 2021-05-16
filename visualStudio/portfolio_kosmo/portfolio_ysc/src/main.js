@@ -1,8 +1,14 @@
 import Navbar from './scrollAction.js';
-import Test from './test.js';
 
 const page_navbar = new Navbar();
-const testing = new Test();
+
+  new fullpage('#fullpage', {
+    //options here
+    autoScrolling:true,
+    scrollHorizontally: true
+  });
+  
+  //methods
+  fullpage_api.setAllowScrolling(false);
 
 page_navbar.init();
-testing.init();

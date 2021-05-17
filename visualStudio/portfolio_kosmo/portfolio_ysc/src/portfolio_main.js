@@ -6,13 +6,15 @@ const navBar = new Nav();
 
 new fullpage('.fullpage', {
 	//options here
+  anchors: ['homePage','aboutPage', 'careerPage','workPage'],
 	autoScrolling:true,
   navigation: true,
+  navigationTooltips: ['homePage','aboutPage', 'careerPage','workPage'],
+  showActiveTooltip: true,
+  
 
-  //call back function
+  /*call back function*/
 
-  //anchor 선언
-  anchors: ['homePage','aboutPage', 'careerPage'],
   //afterLoad = 구역을 불러오고 나서 스크롤이 끝나면 콜백이 실행.
   afterLoad: function(origin, destination, direction){
 		let loadedSection = this;
@@ -40,7 +42,6 @@ new fullpage('.fullpage', {
       } else if(direction === 'up'){
         console.log('up');
         bgTitle.hide(this.anchor);
-        navBar.show();
       }
       
     }

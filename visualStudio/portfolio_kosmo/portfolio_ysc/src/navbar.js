@@ -9,7 +9,9 @@ export default class Nav {
     this.navbar.classList.add('nav_hide');
   }
 
-  show(){
-    this.navbar.classList.remove('nav_hide');
+  show(anchor){
+    if(anchor === 'homePage') {
+      this.navbar.classList.remove('nav_hide');
+    }
   }
 }

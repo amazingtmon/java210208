@@ -28,6 +28,7 @@ public class Sonata {
 	private int speed = 0;
 	
 	public Sonata() {}
+	
 	public Sonata(String carColor,  int wheelNum) {
 		this.carColor = carColor;
 		this.wheelNum = wheelNum;

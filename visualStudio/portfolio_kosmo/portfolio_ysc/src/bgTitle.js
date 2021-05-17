@@ -1,10 +1,14 @@
 'use strict';
+import Nav from './navbar.js';
+
+const navbar = new Nav();
 
 export default class BgTitle {
   constructor (){
     this.about_bgtitle = document.querySelector('.about__background__title');
     this.home_bgtitle = document.querySelector('.home__background__title');
     this.career_bgtitle = document.querySelector('.career__background__title');
+    this.work_bgtitle = document.querySelector('.work__background__title');
   }
 
   hide(anchor){
@@ -14,8 +18,12 @@ export default class BgTitle {
     }
     else if(anchor === 'aboutPage'){
       this.about_bgtitle.classList.remove('about__bgtitle__trans');
-    } else if(anchor === 'careerPage'){
+    }
+    else if(anchor === 'careerPage'){
       this.career_bgtitle.classList.remove('career__bgtitle__trans');
+    }
+    else if(anchor === 'workPage'){
+      this.work_bgtitle.classList.remove('work__bgtitle__trans');
     }
   }
 
@@ -26,8 +34,12 @@ export default class BgTitle {
     }
     else if(anchor === 'aboutPage'){
       this.about_bgtitle.classList.add('about__bgtitle__trans');
-    } else if(anchor === 'careerPage'){
+    }
+    else if(anchor === 'careerPage'){
       this.career_bgtitle.classList.add('career__bgtitle__trans');
+    }
+    else if(anchor === 'workPage'){
+      this.work_bgtitle.classList.add('work__bgtitle__trans');
     }
   }
 }

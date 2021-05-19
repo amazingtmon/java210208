@@ -6,10 +6,10 @@ const navBar = new Nav();
 
 new fullpage('.fullpage', {
 	//options here
-  anchors: ['homePage','aboutPage', 'careerPage','workPage'],
+  anchors: ['homePage','aboutPage', 'skillPage','workPage'],
 	autoScrolling:true,
   navigation: true,
-  navigationTooltips: ['homePage','aboutPage', 'careerPage','workPage'],
+  navigationTooltips: ['homePage','aboutPage', 'skillPage','workPage'],
   showActiveTooltip: true,
   
 

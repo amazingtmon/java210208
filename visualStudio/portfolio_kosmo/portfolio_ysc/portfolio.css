@@ -1,16 +1,17 @@
 :root {
   /* Font Size */
   --font-navmenus: 1rem;
-  --font-navtitle: 2.5rem;
+  --font-navtitle: 1.5rem;
   --font-title: 5rem;
   --font-title-alpha: 8rem;
   --font-subtitle: 3rem;
-  --font-describe: 2rem;
+  --font-describe: 1rem;
 
   /* Font Family */
   --font-family-navmenus: "Krona One", sans-serif;
   --font-family-title: "Orelega One", cursive;
-  --font-family-describe: "Yanone Kaffeesatz", sans-serif;
+  --font-family-homehead: "Yeon Sung", cursive;
+  --font-family-describe: "Sunflower", sans-serif;
   --font-family-alpha: "Lobster", cursive;
   --font-family-backtitle: "Fugaz One", cursive;
 
@@ -38,6 +39,7 @@ container {
 a.navbar__menus__a {
   text-decoration: none;
   color: whitesmoke;
+  padding: 0.3rem;
 }
 
 /* apply to common bgTitle class*/
@@ -48,70 +50,54 @@ a.navbar__menus__a {
   z-index: 0;
   color: white;
   text-shadow: 1px 1px 10px black;
-  font-size: 15rem;
+  font-size: 5rem;
   font-family: var(--font-family-backtitle);
+  transform: translate(-50rem, 3rem);
+  transition: var(--trans--bgtitle);
 }
 
 /* Navbar section */
 
-.navbar__menus__a:hover {
-  color: darkorange;
-  background-color: floralwhite;
-}
-
 .navbar {
   /* make navbar sticky => position: sticky; top: 0; */
   position: fixed;
-  top: -3rem;
   z-index: 999;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 5.5rem;
+  height: 2rem;
   background-color: cadetblue;
   color: aliceblue;
   transition: ease-in 500ms;
 }
 
-/* scroll 움직였을 때 navbar hide 적용*/
-.nav_hide {
-  top: -3rem;
-}
-
-.nav__logo {
-  display: inline-block;
-  margin-left: 0.3em;
-  font-size: 2.5rem;
-}
-
-.nav__logo:hover {
-  color: darkorange;
-}
-
 .navbar__title {
-  margin-left: 0em;
   text-align: center;
   font-size: var(--font-navtitle);
   font-family: var(--font-family-title);
   font-weight: bold;
 }
 
+.nav__logo {
+  display: inline-block;
+  margin-left: 0.3em;
+  font-size: 1rem;
+}
+
+.nav__logo:hover {
+  color: darkorange;
+}
+
 .nav__menu {
   width: 40em;
 }
 
-.navbar__menus__divider {
-  width: 0.5%;
-  background-color: rgb(206, 207, 218);
-}
-
 .navbar__menus {
-  margin: 0;
-  padding: 2rem;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   list-style: none;
   font-size: var(--font-navmenus);
   font-family: var(--font-family-navmenus);
@@ -119,7 +105,17 @@ a.navbar__menus__a {
 
 .navbar__menus__item {
   box-sizing: border-box;
-  width: auto;
+}
+
+.navbar__menus__a:hover {
+  color: darkorange;
+  background-color: floralwhite;
+}
+
+.navbar__menus__divider {
+  width: 0.15rem;
+  height: 1.5rem;
+  background-color: rgb(206, 207, 218);
 }
 
 /* Home section */
@@ -130,21 +126,21 @@ a.navbar__menus__a {
   display: flex;
   justify-content: center;
   align-content: center;
-  background-image: url(./images/my_desk.png);
+  background-image: url();
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
   text-align: center;
-  color: whitesmoke;
+  color: black;
 }
 
 .home__background__title {
   /*text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;*/
-  transform: translate(150%, -10%);
+  transform: translate(-50rem, 3rem);
 }
 
 .home__bgtitle__trans {
-  transform: translate(40%, -10%);
+  transform: translate(-25rem, 0.7rem);
   transition: var(--trans--bgtitle);
 }
 
@@ -176,21 +172,35 @@ a.navbar__menus__a {
   height: 15rem;
 }
 
+.home__intro {
+  position: relative;
+  z-index: 2;
+  width: 30rem;
+  height: 20rem;
+  text-align: center;
+}
+
+.home__head {
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  font-family: var(--font-family-homehead);
+}
+
+.home__describe {
+  padding-bottom: 1rem;
+  border-bottom: 1px black solid;
+  position: relative;
+  z-index: 2;
+  font-size: var(--font-describe);
+  font-family: var(--font-family-describe);
+}
+
 .home__title {
   position: relative;
   z-index: 2;
   margin: 0;
   font-size: var(--font-title);
   font-family: var(--font-family-title);
-}
-
-.home__describe {
-  position: relative;
-  z-index: 2;
-  margin: 40px 0 0 0;
-  width: 15em;
-  font-size: var(--font-describe);
-  font-family: var(--font-family-describe);
 }
 
 /* About section */
@@ -202,7 +212,7 @@ a.navbar__menus__a {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url(./images/computer_desk.png);
+  background-image: url();
   background-position: center;
   background-size: cover;
 }
@@ -253,8 +263,8 @@ a.navbar__menus__a {
 }
 
 .about__major__img {
-  height: 6rem;
-  font-size: 5rem;
+  height: 5rem;
+  font-size: 4rem;
 }
 
 .front {
@@ -263,13 +273,14 @@ a.navbar__menus__a {
 
 .about__major__front {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 
 .major__img__front {
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
 }
 
 .img__html {
@@ -290,17 +301,17 @@ a.navbar__menus__a {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-image: url(./images/basketball_ground.png);
+  background-image: url();
   background-position: center;
   background-size: cover;
 }
 
 .skill__background__title {
-  transform: translate(300%, 0%);
+  transform: translate(-300%, 0%);
 }
 
 .skill__bgtitle__trans {
-  transform: translate(30%, 0%);
+  transform: translate(10%, 0%);
   transition: var(--trans--bgtitle);
 }
 

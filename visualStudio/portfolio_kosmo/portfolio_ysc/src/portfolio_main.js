@@ -38,7 +38,7 @@ new fullpage('.fullpage', {
         console.log('down');
         console.log(this.anchor);
         bgTitle.hide(this.anchor);
-        navBar.hide();
+        //navBar.hide();
       } else if(direction === 'up'){
         console.log('up');
         bgTitle.hide(this.anchor);

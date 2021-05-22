@@ -45,24 +45,24 @@
         </li>
         <div class="navbar__menus__divider"></div>
         <li class="navbar__menus__item li_skills">
-          <a class="navbar__menus__a" href="#">Skills</a>
+          <a class="navbar__menus__a" href="#skillPage">Skills</a>
         </li>
         <div class="navbar__menus__divider"></div>
         <li class="navbar__menus__item li_work">
-          <a class="navbar__menus__a" href="#">My Work</a>
+          <a class="navbar__menus__a" href="#workPage">My Work</a>
         </li>
       </ul>
     </div>
   </nav>
   <div class='fullpage' id="fullpage">
     <!-- Home -->
-    <section class="section home__section" data-anchor="homePage">
+    <section class="section" data-anchor="homePage">
       <div class="home" id="home__section">
-        <div class="home__background__title bgTitle">
+        <div class="bgTitle home__background__title">
           Home
         </div>
-        <div class="home__glass__box">
-          <img class="home__profile" src="../images/kiwi-bird-solid.png" alt="profile" />
+        <div class="home__box">
+          <img class="home__profile" src="./images/profile_hanriver.jpg" alt="profile" />
           <div class="home__intro">
             <p class="home__head">
               "안녕하세요.<br>
@@ -84,26 +84,52 @@
     <!-- About me -->
     <section class="section" data-anchor="aboutPage">
       <div class="about__section" id="about__section">
-        <div class="about__background__title bgTitle">
+        <div class="bgTitle about__background__title">
           About Me
         </div>
         <div class="about__box">
-          <div class="about__describe">
-            <p class="about__describe__p">
+          <div class="about__contain__describe">
+            <div class="about__describe1">
+              <p class="describe1__h1">
+                "코딩"
+              </p>
+              <p class="descibe1__h2">
+                그것은 저에겐 너무나도 생소한 세계였습니다.
+              </p>
+              <p class="describe1__text">
+                text
+              </p>
+            </div>
+            <div class="about__describe2">
+              <p class="describe2__head">
+                des p2
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section" data-anchor="skillPage">
+      <div class="skill__section" id="skill__section">
+        <div class="bgTitle skill__background__title">
+          Skills
+        </div>
+        <div class="skill__box">
+          <div class="skill__describe">
+            <p class="skill__describe__p">
               It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here',
+              the readable content of a page when looking at its layout.
             </p>
           </div>
-          <div class="about__majors">
-            <div class="about__major__box">
+          <div class="skill__majors">
+            <div class="skill__major__box">
               <p>Front End</p>
-              <div class="about__major__img front">
+              <div class="skill__major__img front">
                 <i class="fab fa-html5"></i>
               </div>
-              <div class="about__major__front">
+              <div class="skill__major__front">
                 <div class="html">
                   <img class="major__img__front img__html" src="./images/program_lang_png/html.png" alt="html">
                 </div>
@@ -121,21 +147,21 @@
                 </div>
               </div>
             </div>
-            <div class="about__major__box">
+            <div class="skill__major__box">
               <p>Back End</p>
-              <div class="about__major__img back">
+              <div class="skill__major__img back">
                 <i class="fas fa-cubes"></i>
               </div>
-              <div class="about__major">
+              <div class="skill__major">
                 Java, Servlet, JSP, Oracle, Firebase, Youtube APIs
               </div>
             </div>
-            <div class="about__major__box">
+            <div class="skill__major__box">
               <p>Mobile</p>
-              <div class="about__major__img mobile">
+              <div class="skill__major__img mobile">
                 <i class="fas fa-mobile-alt"></i>
               </div>
-              <div class="about__major">
+              <div class="skill__major">
                 React Mobile, JQuery Mobile, Android Studio Code
               </div>
             </div>
@@ -144,19 +170,10 @@
       </div>
     </section>
 
-    <!-- Skills -->
-    <section class="section" data-anchor="skillPage">
-      <section class="skill__section" id="skill__section">
-        <div class="skill__background__title bgTitle">
-          Skills
-        </div>
-      </section>
-    </section>
-
     <!-- Work -->
     <section class="section" data-anchor="workPage">
       <section class="work__section" id="work__section">
-        <div class="work__background__title bgTitle">
+        <div class="bgTitle work__background__title">
           Work
         </div>
       </section>

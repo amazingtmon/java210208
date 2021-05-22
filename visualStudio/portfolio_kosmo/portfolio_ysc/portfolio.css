@@ -4,7 +4,7 @@
   --font-navtitle: 1.5rem;
   --font-title: 5rem;
   --font-title-alpha: 8rem;
-  --font-subtitle: 3rem;
+  --font-bgtitle: 3rem;
   --font-describe: 1rem;
 
   /* Font Family */
@@ -50,10 +50,21 @@ a.navbar__menus__a {
   z-index: 0;
   color: white;
   text-shadow: 1px 1px 10px black;
-  font-size: 5rem;
+  font-size: var(--font-bgtitle);
   font-family: var(--font-family-backtitle);
-  transform: translate(-50rem, 3rem);
-  transition: var(--trans--bgtitle);
+}
+
+.fadein-ani {
+  animation: fadein 2s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Navbar section */
@@ -131,20 +142,14 @@ a.navbar__menus__a {
   background-position: center;
   background-size: cover;
   text-align: center;
-  color: black;
+  color: #000000;
 }
 
 .home__background__title {
-  /*text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;*/
-  transform: translate(-50rem, 3rem);
+  transform: translate(-29rem, 2rem);
 }
 
-.home__bgtitle__trans {
-  transform: translate(-25rem, 0.7rem);
-  transition: var(--trans--bgtitle);
-}
-
-.home__glass__box {
+.home__box {
   position: relative;
   margin-top: 7rem;
   width: 55rem;
@@ -155,7 +160,7 @@ a.navbar__menus__a {
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 }
 
-.home__glass__box:before {
+.home__box:before {
   position: absolute;
   background-color: rgba(255, 255, 255, 0);
   backdrop-filter: blur(1px) saturate(100%) contrast(45%) brightness(130%);
@@ -167,9 +172,9 @@ a.navbar__menus__a {
 .home__profile {
   position: relative;
   z-index: 2;
-  margin-top: 3rem;
+  margin-top: 1rem;
   width: 15rem;
-  height: 15rem;
+  height: 20rem;
 }
 
 .home__intro {
@@ -218,26 +223,88 @@ a.navbar__menus__a {
 }
 
 .about__background__title {
-  transform: translate(-200%, -50%);
-}
-
-.about__bgtitle__trans {
-  transform: translate(-5%, -40%);
-  transition: var(--trans--bgtitle);
+  transform: translate(-27rem, -12rem);
 }
 
 .about__box {
   position: relative;
-  z-index: 5;
-  width: 93%;
-  height: 85%;
-  margin-top: 1.5rem;
-  text-align: center;
-  border: 2px white solid;
+  margin-top: 4rem;
+  width: 65rem;
+  height: 25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 }
 
 .about__box::before {
   position: absolute;
+  background-color: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(1px) saturate(100%) contrast(45%) brightness(130%);
+  content: "";
+  width: 100%;
+  height: 100%;
+}
+
+.about__contain__describe {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 24rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.about__describe1 {
+  text-align: center;
+  width: 30rem;
+  height: 100%;
+}
+
+.describe1__h1 {
+  font-size: 2rem;
+}
+
+.descibe1__h2 {
+}
+
+.about__describe2 {
+  text-align: center;
+  width: 30rem;
+  height: 100%;
+}
+
+/* Career section */
+
+.skill__section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url();
+  background-position: center;
+  background-size: cover;
+}
+
+.skill__background__title {
+  transform: translate(-30rem, -12rem);
+}
+
+.skill__box {
+  border: 1px solid black;
+  position: relative;
+  z-index: 5;
+  width: 65rem;
+  height: 30rem;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.skill__box::before {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0);
   backdrop-filter: blur(3px) saturate(50%) contrast(40%) brightness(150%);
   content: "";
   width: 100%;
@@ -245,24 +312,27 @@ a.navbar__menus__a {
   transform: translateX(-50%);
 }
 
-.about__describe {
+.skill__describe {
   position: relative;
   padding: 1rem;
 }
 
-.about__majors {
+.skill__majors {
   position: relative;
   display: flex;
+  width: auto;
+  height: auto;
 }
 
-.about__major__box {
+.skill__major__box {
   width: 100%;
   height: 100%;
   padding: 0.2rem;
   background-color: rgb(255, 255, 255, 0.5);
+  border: 1px solid salmon;
 }
 
-.about__major__img {
+.skill__major__img {
   height: 5rem;
   font-size: 4rem;
 }
@@ -271,7 +341,7 @@ a.navbar__menus__a {
   color: rgb(212, 8, 8);
 }
 
-.about__major__front {
+.skill__major__front {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -295,33 +365,8 @@ a.navbar__menus__a {
   color: rgb(118, 36, 194);
 }
 
-/* Career section */
-
-.skill__section {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  background-image: url();
-  background-position: center;
-  background-size: cover;
-}
-
-.skill__background__title {
-  transform: translate(-300%, 0%);
-}
-
-.skill__bgtitle__trans {
-  transform: translate(10%, 0%);
-  transition: var(--trans--bgtitle);
-}
-
 /* work section */
 
 .work__background__title {
-  transform: translate(300%, 0%);
-}
-
-.work__bgtitle__trans {
-  transform: translate(70%, 0%);
-  transition: var(--trans--bgtitle);
+  transform: translate(0rem, -15rem);
 }

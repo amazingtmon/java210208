@@ -20,7 +20,8 @@ new fullpage('.fullpage', {
 		let loadedSection = this;
 
 		//색인 사용
-		if(destination.anchor){
+    if (destination.anchor) {
+      console.log(destination);
       console.log('page: '+destination.anchor);
       bgTitle.show(destination.anchor);
 		}
@@ -36,7 +37,7 @@ new fullpage('.fullpage', {
     if(direction){
       if(direction === 'down'){
         console.log('down');
-        console.log(this.anchor);
+        console.log(this);
         bgTitle.hide(this.anchor);
         //navBar.hide();
       } else if(direction === 'up'){

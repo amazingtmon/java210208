@@ -1,0 +1,211 @@
+:root {
+  /* Font Size */
+  --font-navmenus: 1rem;
+  --font-navtitle: 1.5rem;
+  --font-title: 5rem;
+  --font-title-alpha: 8rem;
+  --font-bgtitle: 3rem;
+  --font-describe: 1rem;
+
+  /* Font Family */
+  --font-family-navmenus: "Krona One", sans-serif;
+  --font-family-title: "Orelega One", cursive;
+  --font-family-homehead: "Yeon Sung", cursive;
+  --font-family-describe: "Sunflower", sans-serif;
+  --font-family-alpha: "Lobster", cursive;
+  --font-family-backtitle: "Fugaz One", cursive;
+
+  /* Font Weight */
+
+  /* transition option*/
+  --trans--bgtitle: all ease-out 500ms;
+}
+
+/* skill section */
+
+.skill__section__1 {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+  background-position: center;
+  background-size: cover;
+}
+
+.skill__background__title {
+  transform: translate(-31rem, -13rem);
+}
+
+.skill__box {
+  border: 1px solid black;
+  position: relative;
+  margin-top: 4rem;
+  width: 65rem;
+  height: 25rem;
+  text-align: center;
+}
+
+.skill__box::before {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(3px) saturate(50%) contrast(40%) brightness(150%);
+  content: "";
+  width: 100%;
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+.skill__describe {
+  position: relative;
+  padding: 1rem;
+}
+
+.skill__majors {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.skill__major__box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0.2rem;
+  background-color: rgb(255, 255, 255, 0.5);
+  border: 1px solid salmon;
+}
+
+.skill__major__img {
+  height: 5rem;
+  font-size: 4rem;
+}
+
+.front {
+  color: rgb(212, 8, 8);
+}
+
+.skill__major__front {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.major__img__front {
+  width: 50px;
+  height: 50px;
+}
+
+.img__css,
+.img__js {
+  width: 57px;
+}
+
+.html,
+.css,
+.js,
+.react,
+.ts {
+  display: flex;
+}
+
+.css__progress {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.css__progress__bar {
+  background-color: rgb(139, 139, 139);
+  width: 100%;
+  height: 5px;
+  border-radius: 10px;
+}
+
+.common__bar {
+  position: absolute;
+  height: 10px;
+  border-radius: 10px;
+  background-color: #35495e;
+  transform: translateX(-185px);
+}
+
+.common__bar::after {
+  position: absolute;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  content: "";
+  width: 15px;
+  height: 15px;
+  top: -3px;
+  right: 0;
+  border-radius: 50%;
+  background-color: #607d8b;
+}
+
+.html__bar__ani {
+  animation: html__bar__ani 2s ease-out forwards;
+}
+
+@keyframes html__bar__ani {
+  0% {
+    width: 0px;
+  }
+  100% {
+    width: 40%;
+  }
+}
+
+.css__bar__ani {
+  animation: css__bar__ani 2s ease-out forwards;
+  animation-delay: 500ms;
+}
+
+@keyframes css__bar__ani {
+  0% {
+    width: 0px;
+  }
+  100% {
+    width: 40%;
+  }
+}
+
+.js__bar__ani {
+  animation: js__bar__ani 2s ease-out forwards;
+  animation-delay: 600ms;
+}
+
+@keyframes js__bar__ani {
+  0% {
+    width: 0px;
+  }
+  100% {
+    width: 30%;
+  }
+}
+
+.back {
+  color: rgb(16, 53, 53);
+}
+
+.mobile {
+  color: rgb(118, 36, 194);
+}
+
+.skill__section__2 {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+  background-position: center;
+  background-size: cover;
+}

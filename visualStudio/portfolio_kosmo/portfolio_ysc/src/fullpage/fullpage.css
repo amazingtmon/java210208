@@ -73,15 +73,15 @@ html.fp-enabled,
   transform: translate3d(0, 0, 0);
 }
 .fp-controlArrow.fp-prev {
-  left: 15px;
+  left: 5px;
   width: 0;
   border-width: 38.5px 34px 38.5px 0;
-  border-color: transparent #fff transparent transparent;
+  border-color: transparent rgb(255, 255, 255) transparent transparent;
 }
 .fp-controlArrow.fp-next {
-  right: 15px;
+  right: 5px;
   border-width: 38.5px 0 38.5px 34px;
-  border-color: transparent transparent transparent #fff;
+  border-color: transparent transparent transparent rgb(255, 255, 255);
 }
 .fp-scrollable {
   overflow: hidden;
@@ -100,7 +100,7 @@ html.fp-enabled,
 #fp-nav {
   position: fixed;
   z-index: 100;
-  top: 50%;
+  top: 90%;
   opacity: 1;
   transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -172,7 +172,7 @@ html.fp-enabled,
   height: 4px;
   width: 4px;
   border: 0;
-  background: #333;
+  background: #ffffff;
   left: 50%;
   top: 50%;
   margin: -2px 0 0 -2px;
@@ -190,7 +190,7 @@ html.fp-enabled,
 #fp-nav ul li .fp-tooltip {
   position: absolute;
   top: -2px;
-  color: #000000;
+  color: #ffffff;
   font-size: 14px;
   font-family: arial, helvetica, sans-serif;
   white-space: nowrap;

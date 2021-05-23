@@ -1,0 +1,101 @@
+:root {
+  /* Font Size */
+  --font-navmenus: 1rem;
+  --font-navtitle: 1.5rem;
+  --font-title: 5rem;
+  --font-title-alpha: 8rem;
+  --font-bgtitle: 3rem;
+  --font-describe: 1rem;
+
+  /* Font Family */
+  --font-family-navmenus: "Krona One", sans-serif;
+  --font-family-title: "Orelega One", cursive;
+  --font-family-homehead: "Yeon Sung", cursive;
+  --font-family-describe: "Sunflower", sans-serif;
+  --font-family-alpha: "Lobster", cursive;
+  --font-family-backtitle: "Fugaz One", cursive;
+
+  /* Font Weight */
+
+  /* transition option*/
+  --trans--bgtitle: all ease-out 500ms;
+}
+
+/* Home section */
+
+.home {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: black;
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  color: #000000;
+}
+
+.home__background__title {
+  transform: translate(-30.5rem, 1.5rem);
+}
+
+.home__box {
+  position: relative;
+  margin-top: 5rem;
+  width: 65rem;
+  height: 27rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+}
+
+.home__box:before {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(1px) saturate(100%) contrast(45%) brightness(130%);
+  content: "";
+  width: 100%;
+  height: 100%;
+}
+
+.home__profile {
+  position: relative;
+  z-index: 2;
+  width: 20rem;
+  height: 25rem;
+}
+
+.home__intro {
+  position: relative;
+  z-index: 2;
+  width: 30rem;
+  height: 20rem;
+  text-align: center;
+}
+
+.home__head {
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  font-family: var(--font-family-homehead);
+}
+
+.home__describe {
+  padding-bottom: 1rem;
+  border-bottom: 1px black solid;
+  position: relative;
+  z-index: 2;
+  font-size: var(--font-describe);
+  font-family: var(--font-family-describe);
+}
+
+.home__title {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  font-size: var(--font-title);
+  font-family: var(--font-family-title);
+}

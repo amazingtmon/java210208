@@ -6,7 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./src/fullpage/fullpage.css">
-  <link rel="stylesheet" href="./portfolio.css">
+  <link rel="stylesheet" href="./src/porfolio__css/portfolio.css">
+  <link rel="stylesheet" href="./src/porfolio__css/skill__section.css">
+  <link rel="stylesheet" href="./src/porfolio__css/home__section.css">
   <link rel="icon" type="image/png" href="../images/peace-solid.png" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
@@ -71,9 +73,9 @@
               개발자 지망생 <b>양상철</b> 입니다."
             </p>
             <p class="home__describe">
-              인생에선 세번의 큰 기회가 있다고 믿고있습니다.<br>
+              인생에는 세번의 큰 기회가 있다고 믿고있습니다.<br>
               그 중, 저는 두번째의 기회를 맞이하고 있다고 생각합니다.<br>
-              유행을 따라가되 기본을 충실히하는 개발자가 되기 위해 <br>
+              유행에 뒤쳐지지 않고 기본은 충실히하는 개발자가 되기 위해 <br>
               빠르지만 천천히 노력중입니다.
             </p>
           </div>
@@ -91,13 +93,16 @@
           <div class="about__contain__describe">
             <div class="about__describe1">
               <p class="describe1__h1">
-                "코딩"
+                "험난했던 코딩 입문"
               </p>
               <p class="descibe1__h2">
-                그것은 저에겐 너무나도 생소한 세계였습니다.
+                용감했던 문과생 비전공자의 도전
               </p>
               <p class="describe1__text">
-                text
+                코로나 덕분에 이전 회사에서 퇴사하게 된 후,<br>
+                갑자기 주어진 여유시간에 제 미래에 대한 생각을 가지게 됐습니다.<br>
+                '외부 환경에 큰 영향을 받지 않고, 개인의 노력만 충분하다면<br>
+                지속이 가능한 직업을 가지자' 라는 생각에 이르게 됐습니다. 
               </p>
             </div>
             <div class="about__describe2">
@@ -112,57 +117,148 @@
 
     <!-- Skills -->
     <section class="section" data-anchor="skillPage">
-      <div class="skill__section" id="skill__section">
-        <div class="bgTitle skill__background__title">
-          Skills
-        </div>
-        <div class="skill__box">
-          <div class="skill__describe">
-            <p class="skill__describe__p">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout.
-            </p>
+      <div class="slide" data-anchor="slide1">
+        <div class="skill__section__1" id="skill__section">
+          <div class="bgTitle skill__background__title">
+            Skills
           </div>
-          <div class="skill__majors">
-            <div class="skill__major__box">
-              <p>Front End</p>
-              <div class="skill__major__img front">
-                <i class="fab fa-html5"></i>
+          <div class="skill__box">
+            <div class="skill__describe">
+              <p class="skill__describe__p">
+                It is a long established fact that a reader will be distracted by
+                the readable content of a page when looking at its layout.
+              </p>
+            </div>
+            <div class="skill__majors">
+              <div class="skill__major__box">
+                <p>Front End</p>
+                <div class="skill__major__img front">
+                  <i class="fab fa-html5"></i>
+                </div>
+                <div class="skill__major__front">
+                  <div class="html">
+                    <img class="major__img__front img__html" src="./images/program_lang_png/html.png" alt="html">
+                  </div>
+                  <div class="css">
+                    <img class="major__img__front img__css" src="./images/program_lang_png/css3.png" alt="css3">
+                  </div>
+                  <div class="js">
+                    <img class="major__img__front img__js" src="./images/program_lang_png/js.png" alt="js">
+                  </div>
+                  <div class="react">
+                    <img class="major__img__front img__react" src="./images/program_lang_png/react.png" alt="react">
+                  </div>
+                  <div class="ts">
+                    <img class="major__img__front img__ts" src="./images/program_lang_png/ts.png" alt="ts">
+                  </div>
+                </div>
               </div>
-              <div class="skill__major__front">
-                <div class="html">
-                  <img class="major__img__front img__html" src="./images/program_lang_png/html.png" alt="html">
+              <div class="skill__major__box">
+                <p>Back End</p>
+                <div class="skill__major__img back">
+                  <i class="fas fa-cubes"></i>
                 </div>
-                <div class="css">
-                  <img class="major__img__front img__css" src="./images/program_lang_png/css3.png" alt="css3">
+                <div class="skill__major">
+                  Java, Servlet, JSP, Oracle, Firebase, Youtube APIs
                 </div>
-                <div class="js">
-                  <img class="major__img__front img__js" src="./images/program_lang_png/js.png" alt="js">
+              </div>
+              <div class="skill__major__box">
+                <p>Mobile</p>
+                <div class="skill__major__img mobile">
+                  <i class="fas fa-mobile-alt"></i>
                 </div>
-                <div class="react">
-                  <img class="major__img__front img__react" src="./images/program_lang_png/react.png" alt="react">
-                </div>
-                <div class="ts">
-                  <img class="major__img__front img__ts" src="./images/program_lang_png/ts.png" alt="ts">
+                <div class="skill__major">
+                  React Mobile, JQuery Mobile, Android Studio Code
                 </div>
               </div>
             </div>
-            <div class="skill__major__box">
-              <p>Back End</p>
-              <div class="skill__major__img back">
-                <i class="fas fa-cubes"></i>
+          </div>
+        </div>
+      </div>
+      <div class="slide" data-anchor="slide2">
+        <div class="skill__section__2">
+          <div class="skill__box">
+            <div class="skill__majors">
+              <div class="skill__major__box">
+                <p>Front End</p>
+                <div class="skill__major__img front">
+                  <i class="fab fa-html5"></i>
+                </div>
+                <div class="skill__major__front">
+                  <div class="html">
+                    <img class="major__img__front img__html" src="./images/program_lang_png/html.png" alt="html">
+                    <ul class="css__progress">
+                      <li>
+                        <span class="progress__title">html 40%</span>
+                      </li>
+                      <li class="css__progress__bar">
+                        <span class="common__bar html__bar__ani"></span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="css">
+                    <img class="major__img__front img__css" src="./images/program_lang_png/css3.png" alt="css3">
+                    <ul class="css__progress">
+                      <li>
+                        <span class="progress__title">css 40%</span>
+                      </li>
+                      <li class="css__progress__bar">
+                        <span class="common__bar css__bar__ani"></span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="js">
+                    <img class="major__img__front img__js" src="./images/program_lang_png/js.png" alt="js">
+                    <ul class="css__progress">
+                      <li>
+                        <span class="progress__title">js 30%</span>
+                      </li>
+                      <li class="css__progress__bar">
+                        <span class="common__bar js__bar__ani"></span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="react">
+                    <img class="major__img__front img__react" src="./images/program_lang_png/react.png" alt="react">
+                    <ul class="css__progress">
+                      <li>
+                        <span class="progress__title">comming soon</span>
+                      </li>
+                      <li class="css__progress__bar">
+                        <span class="common__bar react__bar__ani"></span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="ts">
+                    <img class="major__img__front img__ts" src="./images/program_lang_png/ts.png" alt="ts">
+                    <ul class="css__progress">
+                      <li>
+                        <span class="progress__title">comming soon</span>
+                      </li>
+                      <li class="css__progress__bar">
+                        <span class="common__bar ts__bar__ani"></span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-              <div class="skill__major">
-                Java, Servlet, JSP, Oracle, Firebase, Youtube APIs
+              <div class="skill__major__box">
+                <p>Back End</p>
+                <div class="skill__major__img back">
+                  <i class="fas fa-cubes"></i>
+                </div>
+                <div class="skill__major">
+                  Java, Servlet, JSP, Oracle, Firebase, Youtube APIs
+                </div>
               </div>
-            </div>
-            <div class="skill__major__box">
-              <p>Mobile</p>
-              <div class="skill__major__img mobile">
-                <i class="fas fa-mobile-alt"></i>
-              </div>
-              <div class="skill__major">
-                React Mobile, JQuery Mobile, Android Studio Code
+              <div class="skill__major__box">
+                <p>Mobile</p>
+                <div class="skill__major__img mobile">
+                  <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="skill__major">
+                  React Mobile, JQuery Mobile, Android Studio Code
+                </div>
               </div>
             </div>
           </div>

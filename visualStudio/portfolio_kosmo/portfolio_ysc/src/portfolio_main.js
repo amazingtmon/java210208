@@ -1,7 +1,7 @@
-import BgTitle from './bgTitle.js';
+import FadeEffect from './FadeEffect.js';
 import Nav from './navbar.js';
 
-const bgTitle = new BgTitle();
+const fade = new FadeEffect();
 const navBar = new Nav();
 
 new fullpage('.fullpage', {
@@ -22,8 +22,8 @@ new fullpage('.fullpage', {
 		//색인 사용
     if (destination.anchor) {
       console.log(destination);
-      console.log('page: '+destination.anchor);
-      bgTitle.show(destination.anchor);
+      console.log('page: ' + destination.anchor);
+      fade.show(destination.anchor);
 		}
     else if(direction === 'down'){
       console.log('after: scroll down');
@@ -38,11 +38,9 @@ new fullpage('.fullpage', {
       if(direction === 'down'){
         console.log('down');
         console.log(this);
-        bgTitle.hide(this.anchor);
         //navBar.hide();
       } else if(direction === 'up'){
         console.log('up');
-        bgTitle.hide(this.anchor);
       }
       
     }

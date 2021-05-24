@@ -47,6 +47,16 @@ new fullpage('.fullpage', {
       
     }
 	},
+
+  afterSlideLoad: function (section, origin, destination, direction) {
+    let loadedSlide = this;
+
+    //두번째 구역의 첫번째 슬라이드
+    if (section.anchor === 'skillPage' && destination.anchor === 'slide2') {
+      console.log(section);
+      console.log(destination);
+    }
+  }
 });
 
 function init(){

@@ -159,9 +159,9 @@ public class Exam_SungJukApp extends JFrame implements ActionListener {
 			dtcm.addColumn(tc6);
 			
 			String[][] data = {
-					 {"이순신","90","50","70"}
-					,{"강감찬","80","70","85"}
-					,{"이성계","85","85","95"}
+					 {"이순신","90","40","70"}
+					,{"강감찬","80","60","85"}
+					,{"이성계","75","85","85"}
 			};
 			int a = 0;
 			int b = 0;

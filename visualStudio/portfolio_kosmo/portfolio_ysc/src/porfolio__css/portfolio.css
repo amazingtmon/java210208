@@ -1,7 +1,7 @@
 :root {
   /* Font Size */
   --font-navmenus: 1rem;
-  --font-navtitle: 1.5rem;
+  --font-navtitle: 2.5rem;
   --font-title: 5rem;
   --font-title-alpha: 8rem;
   --font-bgtitle: 3rem;
@@ -46,19 +46,6 @@ a.navbar__menus__a {
   padding: 0.3rem;
 }
 
-/* apply to common bgTitle class*/
-.bgTitle {
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  z-index: 0;
-  color: white;
-  opacity: 0;
-  text-shadow: 1px 1px 10px black;
-  font-size: var(--font-bgtitle);
-  font-family: var(--font-family-backtitle);
-}
-
 .fadein-ani {
   animation: fadein 2000ms forwards;
 }
@@ -82,7 +69,7 @@ a.navbar__menus__a {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 2rem;
+  height: 5rem;
   background-color: cadetblue;
   color: aliceblue;
   transition: ease-in 500ms;
@@ -92,13 +79,12 @@ a.navbar__menus__a {
   text-align: center;
   font-size: var(--font-navtitle);
   font-family: var(--font-family-title);
-  font-weight: bold;
 }
 
 .nav__logo {
   display: inline-block;
   margin-left: 0.3em;
-  font-size: 1rem;
+  font-size: 2rem;
 }
 
 .nav__logo:hover {
@@ -147,11 +133,8 @@ a.navbar__menus__a {
   background-size: cover;
 }
 
-.about__background__title {
-  transform: translate(-28rem, -13rem);
-}
-
 .about__box {
+  border: 1px solid white;
   position: relative;
   margin-top: 4rem;
   width: 65rem;
@@ -159,9 +142,9 @@ a.navbar__menus__a {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 }
 
+/*
 .about__box::before {
   position: absolute;
   background-color: rgba(255, 255, 255, 0);
@@ -170,6 +153,7 @@ a.navbar__menus__a {
   width: 100%;
   height: 100%;
 }
+*/
 
 .about__contain__describe {
   position: relative;

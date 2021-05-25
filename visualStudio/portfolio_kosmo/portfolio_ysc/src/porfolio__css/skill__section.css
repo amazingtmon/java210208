@@ -34,16 +34,12 @@
   background-size: cover;
 }
 
-.skill__background__title {
-  transform: translate(-31rem, -13rem);
-}
-
 .skill__box1 {
   border: 1px solid black;
   position: relative;
   margin-top: 1rem;
-  width: 65rem;
-  height: 24rem;
+  width: 90vw;
+  height: 80vh;
   text-align: center;
 }
 

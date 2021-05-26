@@ -163,6 +163,7 @@ public class Exam_SungJukApp extends JFrame implements ActionListener {
 					,{"강감찬","80","60","85"}
 					,{"이성계","75","85","85"}
 			};
+			
 			int a = 0;
 			int b = 0;
 			for(int i=0;i<data.length;i++){

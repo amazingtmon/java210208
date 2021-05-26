@@ -7,8 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./src/fullpage/fullpage.css">
   <link rel="stylesheet" href="./src/porfolio__css/portfolio.css">
-  <link rel="stylesheet" href="./src/porfolio__css/skill__section.css">
   <link rel="stylesheet" href="./src/porfolio__css/home__section.css">
+  <link rel="stylesheet" href="./src/porfolio__css/about__section.css">
+  <link rel="stylesheet" href="./src/porfolio__css/skill__section.css">
   <link rel="stylesheet" href="./src/porfolio__css/work__section.css">
   <link rel="icon" type="image/png" href="../images/peace-solid.png" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -114,50 +115,38 @@
         <div class="skill__section__1" id="skill__section">
           <div class="skill__box1">
             <div class="skill__describe">
-              <p class="skill__describe__p">
-                "스킬 설명 추가 예정"
+              <p class="describe__main">
+                "지금까지 학습한 <br>
+                프로그램 언어들은 <br>
+                이렇습니다."
+              </p>
+              <p class="describe__sub">
+                Front End 와 Back End, Mobile과 관련된
+                다양한 프로그램 언어들을 경험해보았습니다.<br>
+                한번씩 경험해본 언어들은 숙련도를 높이기 위해 
+                노력중이며,<br>
+                아직 배우지 못한 언어들을 학습해서
+                꾸준히 업데이트 해나가겠습니다.
               </p>
             </div>
-            <div class="skill__majors">
-              <div class="skill__major__box">
+            <div class="skill__majors1">
+              <div class="skill__front major__boxs">
                 <p>Front End</p>
-                <div class="skill__major__img front">
+                <div class="front__logo">
                   <i class="fab fa-html5"></i>
                 </div>
-                <div class="skill__major__front">
-                  <div class="html">
-                    <img class="major__img__front img__html" src="./images/program_lang_png/html.png" alt="html">
-                  </div>
-                  <div class="css">
-                    <img class="major__img__front img__css" src="./images/program_lang_png/css3.png" alt="css3">
-                  </div>
-                  <div class="js">
-                    <img class="major__img__front img__js" src="./images/program_lang_png/js.png" alt="js">
-                  </div>
-                  <div class="react">
-                    <img class="major__img__front img__react" src="./images/program_lang_png/react.png" alt="react">
-                  </div>
-                  <div class="ts">
-                    <img class="major__img__front img__ts" src="./images/program_lang_png/ts.png" alt="ts">
-                  </div>
-                </div>
               </div>
-              <div class="skill__major__box">
+              <div class="skill__back major__boxs">
                 <p>Back End</p>
-                <div class="skill__major__img back">
+                <div class="back__logo">
                   <i class="fas fa-cubes"></i>
                 </div>
-                <div class="skill__major">
-                  Java, Servlet, JSP, Oracle, Firebase, Youtube APIs
-                </div>
+
               </div>
-              <div class="skill__major__box">
+              <div class="skill__mobile major__boxs">
                 <p>Mobile</p>
-                <div class="skill__major__img mobile">
+                <div class="mobile__logo">
                   <i class="fas fa-mobile-alt"></i>
-                </div>
-                <div class="skill__major">
-                  React Mobile, JQuery Mobile, Android Studio Code
                 </div>
               </div>
             </div>
@@ -168,14 +157,14 @@
         <div class="skill__section__2">
           <div class="skill__box">
             <div class="skill__majors">
-              <div class="skill__major__box">
-                <p>Front End</p>
+              <div class="skill__major__box skill_front">
+                <p class="skill__major__title">Front End</p>
                 <div class="skill__major__img front">
                   <i class="fab fa-html5"></i>
                 </div>
                 <div class="skill__major__front">
                   <div class="html">
-                    <img class="major__img__front img__html" src="./images/program_lang_png/html.png" alt="html">
+                    <img class="major__images img__html" src="./images/program_lang_png/html.png" alt="html">
                     <ul class="css__progress">
                       <li>
                         <span class="progress__title">html 40%</span>
@@ -186,7 +175,7 @@
                     </ul>
                   </div>
                   <div class="css">
-                    <img class="major__img__front img__css" src="./images/program_lang_png/css3.png" alt="css3">
+                    <img class="major__images img__css" src="./images/program_lang_png/css3.png" alt="css3">
                     <ul class="css__progress">
                       <li>
                         <span class="progress__title">css 40%</span>
@@ -197,7 +186,7 @@
                     </ul>
                   </div>
                   <div class="js">
-                    <img class="major__img__front img__js" src="./images/program_lang_png/js.png" alt="js">
+                    <img class="major__images img__js" src="./images/program_lang_png/js.png" alt="js">
                     <ul class="css__progress">
                       <li>
                         <span class="progress__title">js 30%</span>
@@ -208,10 +197,10 @@
                     </ul>
                   </div>
                   <div class="react">
-                    <img class="major__img__front img__react" src="./images/program_lang_png/react.png" alt="react">
+                    <img class="major__images img__react" src="./images/program_lang_png/react.png" alt="react">
                     <ul class="css__progress">
                       <li>
-                        <span class="progress__title">comming soon</span>
+                        <span class="progress__title">React comming soon</span>
                       </li>
                       <li class="css__progress__bar">
                         <span class="common__bar react__bar__ani"></span>
@@ -219,10 +208,10 @@
                     </ul>
                   </div>
                   <div class="ts">
-                    <img class="major__img__front img__ts" src="./images/program_lang_png/ts.png" alt="ts">
+                    <img class="major__images img__ts" src="./images/program_lang_png/ts.png" alt="ts">
                     <ul class="css__progress">
                       <li>
-                        <span class="progress__title">comming soon</span>
+                        <span class="progress__title">Ts comming soon</span>
                       </li>
                       <li class="css__progress__bar">
                         <span class="common__bar ts__bar__ani"></span>
@@ -231,23 +220,63 @@
                   </div>
                 </div>
               </div>
-              <div class="skill__major__box">
-                <p>Back End</p>
+              <div class="skill__major__box skill_back">
+                <p class="skill__major__title">Back End</p>
                 <div class="skill__major__img back">
                   <i class="fas fa-cubes"></i>
                 </div>
-                <div class="skill__major">
-                  Java, Servlet, JSP, Oracle, Firebase, Youtube APIs
+                <div class="skill__major__back">
+                  <div class="java">
+                    <img class="major__images img__java" src="./images/program_lang_png/java.png" alt="html">
+                    <ul class="css__progress">
+                      <li>
+                        <span class="progress__title">java 40%</span>
+                      </li>
+                      <li class="css__progress__bar">
+                        <span class="common__bar java__bar__ani"></span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="toad">
+                    <img class="major__images img__toad" src="./images/program_lang_png/toad.png" alt="html">
+                    <ul class="css__progress">
+                      <li>
+                        <span class="progress__title">toad 20%</span>
+                      </li>
+                      <li class="css__progress__bar">
+                        <span class="common__bar toad__bar__ani"></span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="firebase">
+                    <img class="major__images img__firebase" src="./images/program_lang_png/firebase.png" alt="html">
+                    <ul class="css__progress">
+                      <li>
+                        <span class="progress__title">firebase commingsoon</span>
+                      </li>
+                      <li class="css__progress__bar">
+                        <span class="common__bar firebase__bar__ani"></span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
-              <div class="skill__major__box">
-                <p>Mobile</p>
+              <div class="skill__major__box skill_mobile">
+                <p class="skill__major__title">Mobile</p>
                 <div class="skill__major__img mobile">
                   <i class="fas fa-mobile-alt"></i>
                 </div>
-                <div class="skill__major">
-                  React Mobile, JQuery Mobile, Android Studio Code
-                </div>
+                  <div class="android">
+                    <img class="major__images img__android" src="./images/program_lang_png/android_studio.png" alt="android">
+                    <ul class="css__progress">
+                      <li>
+                        <span class="progress__title">Android Studio comming soon</span>
+                      </li>
+                      <li class="css__progress__bar">
+                        <span class="common__bar android__bar__ani"></span>
+                      </li>
+                    </ul>
+                  </div>
               </div>
             </div>
           </div>
@@ -258,8 +287,10 @@
     <!-- Work -->
     <section class="section" data-anchor="workPage">
       <div class="work__section" id="work__section">
-        <div>
-          "work text"
+        <div class="work__decribe">
+          <p class="work__text work__text__ani">
+            will be update soon...
+          </p>
         </div>
       </div>
     </section>

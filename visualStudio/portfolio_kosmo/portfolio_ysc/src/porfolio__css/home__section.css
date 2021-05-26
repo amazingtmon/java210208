@@ -1,11 +1,8 @@
 :root {
   /* Font Size */
-  --font-navmenus: 1rem;
-  --font-navtitle: 1.5rem;
-  --font-title: 5rem;
-  --font-title-alpha: 8rem;
-  --font-bgtitle: 3rem;
-  --font-describe: 1rem;
+  --font-homeh1: 8rem;
+  --font-homeh2: 4.5rem;
+  --font-homeh3: 6rem;
 
   /* Font Family */
   --font-family-navmenus: "Krona One", sans-serif;
@@ -21,6 +18,12 @@
   --trans--bgtitle: all ease-out 500ms;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* Home section */
 
 .home__section {
@@ -34,7 +37,6 @@
 
 .home__box {
   position: relative;
-  margin-top: 0rem;
   width: 60%;
   height: 100vh;
 }
@@ -49,8 +51,8 @@
 
 .home__h1 {
   position: absolute;
-  font-size: 10rem;
-  transform: translate(0rem, 4rem);
+  font-size: var(--font-homeh1);
+  transform: translate(0rem, 3rem);
   opacity: 0;
 }
 
@@ -62,7 +64,8 @@
 @keyframes h1__ani {
   0% {
     opacity: 0;
-    transform: translate3d(-100%, 20%, 0);
+    color: rgb(46, 46, 46);
+    transform: translate3d(-100%, 10%, 0);
   }
   100% {
     opacity: 1;
@@ -72,20 +75,21 @@
 
 .home__h2 {
   position: absolute;
-  font-size: 4.5rem;
+  font-size: var(--font-homeh2);
   opacity: 0;
 }
 
 .h2__ani {
-  animation: h2__ani 2s ease-in-out forwards;
+  animation: h2__ani 1.5s ease-in-out forwards;
   animation-delay: 1700ms;
-  transform: translate(16rem, 34rem);
+  transform: translate(12rem, 25rem);
 }
 
 @keyframes h2__ani {
   0% {
     opacity: 0;
-    transform: translate3d(-80%, 300%, 0);
+    color: rgb(46, 46, 46);
+    transform: translate3d(0%, 240%, 0);
   }
   100% {
     opacity: 1;
@@ -94,21 +98,22 @@
 
 .home__h3 {
   position: absolute;
-  font-size: 5rem;
+  font-size: var(--font-homeh3);
   opacity: 0;
 }
 
 .h3__ani {
-  animation: h3__ani 2s ease-in-out forwards;
+  animation: h3__ani 1.5s ease-in-out forwards;
   animation-delay: 2500ms;
   animation-fill-mode: both;
-  transform: translate(22rem, 50rem);
+  transform: translate(2rem, 40rem);
 }
 
 @keyframes h3__ani {
   0% {
     opacity: 0;
-    transform: translate3d(45%, 1000%, 0);
+    color: rgb(46, 46, 46);
+    transform: translate3d(5%, 550%, 0);
   }
   100% {
     opacity: 1;

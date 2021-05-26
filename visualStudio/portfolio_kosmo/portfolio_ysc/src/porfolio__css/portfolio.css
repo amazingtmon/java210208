@@ -1,7 +1,7 @@
 :root {
   /* Font Size */
-  --font-navmenus: 1rem;
-  --font-navtitle: 2.5rem;
+  --font-navmenus: 1.5rem;
+  --font-navbartitle: 2rem;
   --font-title: 5rem;
   --font-title-alpha: 8rem;
   --font-bgtitle: 3rem;
@@ -69,7 +69,7 @@ a.navbar__menus__a {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 5rem;
+  height: 3rem;
   background-color: cadetblue;
   color: aliceblue;
   transition: ease-in 500ms;
@@ -77,14 +77,14 @@ a.navbar__menus__a {
 
 .navbar__title {
   text-align: center;
-  font-size: var(--font-navtitle);
+  font-size: var(--font-navbartitle);
   font-family: var(--font-family-title);
 }
 
 .nav__logo {
   display: inline-block;
   margin-left: 0.3em;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .nav__logo:hover {
@@ -117,79 +117,4 @@ a.navbar__menus__a {
   width: 0.15rem;
   height: 1.5rem;
   background-color: rgb(206, 207, 218);
-}
-
-/* About section */
-
-.about__section {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: linear-gradient(to right, #434343 0%, black 100%);
-  background-position: center;
-  background-size: cover;
-}
-
-.about__box {
-  border: 1px solid white;
-  position: relative;
-  margin-top: 4rem;
-  width: 65rem;
-  height: 26rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/*
-.about__box::before {
-  position: absolute;
-  background-color: rgba(255, 255, 255, 0);
-  backdrop-filter: blur(1px) saturate(100%) contrast(45%) brightness(130%);
-  content: "";
-  width: 100%;
-  height: 100%;
-}
-*/
-
-.about__contain__describe {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  height: 24rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.about__describe1 {
-  border: 1px solid black;
-  text-align: center;
-  width: 100%;
-  height: 100%;
-}
-
-.describe1__h1 {
-  width: auto;
-  font-size: 2rem;
-}
-
-.descibe1__h2 {
-}
-
-.about__describe2 {
-  border: 1px solid black;
-  text-align: center;
-  width: 100%;
-  height: 100%;
-}
-
-/* work section */
-
-.work__background__title {
-  transform: translate(0rem, -15rem);
 }

@@ -1,5 +1,54 @@
+:root {
+  /* Font Size */
+  --font-workdescribe: 10rem;
+  /* Font Family */
+  --font-family-navmenus: "Krona One", sans-serif;
+  --font-family-title: "Orelega One", cursive;
+  --font-family-homehead: "Yeon Sung", cursive;
+  --font-family-describe: "Sunflower", sans-serif;
+  --font-family-alpha: "Lobster", cursive;
+  --font-family-backtitle: "Fugaz One", cursive;
+
+  /* Font Weight */
+
+  /* transition option*/
+}
+
 .work__section {
+  position: relative;
   width: 100vw;
   height: 100vh;
+  display: flex;
+  justify-content: center;
   background-image: linear-gradient(to right, #434343 0%, black 100%);
+}
+
+.work__decribe {
+  border: 2px solid white;
+  position: absolute;
+  margin-top: 4rem;
+  width: 95%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: var(--font-workdescribe);
+  font-family: var(--font-family-title);
+}
+
+.work__text__ani {
+  animation: work__text__ani 3000ms ease-in-out infinite alternate;
+}
+
+@keyframes work__text__ani {
+  0% {
+    color: rgb(26, 26, 26);
+  }
+  50% {
+    color: rgb(100, 100, 100);
+  }
+  100% {
+    color: rgb(66, 66, 66);
+  }
 }

@@ -43,7 +43,7 @@ public class Exam3_zipcode implements ItemListener, ActionListener, FocusListene
 	JComboBox jcb_sigu = null;
 	JComboBox jcb_dong = null;
 	DBConnectionMgr dbMgr = DBConnectionMgr.getInstance();
-	Connection 			con 	= null;//전역변수 선언하기 - 클래스() 전역에서 사용가능함.
+	Connection 			con 	= null;
 	PreparedStatement 	pstmt 	= null;
 	ResultSet 		rs  		= null;
 	JTextField 		jtf_dong 	= new JTextField("동이름을 입력하세요.",20);
@@ -51,13 +51,13 @@ public class Exam3_zipcode implements ItemListener, ActionListener, FocusListene
 	String 			cols[]      = {"ChkBox","주소","우편번호"};
 	String 		    data[][] 	= new String[0][3];
 	DefaultTableModel dtm_zip	= new DefaultTableModel(data,cols);
-	//테이블 양식 그려줌.
+	
 	JTable		    jt_zip 		= new JTable(dtm_zip);
 	JScrollPane     jsp_zip		= new JScrollPane(jt_zip);
-	//JTableHeader
+	
 	JTableHeader    jth_zip		= new JTableHeader();
-	JFrame			jf_zip		= new JFrame();//운영체제위에 창을 띄운다.
-	JPanel 			jp_north	= new JPanel();//속지를 만들어 준다.
+	JFrame			jf_zip		= new JFrame();
+	JPanel 			jp_north	= new JPanel();
 	public Exam3_zipcode() {
 		zdos = getZDOList();
 		sigus = new String[]{"전체"};
@@ -87,17 +87,17 @@ public class Exam3_zipcode implements ItemListener, ActionListener, FocusListene
 		try {
 			pstmt = con.prepareStatement(sql.toString());
 			if(zDO!=null && zDO.length()>0) {
-				pstmt.setString(i++, zDO);//?들어갈 동이름이 결정됨.
+				pstmt.setString(i++, zDO);
 			}			
 			if(myDong!=null && myDong.length()>0) {
-				pstmt.setString(i++, myDong);//?들어갈 동이름이 결정됨.
+				pstmt.setString(i++, myDong);
 			}
 			System.out.println("sql:"+sql.toString());
-			rs = pstmt.executeQuery();//오라클 서버에게 처리를 요청함.
+			rs = pstmt.executeQuery();
 			Vector<ZipCodeVO> v = new Vector<>();
 			ZipCodeVO zcVOS[] = null; 
 			ZipCodeVO zcVO = null; 
-			while(rs.next()) {//커서 이동, 커서이동
+			while(rs.next()) {
 				zcVO = new ZipCodeVO();
 				Boolean ChkBox = Boolean.parseBoolean(rs.getString("ChkBox"));
 				zcVO.setChkBox(ChkBox);
@@ -106,9 +106,9 @@ public class Exam3_zipcode implements ItemListener, ActionListener, FocusListene
 				v.add(zcVO);
 			}
 			zcVOS  = new ZipCodeVO[v.size()];
-			v.copyInto(zcVOS);//벡터 자료구조에 들어있는 정보를 복사하기	
+			v.copyInto(zcVOS);
 			System.out.println("v.size():"+v.size()+", "+zcVOS.length);
-			if(v.size()>0) {//조회된 결과가 있니?
+			if(v.size()>0) {
 				while(dtm_zip.getRowCount() > 0) {
 					dtm_zip.removeRow(0);
 				}
@@ -140,7 +140,7 @@ public class Exam3_zipcode implements ItemListener, ActionListener, FocusListene
 		jth_zip.setBackground(new Color(22,22,100));
 		jth_zip.setForeground(Color.white);
 		jth_zip.setFont(new Font("맑은고딕",Font.BOLD,16));
-		jt_zip.setGridColor(Color.BLUE);//그리드 색상
+		jt_zip.setGridColor(Color.BLUE);
 		jt_zip.setRowHeight(20);
 		jt_zip.getColumnModel().getColumn(0).setPreferredWidth(50);
 		jt_zip.getColumnModel().getColumn(1).setPreferredWidth(250);
@@ -163,7 +163,6 @@ public class Exam3_zipcode implements ItemListener, ActionListener, FocusListene
 		jf_zip.setVisible(true);
 	}
 	
-	//콤보박스에 뿌려질 ZDO 컬럼의 정보를 오라클 서버에서 꺼내오기
 	public String[] getZDOList() {
 		String zdos[] = null;
 		StringBuilder sb = new StringBuilder();
@@ -311,7 +310,7 @@ public class Exam3_zipcode implements ItemListener, ActionListener, FocusListene
 	}
 	DefaultTableCellRenderer dcr = new DefaultTableCellRenderer()
 	{
-	  public Component getTableCellRendererComponent  // 셀렌더러
+	  public Component getTableCellRendererComponent
 	   (JTable table, Object value, boolean isSelected, boolean hasFocus
 	  , int row, int column)
 	  {

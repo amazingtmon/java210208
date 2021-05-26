@@ -1,11 +1,9 @@
 :root {
   /* Font Size */
-  --font-navmenus: 1rem;
-  --font-navtitle: 1.5rem;
-  --font-title: 5rem;
-  --font-title-alpha: 8rem;
-  --font-bgtitle: 3rem;
-  --font-describe: 1rem;
+  --font-majorbox: 4rem;
+  --font-majorlogo: 6rem;
+  --font-majortitle: 3rem;
+  --font-progress__title: 1.5rem;
 
   /* Font Family */
   --font-family-navmenus: "Krona One", sans-serif;
@@ -19,6 +17,24 @@
 
   /* transition option*/
   --trans--bgtitle: all ease-out 500ms;
+}
+
+/* glass effect
+.skill__box1::before {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(3px) saturate(50%) contrast(40%) brightness(150%);
+  content: "";
+  width: 100%;
+  height: 100%;
+  transform: translateX(-50%);
+}
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* skill section */
@@ -35,33 +51,189 @@
 }
 
 .skill__box1 {
-  border: 1px solid black;
   position: relative;
-  margin-top: 1rem;
-  width: 90vw;
-  height: 80vh;
-  text-align: center;
+  margin-top: 2rem;
+  width: 95vw;
+  height: 90vh;
+  display: flex;
 }
 
-.skill__box1::before {
-  position: absolute;
-  background-color: rgba(255, 255, 255, 0);
-  backdrop-filter: blur(3px) saturate(50%) contrast(40%) brightness(150%);
-  content: "";
-  width: 100%;
+.skill__describe {
+  width: 40%;
   height: 100%;
-  transform: translateX(-50%);
+  color: beige;
+}
+
+.describe__main {
+  font-size: 6rem;
+  font-family: var(--font-family-homehead);
+  opacity: 0;
+}
+
+.main__ani {
+  animation: main__ani 1400ms ease-in-out forwards;
+}
+
+@keyframes main__ani {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20%, 0);
+    color: rgb(0, 0, 0);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.describe__sub {
+  margin-top: 5rem;
+  font-size: 2.3rem;
+  font-family: var(--font-family-describe);
+  opacity: 0;
+}
+
+.sub__ani {
+  animation: sub__ani 1400ms ease-in-out forwards;
+}
+
+@keyframes sub__ani {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20%, 0);
+    color: rgb(0, 0, 0);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.skill__majors1 {
+  position: relative;
+  width: 60%;
+  height: 100%;
+}
+
+.major__boxs {
+  position: relative;
+  width: 35%;
+  height: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(255, 255, 255, 0.8);
+  font-family: var(--font-family-title);
+  border-radius: 25% 25% 0 0;
+}
+
+.skill__front,
+.skill__back,
+.skill__mobile {
+  font-size: var(--font-majorbox);
+}
+
+.skill__front {
+  border-bottom: 10px solid rgb(255, 39, 1);
+  opacity: 0;
+  transform: translate(5%, 5%);
+}
+
+.front_ani {
+  animation: front_ani 1000ms ease-in forwards;
+  animation-delay: 500ms;
+}
+
+@keyframes front_ani {
+  0% {
+    opacity: 0;
+    background-color: rgb(41, 41, 41);
+    transform: translate3d(5%, 20%, 0);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.front__logo {
+  font-size: var(--font-majorlogo);
+  color: rgb(255, 115, 22);
+}
+
+.skill__back {
+  border-bottom: 10px solid rgb(1, 88, 1);
+  opacity: 0;
+  transform: translate(180%, 0%);
+}
+
+.back_ani {
+  animation: back_ani 1000ms ease-in forwards;
+  animation-delay: 900ms;
+}
+
+@keyframes back_ani {
+  0% {
+    opacity: 0;
+    background-color: rgb(41, 41, 41);
+    transform: translate3d(180%, 20%, 0);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.back__logo {
+  font-size: var(--font-majorlogo);
+  color: rgb(5, 41, 5);
+}
+
+.skill__mobile {
+  border-bottom: 10px solid rgb(167, 0, 167);
+  opacity: 0;
+  transform: translate(10%, -10%);
+}
+
+.mobile_ani {
+  animation: mobile_ani 1000ms ease-in forwards;
+  animation-delay: 1300ms;
+}
+
+@keyframes mobile_ani {
+  0% {
+    opacity: 0;
+    background-color: rgb(41, 41, 41);
+    transform: translate3d(10%, 10%, 0);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.mobile__logo {
+  font-size: var(--font-majorlogo);
+  color: rgb(100, 0, 100);
+}
+
+.skill__section__2 {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+  background-position: center;
+  background-size: cover;
 }
 
 .skill__box {
   border: 1px solid black;
   position: relative;
   margin-top: 4rem;
-  width: 65rem;
-  height: 25rem;
+  width: 95%;
+  height: 80%;
   text-align: center;
 }
 
+/*
 .skill__box::before {
   position: absolute;
   background-color: rgba(255, 255, 255, 0);
@@ -71,37 +243,44 @@
   height: 100%;
   transform: translateX(-50%);
 }
-
-.skill__describe {
-  position: relative;
-  padding: 1rem;
-}
+*/
 
 .skill__majors {
   position: relative;
   display: flex;
+  justify-content: space-around;
   width: 100%;
   height: 100%;
 }
 
 .skill__major__box {
-  width: 100%;
+  width: 70%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   padding: 0.2rem;
-  background-color: rgb(255, 255, 255, 0.5);
-  border: 1px solid salmon;
+  background-color: rgb(255, 255, 255, 0.1);
+  color: rgb(245, 227, 227);
+}
+
+.skill_front {
+  border-bottom: 10px solid rgb(187, 29, 1);
+}
+
+.skill__major__title {
+  font-size: var(--font-majortitle);
+  font-family: var(--font-family-title);
 }
 
 .skill__major__img {
-  height: 5rem;
-  font-size: 4rem;
+  font-size: 7rem;
 }
 
+/******************************** frontend section ***********************/
+
 .front {
-  color: rgb(212, 8, 8);
+  color: rgb(236, 107, 20);
 }
 
 .skill__major__front {
@@ -112,14 +291,14 @@
   height: 100%;
 }
 
-.major__img__front {
-  width: 50px;
-  height: 50px;
+.major__images {
+  width: 100px;
+  height: 90px;
 }
 
 .img__css,
 .img__js {
-  width: 50px;
+  width: 100px;
 }
 
 .html,
@@ -128,33 +307,46 @@
 .react,
 .ts {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 65px;
 }
 
 .css__progress {
   position: relative;
-  width: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 80%;
+  height: 100%;
+}
+
+.progress__title {
+  font-size: var(--font-progress__title);
+  font-family: var(--font-family-backtitle);
 }
 
 .css__progress__bar {
-  background-color: rgb(139, 139, 139);
-  width: 100%;
+  position: relative;
+  width: 90%;
   height: 5px;
   margin-top: 5px;
   border-radius: 10px;
+  background-color: rgb(114, 113, 113);
 }
 
 .common__bar {
   position: absolute;
+  z-index: 1;
+  width: 0%;
   height: 10px;
   border-radius: 10px;
   background-color: #35495e;
-  transform: translateX(-185px);
+  transform: translateX(-216px);
 }
 
 .common__bar::after {
   position: absolute;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   content: "";
   width: 15px;
@@ -171,7 +363,7 @@
 
 @keyframes html__bar__ani {
   0% {
-    width: 0px;
+    width: 0%;
   }
   100% {
     width: 40%;
@@ -232,21 +424,78 @@
   }
 }
 
+/******************************** backend section ***********************/
+.skill_back {
+  border-bottom: 10px solid rgb(1, 71, 1);
+}
+
 .back {
   color: rgb(16, 53, 53);
+}
+
+.skill__major__back {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.java,
+.toad,
+.firebase {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 65px;
+}
+
+.java__bar__ani {
+  animation: java__bar__ani 2s ease-out forwards;
+}
+
+@keyframes java__bar__ani {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 40%;
+  }
+}
+
+.toad__bar__ani {
+  animation: toad__bar__ani 2s ease-out forwards;
+}
+
+@keyframes toad__bar__ani {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 20%;
+  }
+}
+
+/******************************** mobile section ***********************/
+
+.skill_mobile {
+  border-bottom: 10px solid rgb(128, 1, 128);
 }
 
 .mobile {
   color: rgb(118, 36, 194);
 }
 
-.skill__section__2 {
-  width: 100vw;
-  height: 100vh;
+.skill__major__mobile {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.android {
+  display: flex;
   align-items: center;
-  background-image: linear-gradient(to right, #434343 0%, black 100%);
-  background-position: center;
-  background-size: cover;
+  height: 65px;
 }

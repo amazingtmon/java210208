@@ -15,6 +15,21 @@ public class Exam1 {
 			}
 		}
 
+		int j = 1;
+		while (j<101) {
+			if(j%5 == 0 && j%7 == 0) {
+				System.out.println(j+": "+"FizzBuzz");
+			}
+			else if(j%7 == 0) {
+				System.out.println(j+": "+"Buzz");
+			}
+			else if(j%5 == 0) {
+				System.out.println(j+": "+"Fizz");
+			}
+			j++;
+		}
 	}
-
+	
 }
+
+

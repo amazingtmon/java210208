@@ -335,7 +335,7 @@
   background-color: rgb(114, 113, 113);
 }
 
-.common__bar {
+.progress__bar {
   position: absolute;
   z-index: 1;
   width: 0%;
@@ -345,7 +345,7 @@
   transform: translateX(-216px);
 }
 
-.common__bar::after {
+.progress__bar::after {
   position: absolute;
   box-sizing: border-box;
   content: "";

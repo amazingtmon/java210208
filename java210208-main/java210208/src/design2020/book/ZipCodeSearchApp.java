@@ -172,6 +172,7 @@ public class ZipCodeSearchApp implements ItemListener, ActionListener, FocusList
 		jt_zip.getColumn("ChkBox").setCellEditor(new DefaultCellEditor(box));
 		jcb_zdo.addItemListener(this);
 		jcb_sigu.addItemListener(this);
+		jcb_dong.addItemListener(this);
 		jtf_dong.addFocusListener(this);
 		System.out.println("initDisplay 호출 성공");
 		//테이블 헤더 영역에 배경색 바꿔볼까?

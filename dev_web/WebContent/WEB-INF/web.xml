@@ -42,8 +42,7 @@
   </servlet>
   <servlet-mapping>
      <servlet-name>pojo2_board</servlet-name>
-     <url-pattern>/board/crudBoard.po2</url-pattern>
+     <url-pattern>*.po2</url-pattern>
   </servlet-mapping>
-  
   
 </web-app>

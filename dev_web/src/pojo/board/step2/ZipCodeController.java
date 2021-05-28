@@ -11,8 +11,11 @@ public class ZipCodeController {
 	private ActionForward forward = null;
 	
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) {
-		// TODO Auto-generated method stub
-		return null;
+		logger.info("execute called");
+		forward = new ActionForward();
+		zipCodeLogic.getZipCodeList();
+		//forward.setPath("XXX.jsp");
+		return forward;
 	}
 	
 }

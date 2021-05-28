@@ -14,19 +14,21 @@ public class BoardController {
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) {
 		logger.info("execute called");
 		forward = new ActionForward();
+		//forward = null;
 		String viewName = null;
 		boolean isRedirect = false;
-		String crud = (String) req.getAttribute("crud");
-		if("boardInsert".contentEquals(crud)) {
+		//String crud = (String) req.getAttribute("crud");
+		String[] upmu = (String[]) req.getAttribute("upmu");
+		if("boardInsert".equals(upmu[1])) {
 			logger.info("글쓰기 호출 성공");
-			viewName = "crudBoard.po2?crud=getBoardList";
+			viewName = "boardInsertSuccess.jsp";
 			isRedirect = true;
 			forward.setRedirect(isRedirect);
 			forward.setPath(viewName);
 			
 		}
 		
-		return null;
+		return forward;
 	}
 	
 

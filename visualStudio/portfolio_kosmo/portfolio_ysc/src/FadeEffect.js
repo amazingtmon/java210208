@@ -16,6 +16,15 @@ export default class FadeEffect {
     this.skill__front = document.querySelector('.skill__front');
     this.skill__back = document.querySelector('.skill__back');
     this.skill__mobile = document.querySelector('.skill__mobile');
+
+    /*front*/
+    this.common__bar__html = document.querySelector('.common__bar__html');
+    this.common__bar__css = document.querySelector('.common__bar__css');
+    this.common__bar__js = document.querySelector('.common__bar__js');
+
+    /*back*/
+    this.common__bar__java = document.querySelector('.common__bar__java');
+    this.common__bar__toad = document.querySelector('.common__bar__toad');
   }
   
   show(anchor) {
@@ -37,6 +46,15 @@ export default class FadeEffect {
       this.skill__mobile.classList.add('mobile_ani');
     }
     else if(anchor === 'workPage'){
+    }
+    else if (anchor === 'slide2') {
+      console.log('slide2: ' + anchor);
+      console.log(this.common__bar__html);
+      this.common__bar__html.classList.add('html__bar__ani');
+      this.common__bar__css.classList.add('css__bar__ani');
+      this.common__bar__js.classList.add('js__bar__ani');
+      this.common__bar__java.classList.add('java__bar__ani');
+      this.common__bar__toad.classList.add('toad__bar__ani');
     }
   }
 

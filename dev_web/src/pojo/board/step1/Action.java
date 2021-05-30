@@ -1,3 +1,4 @@
+  
 package pojo.board.step1;
 
 import java.io.IOException;
@@ -7,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public interface Action {
-	public static ActionForward execute (HttpServletRequest req, HttpServletResponse res)
-			throws ServletException, IOException{
-				return null;
-	}
+	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) 
+			throws ServletException, IOException;
 }

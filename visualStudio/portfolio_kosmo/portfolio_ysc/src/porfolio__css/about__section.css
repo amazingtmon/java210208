@@ -30,14 +30,14 @@
 }
 
 .about__box {
-  border: 1px solid white;
   position: relative;
   margin-top: 4rem;
-  width: 65rem;
-  height: 26rem;
+  width: 95vw;
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: border__ani 3000ms ease-in-out infinite alternate;
 }
 
 .about__contain__describe {
@@ -52,23 +52,51 @@
 }
 
 .about__describe1 {
-  border: 1px solid black;
-  text-align: center;
   width: 100%;
   height: 100%;
+  text-align: center;
 }
 
 .describe1__h1 {
   width: auto;
-  font-size: 2rem;
+  font-size: 10rem;
+  color: white;
 }
 
 .descibe1__h2 {
+  color: white;
 }
 
-.about__describe2 {
-  border: 1px solid black;
-  text-align: center;
-  width: 100%;
-  height: 100%;
+.describe1__text {
+  color: white;
+}
+
+.about__describe1 .describe1__h1,
+.descibe1__h2,
+.describe1__text {
+  animation: about__text__ani 3000ms ease-in-out infinite alternate;
+}
+
+@keyframes border__ani {
+  0% {
+    border: 5px solid rgb(26, 26, 26);
+  }
+  50% {
+    border: 5px solid rgb(100, 100, 100);
+  }
+  100% {
+    border: 5px solid rgb(66, 66, 66);
+  }
+}
+
+@keyframes about__text__ani {
+  0% {
+    color: rgb(26, 26, 26);
+  }
+  50% {
+    color: rgb(100, 100, 100);
+  }
+  100% {
+    color: rgb(66, 66, 66);
+  }
 }

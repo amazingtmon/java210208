@@ -53,6 +53,7 @@ new fullpage('.fullpage', {
     if (section.anchor === 'skillPage' && destination.anchor === 'slide2') {
       console.log(section);
       console.log(destination);
+      fade.show(destination.anchor);
     }
   }
 });

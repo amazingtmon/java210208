@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Board - webapp</title>
-<jsp:include page="../common/commonUI.jsp" flush="false" />
+<jsp:include page="../common/commonUIglobal.jsp" flush="false" />
 </head>
 <body>
 	게시판 목록 페이지.

@@ -2,3 +2,13 @@ body {
   color: white;
   margin: 0;
 }
+
+button {
+  margin: 1px;
+  font-size: 2rem;
+}
+
+.book-box {
+  font-size: 2rem;
+  padding: 1rem;
+}

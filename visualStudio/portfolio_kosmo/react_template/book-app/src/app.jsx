@@ -1,12 +1,40 @@
 import "./app.css";
-import Book from "./components/book";
+import React, { Component } from "react";
+import Books from "./components/books";
 
-function App() {
-  return (
-    <>
-      <Book />
-    </>
-  );
+//스프레드 연산자
+//객체리터럴
+
+class App extends Component {
+  eventIncrement = (book) => {
+    console.log("increment" + book.name);
+    book.count++;
+    this.setState(this.state);
+  };
+
+  eventDecrement = (book) => {
+    console.log("decrement" + book.name);
+    book.count--;
+    this.setState(this.state);
+  };
+
+  eventZero = (book) => {
+    console.log("zero" + book.name);
+    book.count = 0;
+    this.setState(this.state);
+  };
+
+  render() {
+    return (
+      <>
+        <Books
+          onIncrement={this.eventIncrement}
+          onDecrement={this.eventDecrement}
+          onZero={this.eventZero}
+        />
+      </>
+    );
+  }
 }
 
 export default App;

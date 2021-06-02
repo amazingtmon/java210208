@@ -17,6 +17,7 @@
 
 	<bean id="board-controller" class="web.mvc.Board41Controller">
 		<property name="methodNameResolver" ref="board-resolver" />
+		<property name="boardLogic" ref="board-logic" />
 	</bean>
 
 	<!-- SimpleUrlHandlerMapping 방법. 추천하는 방식이다. -->

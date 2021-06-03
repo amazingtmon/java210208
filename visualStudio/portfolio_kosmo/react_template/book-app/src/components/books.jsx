@@ -11,19 +11,20 @@ class Books extends Component {
   };
 
   eventIncrement = (book) => {
-    console.log("increment" + book.name);
+    console.log("increment " + book.name);
     book.count++;
     this.setState(this.state);
   };
 
   eventDecrement = (book) => {
-    console.log("decrement" + book.name);
+    console.log("decrement " + book);
     book.count--;
-    this.setState(this.state);
+    const count = book.count;
+    this.setState({ count: count < 0 ? 0 : count });
   };
 
   eventZero = (book) => {
-    console.log("zero" + book.name);
+    console.log("zero " + book);
     book.count = 0;
     this.setState(this.state);
   };

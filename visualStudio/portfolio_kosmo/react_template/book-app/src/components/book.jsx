@@ -1,23 +1,16 @@
 import React, { Component } from "react";
 
 class Book extends Component {
-  state = {
-    count: 0,
+  eventIncrement = () => {
+    this.props.onIncrement(this.props.book);
   };
 
-  eventIncrement = (event) => {
-    //console.log(event);
-    this.setState({ count: this.state.count + 1 });
+  eventDecrement = () => {
+    this.props.onDecrement(this.props.book);
   };
 
-  eventDecrement = (event) => {
-    const count = this.state.count - 1;
-    this.setState({ count: count < 0 ? 0 : count });
-  };
-
-  eventZero = (event) => {
-    //console.log(event);
-    this.setState({ count: 0 });
+  eventZero = () => {
+    this.props.onZero(this.props.book);
   };
 
   render() {

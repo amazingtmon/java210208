@@ -20,7 +20,7 @@
 		<property name="boardLogic" ref="board-logic" />
 	</bean>
 
-	<!-- SimpleUrlHandlerMapping 방법. 추천하는 방식이다. -->
+	<!-- SimpleUrlHandlerMapping 방법. 추천하는 방식이다. spring이 관리해준다. -->
 	<bean id="url-mapping"
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<!-- <property name="mappings"> -> setter의 이름. -->

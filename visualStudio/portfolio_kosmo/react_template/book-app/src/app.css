@@ -12,3 +12,7 @@ button {
   font-size: 2rem;
   padding: 1rem;
 }
+
+.book-count {
+  color: tomato;
+}

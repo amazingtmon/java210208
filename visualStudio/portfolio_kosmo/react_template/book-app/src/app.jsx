@@ -19,8 +19,8 @@ class App extends Component {
   };
 
   eventZero = (book) => {
-    console.log("zero" + book.name);
-    book.count = 0;
+    console.log("zero" + book);
+    if (book.count < 0 ? 0 : book.count);
     this.setState(this.state);
   };
 

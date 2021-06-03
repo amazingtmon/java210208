@@ -39,35 +39,24 @@ public class Board41Controller extends MultiActionController {
 	 * 것이라고 하는 것은 앞뒤가 맞지 않는 것이다.
 	 * 
 	 */
+	
+	//ModelAndView를 만나면 WEB-INF 로 이동.
 	public ModelAndView getBoardList(HttpServletRequest req, HttpServletResponse res) {
 		logger.info("getBoardList 호출 성공");
 		HashMapBinder hmb = new HashMapBinder(req);
 		Map<String, Object> target = new HashMap<>();
 		hmb.bind(target);
 		List<Map<String, Object>> boardList = null;
-		boardList = new ArrayList<>();
-		Map<String, Object> rmap = new HashMap<>();
-		rmap.put("mem_id", "tomato");
-		rmap.put("mem_pw", "123");
-		rmap.put("mem_name", "이순신");
-		boardList.add(rmap);
-		rmap = new HashMap<>();
-		rmap.put("mem_id", "apple");
-		rmap.put("mem_pw", "125");
-		rmap.put("mem_name", "강감찬");
-		boardList.add(rmap);
-		rmap = new HashMap<>();
-		rmap.put("mem_id", "nice");
-		rmap.put("mem_pw", "126");
-		rmap.put("mem_name", "김유신");
-		boardList.add(rmap);
-		boardLogic.getBoardList(target);// where bm_no=? and bm_title LIKE '%'||?||'%'
+		boardList = boardLogic.getBoardList(target);
+		//boardLogic.getBoardList(target); where bm_no=? and bm_title LIKE '%'||?||'%'
 		ModelAndView mav = new ModelAndView();
-		String name = "이순신";
-		// mav.setViewName("a.jsp");
+		mav.setViewName("board/getBoardList");//페이지 이름. url은 sp4, 페이지는 jsp페이지.
 		mav.addObject("boardList", boardList);
-		HttpSession session = req.getSession();
-		session.setAttribute("name", name);
+		logger.info("boardList: "+boardList);
+		logger.info("mav: "+mav);
+		//String name = "이순신";
+		//HttpSession session = req.getSession();
+		//session.setAttribute("name", name);
 //		      RequestDispatcher view = req.getRequestDispatcher("jsonGetBoardList.jsp");
 //		      view.forward(req, res);
 		return mav;
@@ -77,22 +66,7 @@ public class Board41Controller extends MultiActionController {
 	public void jsonGetBoardList(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		logger.info("jsonGetBoardList 호출 성공");
 		List<Map<String, Object>> boardList = null;
-		boardList = new ArrayList<>();
-		Map<String, Object> rmap = new HashMap<>();
-		rmap.put("mem_id", "tomato");
-		rmap.put("mem_pw", "123");
-		rmap.put("mem_name", "이순신");
-		boardList.add(rmap);
-		rmap = new HashMap<>();
-		rmap.put("mem_id", "apple");
-		rmap.put("mem_pw", "125");
-		rmap.put("mem_name", "강감찬");
-		boardList.add(rmap);
-		rmap = new HashMap<>();
-		rmap.put("mem_id", "nice");
-		rmap.put("mem_pw", "126");
-		rmap.put("mem_name", "김유신");
-		boardList.add(rmap);
+		boardList = boardLogic.getBoardList(null);
 		Gson g = new Gson();
 		String imsi = g.toJson(boardList);
 		res.setContentType("application/json;charset=utf-8");

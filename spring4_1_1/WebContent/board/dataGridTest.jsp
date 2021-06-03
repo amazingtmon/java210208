@@ -12,9 +12,9 @@
         data-options="url:'datagrid_data.json',fitColumns:true,singleSelect:true">
     <thead>
         <tr>
-            <th data-options="field:'code',width:100">Code</th>
-            <th data-options="field:'name',width:100">Name</th>
-            <th data-options="field:'price',width:100,align:'right'">Price</th>
+            <th data-options="field:'code',width:100,align:'center'">Code</th>
+            <th data-options="field:'name',width:100,align:'center'">Name</th>
+            <th data-options="field:'price',width:100,align:'center'">Price</th>
         </tr>
     </thead>
 </table>

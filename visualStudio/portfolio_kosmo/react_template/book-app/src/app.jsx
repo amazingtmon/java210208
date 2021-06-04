@@ -15,12 +15,12 @@ class App extends Component {
   eventDecrement = (book) => {
     console.log("decrement" + book.name);
     book.count--;
+    if (book.count < 0 ? 0 : book.count);
     this.setState(this.state);
   };
 
   eventZero = (book) => {
     console.log("zero" + book);
-    if (book.count < 0 ? 0 : book.count);
     this.setState(this.state);
   };
 

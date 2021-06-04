@@ -4,6 +4,13 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="com.mybatis.mapper.BoardMapper"> 
 	<select id="getBoardList" parameterType="map" resultType="map"> 
-		select bm_no, bm_title, bm_writer, bm_hit from board_master2019
+		select bm.bm_no, bm.bm_title, bm.bm_date, bs.bs_file, bm.bm_hit
+        	from board_master2019 bm
+            	,board_sub2019 bs
+       		where bm.bm_no = bs.bm_no(+)
+	</select>
+	
+	<select id="getBoardListAll" parameterType="map" resultType="map"> 
+		select * from board_master2019
 	</select> 
 </mapper>

@@ -20,7 +20,7 @@ public class Board41MDao {
 	public List<Map<String, Object>> getBoardList(Map<String, Object> pmap) {
 		logger.info("getBoardList 호출성공!!");
 		List<Map<String, Object>> boardList = null;
-		boardList = sqlSessionTemplate.selectList("getBoardList", pmap);
+		boardList = sqlSessionTemplate.selectList("getBoardListAll", pmap);
 		return boardList;
 	}
 }

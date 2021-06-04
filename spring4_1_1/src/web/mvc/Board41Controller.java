@@ -69,7 +69,7 @@ public class Board41Controller extends MultiActionController {
 		boardList = boardLogic.getBoardList(null);
 		Gson g = new Gson();
 		String imsi = g.toJson(boardList);
-		res.setContentType("application/json;charset=utf-8");
+		res.setContentType("application/json;charset=utf-8");//mime type 결정.
 		PrintWriter out = res.getWriter();
 		out.print(imsi);
 	}

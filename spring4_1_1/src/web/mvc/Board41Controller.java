@@ -73,5 +73,19 @@ public class Board41Controller extends MultiActionController {
 		PrintWriter out = res.getWriter();
 		out.print(imsi);
 	}
+	
+	public void boardInsert(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		logger.info("boardInsert 호출 성공");
+		HashMapBinder hmb = new HashMapBinder(req);
+		Map<String, Object> pmap = new HashMap<>();
+		hmb.bind(pmap);
+		int result = 0;
+		result = boardLogic.boardInsert(pmap);
+		if(result == 1) {
+			res.sendRedirect("./getBoardList.sp4");
+		} else {
+			res.sendRedirect("./boardInsert.sp4");
+		}
+	}
 
 }

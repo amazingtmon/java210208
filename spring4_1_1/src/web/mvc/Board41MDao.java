@@ -21,6 +21,21 @@ public class Board41MDao {
 		logger.info("getBoardList 호출성공!!");
 		List<Map<String, Object>> boardList = null;
 		boardList = sqlSessionTemplate.selectList("getBoardListAll", pmap);
+		/*
+		boardList2 = sqlSessionTemplate.selectList("getBoardMap",pmap);
+		for(BoardMVO bmvo:boardList2) {
+			logger.info("bmvo : "+bmvo);
+			logger.info("bmvo : "+bmvo.getBm_title());
+			logger.info("bmvo : "+bmvo.getBsVO().getBs_seq());
+			logger.info("bmvo : "+bmvo.getBs_file());
+		}
+		*/
 		return boardList;
+	}
+	
+	public int boardMInsert(Map<String, Object> pmap) {
+		int result = 0;
+		
+		return result;
 	}
 }

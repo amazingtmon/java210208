@@ -10,6 +10,10 @@
        		where bm.bm_no = bs.bm_no(+)
 	</select>
 	
+	<select id="boardInsert" parameterType="map" resultType="map"> 
+		insert 
+	</select>
+	
 	<select id="getBoardListAll" parameterType="map" resultType="map"> 
 		select * from board_master2019
 	</select> 

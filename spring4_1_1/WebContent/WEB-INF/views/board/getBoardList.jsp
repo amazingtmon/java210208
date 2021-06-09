@@ -1,4 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.util.*" %>
+<%
+	List<Map<String,Object>> boardList = null;
+	boardList = (List<Map<String,Object>>)request.getAttribute("boardList");
+	int size = 0;
+	if(boardList != null){
+		size = boardList.size();
+		out.print("List size: "+boardList.size());
+		
+	}
+	
+%>    
     <!DOCTYPE html>
     <html>
 
@@ -44,7 +56,7 @@
             <div id="tb_board" style="padding:2px 5px;">
                 <a href="javascript: search()" class="easyui-linkbutton" text="조회" iconCls="icon-search"
                     plain="true"></a>
-                <a href="#" class="easyui-linkbutton" text="입력" iconCls="icon-add" plain="true"></a>
+                <a href="javascript: ins()" class="easyui-linkbutton" text="입력" iconCls="icon-add" plain="true"></a>
                 <a href="#" class="easyui-linkbutton" text="수정" iconCls="icon-edit" plain="true"></a>
                 <a href="#" class="easyui-linkbutton" text="삭제" iconCls="icon-cancel" plain="true"></a>
             </div>
@@ -52,7 +64,7 @@
         </table>
         <!-- 글쓰기 화면 시작 -->
         <div id="dlg_ins" class="easyui-dialog" title="My Dialog" style="width: 400px; height: 200px;"
-            data-options="iconCls:'icon-save',resizable:true,modal:true">
+            data-options="iconCls:'icon-save',resizable:true,modal:false">
             Dialog Content.
         </div>
         <!-- 글쓰기 화면 끝 -->

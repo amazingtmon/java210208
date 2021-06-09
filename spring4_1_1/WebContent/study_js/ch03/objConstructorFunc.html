@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function CheckWeight(name, height, weight){
+      this.userName = name;
+      this.userHeight = height;
+      this.userWeight = weight;
+      this.minWeight;
+      this.maxWeight;
+      //CheckWeight.prototype.userInfo = function(){} 자바에서 사용하는 static과 비슷함.
+      this.userInfo = function(){
+        let str = "";
+        str += "name: "+this.userName+',';
+        str += "height: " + this.userHeight + ',';
+        str += "weight: " + this.userWeight + '<br>';
+        return str;
+      }
+      //CheckWeight.prototype.getResult = function(){} 자바에서 사용하는 static과 비슷함.
+      this.getResult = function(){
+        this.minWeight = (this.userHeight - 100)*0.9-5;
+        this.maxWeight = (this.userHeight - 100)*0.9+5;
+
+        if(this.userWeight >= this.maxWeight) {
+          console.log('과체중입니다.');
+          document.write(`현재 체중 : ${this.userWeight}<br> 최대허용체중: ${this.maxWeight}<br> 최소허용체중: ${this.minWeight}<br> ${this.userName}님의 상태는 과체중입니다.<br>`);
+        } else if(this.userWeight <= this.minWeight) {
+          console.log('체중미달입니다.');
+          document.write(`현재 체중 : ${this.userWeight}<br> 최대허용체중: ${this.maxWeight}<br> 최소허용체중: ${this.minWeight}<br> ${this.userName}님의 상태는 체중미달입니다.<br>
+                          균형잡힌 식단으로 영양분을 섭취해주세요 : )<br>`);
+        } else {
+          console.log('정상입니다.');
+          document.write(`현재 체중 : ${this.userWeight}<br> 최대허용체중: ${this.maxWeight}<br> 최소허용체중: ${this.minWeight}<br> ${this.userName}님의 상태는 정상입니다 : )<br>`);
+        }
+      }
+    }
+
+    const hong = new CheckWeight("홍길동", 170, 65);
+    hong.getResult();
+    const kim = new CheckWeight("미스터킴", 180, 55);
+    kim.getResult();
+    console.log(hong);
+    console.log(kim);
+    console.log(kim.userInfo());
+  </script>
+
+</body>
+</html>

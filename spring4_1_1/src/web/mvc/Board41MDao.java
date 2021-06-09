@@ -34,8 +34,10 @@ public class Board41MDao {
 	}
 	
 	public int boardMInsert(Map<String, Object> pmap) {
+		logger.info("boardMInsert 호출 성공");
 		int result = 0;
-		
+		result = 1;
+		sqlSessionTemplate.insert("boardMInsert",pmap);
 		return result;
 	}
 }

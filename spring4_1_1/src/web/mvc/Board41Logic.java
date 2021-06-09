@@ -30,7 +30,7 @@ public class Board41Logic {
 	}
 	
 	public int boardInsert(Map<String, Object> pmap) {
-		logger.info("boardInsert 호출 성공");
+		logger.info("BoardMLogic boardInsert 호출 성공");
 		int result = 0;
 		int fileOk = 0;
 		boardMDao.boardMInsert(pmap);
@@ -39,6 +39,7 @@ public class Board41Logic {
 		if(pmap.containsKey("bs_file")) {
 			fileOk = boardSDao.boardSInsert(pmap);
 		}
+		logger.info("fileOk: "+fileOk);
 		result = 1;
 		return result;
 	}

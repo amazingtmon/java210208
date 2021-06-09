@@ -1,11 +1,14 @@
 package web.mvc;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -54,11 +57,20 @@ public class Board41Controller extends MultiActionController {
 		mav.addObject("boardList", boardList);
 		logger.info("boardList: "+boardList);
 		logger.info("mav: "+mav);
-		//String name = "이순신";
-		//HttpSession session = req.getSession();
-		//session.setAttribute("name", name);
+//		String name = "이순신";
+//		HttpSession session = req.getSession();
+//		session.setAttribute("name", name);
 //		      RequestDispatcher view = req.getRequestDispatcher("jsonGetBoardList.jsp");
-//		      view.forward(req, res);
+//		      try {
+//				view.forward(req, res);
+//			} catch (ServletException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		    session.invalidate();
 		return mav;
 	}
 
@@ -84,7 +96,7 @@ public class Board41Controller extends MultiActionController {
 		if(result == 1) {
 			res.sendRedirect("./getBoardList.sp4");
 		} else {
-			res.sendRedirect("./boardInsert.sp4");
+			res.sendRedirect("./getFail.sp4");
 		}
 	}
 

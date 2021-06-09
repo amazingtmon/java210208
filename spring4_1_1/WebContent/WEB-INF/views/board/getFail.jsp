@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>boardInsert page - [WEB-INF]</title>
+<title>Connect Fail - [WEB-INF]</title>
 </head>
 <body>
-	boardInsert!!
+	you Failed to connect....
 </body>
 </html>

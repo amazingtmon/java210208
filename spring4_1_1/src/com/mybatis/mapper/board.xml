@@ -42,6 +42,13 @@
 		WHERE bm_group = #{value}
 	</update>
 	
+	<update id="bmStepUpdate" parameterType="map">
+		UPDATE board_master2019
+		   SET bm_step = bm_step + 1
+		 WHERE bm_group = #{bm_group}
+		 <![CDATA[ and bm_step > #{bm_step ]]>
+	</update>
+	
 	<select id="getBoardList" parameterType="map" resultType="map"> 
 		select bm.bm_no, bm.bm_title, bm.bm_date, bs.bs_file, bm.bm_hit
         	from board_master2019 bm

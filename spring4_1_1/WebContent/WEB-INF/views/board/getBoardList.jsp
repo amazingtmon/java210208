@@ -7,9 +7,7 @@
 	if(boardList != null){
 		size = boardList.size();
 		out.print("List size: "+boardList.size());
-		
 	}
-	
 %>    
     <!DOCTYPE html>
     <html>
@@ -22,52 +20,140 @@
         <link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
         <script type="text/javascript" src="../easyui/jquery.min.js"></script>
         <script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
-        <script>
+        <script type="text/javascript">
             function search() {
                 $('#dg_datagrid').datagrid({
                     url: 'jsonGetBoardList.sp4',
                 });
             }
+            
             function ins() {
                 console.log("입력창 호출");
                 $('#dlg_ins').dialog('open')
             }
+           
+            function boardSel(){
+            	console.log("boardSel!!");
+                $('#dg_datagrid').datagrid({
+                    url: 'jsonGetBoardList.sp4',
+                    onLoadSuccess: function(){
+                    	alert('조회호출 성공!!');
+                    },
+                });
+            }
+            
+ 			function selected(){
+ 				$('#dg_datagrid').datagrid({
+ 					onClickRow: function(index,row){
+ 						console.log(`${index} : ${row}`);
+ 						$(this).datagrid('beginEdit', index);
+ 						var ed = $(this).datagrid('getEditor', {index:index,field:field});
+ 						$(ed.target).focus();
+ 					},
+ 				});
+ 			}          
+            
+            document.write("<% out.print("In script: "+size); %>");
+            
         </script>
     </head>
 
     <body>
-        <table id="dg_datagrid" class="easyui-datagrid" data-options="title:'게시판 ', toolbar:'#tb_board'">
+        <script type="text/javascript">
+            $(document).ready(function(){
+            	$('#dg_datagrid').datagrid({
+					onClickRow: function(index,row){
+						console.log(index+', '
+								+row["BM_NO"]+', '
+								+row["BM_WRITER"]);
+						console.log('clicked row');
+					},
+                    //url: 'jsonGetBoardList.sp4',
+                    /* columns:[[
+                    	{field:'BM_NO', title:'no', width:50, align:'center'}.
+                    ]] */
+                });
+                $('#btn_sel').bind('click', function(){
+                    alert('search');
+                    boardSel();
+                });
+                $('#btn_ins').bind('click', function(){
+                    alert('insert');
+                    boardIns();
+                });
+                $('#btn_upd').bind('click', function(){
+                    alert('upd');
+                    boardUpd();
+                });
+                $('#btn_del').bind('click', function(){
+                    alert('del');
+                    boardDel();
+                });
+            });
+        </script>    
+        <table id="dg_datagrid" class="easyui-datagrid" data-options="title:'게시판 ', toolbar:'#tb_board'" 
+        		style="width: 800px">
             <thead>
                 <tr>
-                    <th data-options="field:'BM_EMAIL'">email</th>
-                    <th data-options="field:'BM_STEP'">step</th>
-                    <th data-options="field:'BM_PW'">pw</th>
-                    <th data-options="field:'BM_NO'">no</th>
-                    <th data-options="field:'BM_CONTENT'">content</th>
-                    <th data-options="field:'BM_GROUP'">group</th>
-                    <th data-options="field:'BM_HIT'">hit</th>
-                    <th data-options="field:'BM_DATE'">date</th>
-                    <th data-options="field:'BM_POS'">pos</th>
-                    <th data-options="field:'BM_WRITER'">writer</th>
-                    <th data-options="field:'BM_PW'">pw</th>
-                    <th data-options="field:'BM_TITLE'">title</th>
+                    <th data-options="field:'BM_NO'" style="width: 50px" align="center">no</th>
+                    <th data-options="field:'BM_WRITER'" style="width: 100px">writer</th>
+                    <th data-options="field:'BM_TITLE'" style="width: 100px">title</th>
+                    <th data-options="field:'BM_CONTENT'" style="width: 300px">content</th>
+                    <th data-options="field:'BM_DATE'" style="width: 100px">date</th>
+                    <th data-options="field:'BM_STEP'" style="width: 50px">step</th>
+                    <th data-options="field:'BM_HIT'" style="width: 50px">hit</th>
                 </tr>
             </thead>
+            <tbody>
+<%
+// 조회 결과가 없을시
+if(size == 0){
+%> 
+			    <tr>
+			    	<th colspan="7">조회결과가 없습니다.</th>
+			    </tr>         
+<%
+}
+//조회 결과가 있을 때.
+else {
+	for(int i=0; i<size; i++){
+		Map<String,Object> rmap = boardList.get(i);
+		out.print(rmap.get("BM_NO"));
+		if(i==size) break;
+%>
+			    <tr>
+			    	<th><%=rmap.get("BM_NO")%></th>
+			    	<th><%=rmap.get("BM_WRITER")%></th>
+			    	<th><%=rmap.get("BM_TITLE")%></th>
+			    	<th><%=rmap.get("BM_CONTENT")%></th>
+			    	<th><%=rmap.get("BM_DATE")%></th>
+			    	<th><%=rmap.get("BM_STEP")%></th>
+			    	<th><%=rmap.get("BM_HIT")%></th>
+			    </tr> 
+
+<%
+	}
+}
+	%> 
+                <tr>
+                    <th data-options="field:'BM_NO'" style="width: 50px" align="center">no</th>
+                    <th data-options="field:'BM_WRITER'" style="width: 100px">writer</th>
+                    <th data-options="field:'BM_TITLE'" style="width: 100px">title</th>
+                    <th data-options="field:'BM_CONTENT'" style="width: 300px">content</th>
+                    <th data-options="field:'BM_DATE'" style="width: 100px">date</th>
+                    <th data-options="field:'BM_STEP'" style="width: 50px">step</th>
+                    <th data-options="field:'BM_HIT'" style="width: 50px">hit</th>
+                </tr>           	
+            
+            </tbody>
             <div id="tb_board" style="padding:2px 5px;">
-                <a href="javascript: search()" class="easyui-linkbutton" text="조회" iconCls="icon-search"
+                <a id="btn_sel" href="#" class="easyui-linkbutton" text="조회" iconCls="icon-search"
                     plain="true"></a>
-                <a href="javascript: ins()" class="easyui-linkbutton" text="입력" iconCls="icon-add" plain="true"></a>
-                <a href="#" class="easyui-linkbutton" text="수정" iconCls="icon-edit" plain="true"></a>
-                <a href="#" class="easyui-linkbutton" text="삭제" iconCls="icon-cancel" plain="true"></a>
+                <a id="btn_ins" href="#" class="easyui-linkbutton" text="입력" iconCls="icon-add" plain="true"></a>
+                <a id="btn_upd" href="#" class="easyui-linkbutton" text="수정" iconCls="icon-edit" plain="true"></a>
+                <a id="btn_del" href="#" class="easyui-linkbutton" text="삭제" iconCls="icon-cancel" plain="true"></a>
             </div>
 
         </table>
-        <!-- 글쓰기 화면 시작 -->
-        <div id="dlg_ins" class="easyui-dialog" title="My Dialog" style="width: 400px; height: 200px;"
-            data-options="iconCls:'icon-save',resizable:true,modal:false">
-            Dialog Content.
-        </div>
-        <!-- 글쓰기 화면 끝 -->
     </body>
-
     </html>

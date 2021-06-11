@@ -11,6 +11,9 @@
 		DELETE FROM board_sub2019 WHERE bm_no=#{bm_no}
 	</delete>
 	
+	<!-- 글번호 채번 
+	/*+index_desc(board_master2019 BM_MNO_PK)*/ => 힌트문.
+	-->
 	<select id="getBmNo" parameterType="int" resultType="int">
 		SELECT NVL((SELECT /*+index_desc(board_master2019 BM_MNO_PK)*/ bm_no
 					FROM board_master2019
@@ -32,16 +35,19 @@
 		                            )
 	</insert>
 	
+	<!-- 첨부파일이 존재하는 경우. -->
 	<insert id="boardSInsert" parameterType="map">
 		INSERT INTO board_sub2019(bm_no,bs_seq,bs_file,bs_size) values(#{bm_no},#{bs_seq},#{bs_file},#{bs_size})
 	</insert>
 	
+	<!-- 조회수 -->
 	<update id="hitCount" parameterType="int">
 		UPDATE board_master2019
 		   SET bm_step = bm_step + 1
 		WHERE bm_group = #{value}
 	</update>
 	
+	<!-- <form> 태그로 전송 -->																																																																																																																																																																																																																																																																																																																																																																																																																																															
 	<update id="bmStepUpdate" parameterType="map">
 		UPDATE board_master2019
 		   SET bm_step = bm_step + 1
@@ -50,13 +56,19 @@
 	</update>
 	
 	<select id="getBoardList" parameterType="map" resultType="map"> 
-		select bm.bm_no, bm.bm_title, bm.bm_date, bs.bs_file, bm.bm_hit
+		select bm.bm_no, bm.bm_title, bm.bm_writer, bm.bm_email,
+		       bm.bm_content, bm.bm_date, bm.bm_group, bm.bm_pos, 
+		       bm.bm_step, bm.bm_pw, 
+			   bs.bs_file
         	from board_master2019 bm
             	,board_sub2019 bs
        		where bm.bm_no = bs.bm_no(+)
        		<!-- select문이 true일때만 아래 if 조건문이 실행된다. -->
-       		<if test='cb_serach!=null and cb_search.equals(bm_title")'>
+        	<if test='cb_serach!=null and cb_search.equals(bm_title")'>
        			AND bm.bm_title LIKE '%'||#{tb_search}||'%'
+       		</if> 
+       		<if test='bm_no > 0'>
+       			AND bm.bm_no = #{bm_no}
        		</if>
        			ORDER BY bm_group desc, bm_step asc
 	</select>

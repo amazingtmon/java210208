@@ -5,7 +5,8 @@
 	<!-- 클래스 등록 부분 -->
 
 
-	<!-- BeanNameUrlHandlerMapping 방법. 거의 사용하지 않음. -->
+	<!-- BeanNameUrlHandlerMapping 방법. 
+		메소드가 아닌 name으로 관리하는 거라 우리가 사용하기에는 관리가 용이하지 않아 사용하지 않음. -->
 	<bean id="default-handler-mapping"
 		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
 
@@ -29,6 +30,7 @@
 			<!-- <props> = properties와 같다. -->
 			<props>
 				<prop key="/board/getBoardList.sp4">board-controller</prop>
+				<prop key="/board/getBoardDetail.sp4">board-controller</prop>
 				<prop key="/board/boardInsert.sp4">board-controller</prop>
 				<prop key="/board/jsonGetBoardList.sp4">board-controller</prop>
 				<prop key="/di/getEmpList.sp4">emp-controller</prop>
@@ -44,6 +46,7 @@
 		<property name="mappings">
 			<props>
 				<prop key="/board/getBoardList.sp4">getBoardList</prop>
+				<prop key="/board/getBoardDetail.sp4">getBoardDetail</prop>
 				<prop key="/board/boardInsert.sp4">boardInsert</prop>
 				<prop key="/board/jsonGetBoardList.sp4">jsonGetBoardList</prop>
 			</props>
@@ -62,6 +65,7 @@
 		</property>
 	</bean>
 
+	<!-- 응답페이지의 역할 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />

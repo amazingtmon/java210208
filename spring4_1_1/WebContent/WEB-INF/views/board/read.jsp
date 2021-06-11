@@ -24,23 +24,38 @@
 		bm_content = boardDetail.get(0).get("BM_CONTENT").toString();
 		bm_pwd = boardDetail.get(0).get("BM_PW").toString();
 		bm_no = boardDetail.get(0).get("BM_NO").toString();
-		bm_group = boardDetail.get(0).get("BM_GROUP").toString();
+/* 		bm_group = boardDetail.get(0).get("BM_GROUP").toString();
 		bm_pos = boardDetail.get(0).get("BM_POS").toString();
-		bm_step = boardDetail.get(0).get("BM_STEP").toString();
+		bm_step = boardDetail.get(0).get("BM_STEP").toString(); */
 	}
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Read.jsp - [WEBCONTENT]</title>
+<title>Read.jsp - [WEB-INF]</title>
 <link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
 <script type="text/javascript" src="../easyui/jquery.min.js"></script>
 <script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript">
+function addAction(){
+	$("#f_boardAdd").attr("method","get");
+	$("#f_boardAdd").attr("action","/board/boardList.mvc?crud=ins");
+	$("#f_boardAdd").submit();
+	//부모창에 함수를 호출할때 opener.함수명();
+	//opener.boardList();
+	//self.close();
+}
+
+//댓글쓰기
+function repleForm(){
+	$("#dlg_boardAdd").dialog('open');
+}
+</script>
 </head>
 <body>
-	read.jsp in WEBCONTENT
+	read.jsp in WEB-INF
 	<table align="center" id="p" class="easyui-panel" title="글상세보기"
 		data-options="footer:'#tb_read'"
 		style="width: 670px; height: 380px; padding: 10px; background: #fafafa;">
@@ -82,6 +97,60 @@
 		<a	href="javascript:boardList()" class="easyui-linkbutton"
 			iconCls="icon-search" plain="true">목록</a>
 	</div>
+	
+<!--================== [[댓글쓰기 화면]] ==================-->
+<div id="dlg_boardAdd" title="댓글쓰기" class="easyui-dialog" style="width:600px;height:400px;padding:10px" data-options="closed:'true',modal:'true',footer:'#tbar_boardAdd'">	
+<!-- 
+form전송시 encType옵션이 추가되면 request객체로 사용자가 입력한 값을 꺼낼 수 없다.
+MultipartRequest  => cos.jar
+ -->	
+	<form id="f_boardAdd" method="get" enctype="multipart/form-data">
+	<input type="hidden" name="bm_no" value="<%=bm_no%>">
+	<input type="hidden" name="bm_group" value="<%=bm_group%>">
+	<input type="hidden" name="bm_pos" value="<%=bm_pos%>">
+	<input type="hidden" name="bm_step" value="<%=bm_step%>">
+	<!-- <form id="f_boardAdd"> -->
+	<table>
+		<tr>
+			<td width="100px">제목</td>
+			<td width="500px">
+				<input class="easyui-textbox" data-options="width:'350px'" id="bm_title" name="bm_title" required>
+			</td>
+		</tr>
+		<tr>	
+			<td width="100px">작성자</td>
+			<td width="500px">
+				<input class="easyui-textbox" data-options="width:'150px'" id="bm_writer" name="bm_writer" required>
+			</td>
+		</tr>
+		<tr>
+			<td width="100px">이메일</td>
+			<td width="500px">
+				<input class="easyui-textbox" data-options="width:'250px'" id="bm_email" name="bm_email">
+			</td>
+		</tr>
+		<tr>			
+			<td width="100px">내용</td>
+			<td width="500px">
+				<input class="easyui-textbox" id="bm_content" name="bm_content" data-options="multiline:'true',width:'400px',height:'90px'" required>
+			</td>
+		</tr>
+		<tr>			
+			<td width="100px">비번</td>
+			<td width="500px">
+				<input class="easyui-textbox" data-options="width:'100px'" id="bm_pw" name="bm_pw" required>
+			</td>
+		</tr>
+	</table>
+	</form>
+</div>
+<!-- 입력 화면 버튼 추가 -->
+<div id="tbar_boardAdd" align="right">
+	<a href="javascript:addAction()" class="easyui-linkbutton" iconCls="icon-save">저장</a>
+	<a href="javascript:$('#dlg_boardAdd').dialog('close')" 
+	   class="easyui-linkbutton" iconCls="icon-cancel">닫기</a>
+</div>
+		<!-- 댓글쓰기  끝  -->	
 
 </body>
 </html>

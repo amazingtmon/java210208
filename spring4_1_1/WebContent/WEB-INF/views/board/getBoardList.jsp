@@ -35,7 +35,7 @@
             function boardSel(){
             	console.log("boardSel!!");
                 $('#dg_datagrid').datagrid({
-                    url: 'jsonGetBoardList.sp4',
+                    url: 'getBoardDetail.sp4',
                     onLoadSuccess: function(){
                     	alert('조회호출 성공!!');
                     },
@@ -62,13 +62,12 @@
         <script type="text/javascript">
             $(document).ready(function(){
             	$('#dg_datagrid').datagrid({
-					onClickRow: function(index,row){
+					onDblClickRow: function(index,row){
 						console.log(index+', '
 								+row["BM_NO"]+', '
 								+row["BM_WRITER"]);
-						console.log('clicked row');
+                    	url: 'getBoardDetail.sp4';
 					},
-                    //url: 'jsonGetBoardList.sp4',
                     /* columns:[[
                     	{field:'BM_NO', title:'no', width:50, align:'center'}.
                     ]] */
@@ -92,7 +91,7 @@
             });
         </script>    
         <table id="dg_datagrid" class="easyui-datagrid" data-options="title:'게시판 ', toolbar:'#tb_board'" 
-        		style="width: 800px">
+        		style="width: 900px">
             <thead>
                 <tr>
                     <th data-options="field:'BM_NO'" style="width: 50px" align="center">no</th>
@@ -102,6 +101,7 @@
                     <th data-options="field:'BM_DATE'" style="width: 100px">date</th>
                     <th data-options="field:'BM_STEP'" style="width: 50px">step</th>
                     <th data-options="field:'BM_HIT'" style="width: 50px">hit</th>
+                    <th data-options="field:'BS_FILE'" style="width: 100px">file</th>
                 </tr>
             </thead>
             <tbody>
@@ -118,33 +118,24 @@ if(size == 0){
 else {
 	for(int i=0; i<size; i++){
 		Map<String,Object> rmap = boardList.get(i);
-		out.print(rmap.get("BM_NO"));
 		if(i==size) break;
 %>
 			    <tr>
-			    	<th><%=rmap.get("BM_NO")%></th>
-			    	<th><%=rmap.get("BM_WRITER")%></th>
-			    	<th><%=rmap.get("BM_TITLE")%></th>
-			    	<th><%=rmap.get("BM_CONTENT")%></th>
-			    	<th><%=rmap.get("BM_DATE")%></th>
-			    	<th><%=rmap.get("BM_STEP")%></th>
-			    	<th><%=rmap.get("BM_HIT")%></th>
+			    	<td><%=rmap.get("BM_NO")%></td>
+			    	<td><%=rmap.get("BM_WRITER")%></td>
+					<td><a href="getBoardDetail.sp4?bm_no=<%=rmap.get("BM_NO")%>">
+							<%=rmap.get("BM_TITLE")%></a></td>
+			    	<td><%=rmap.get("BM_CONTENT")%></td>
+			    	<td><%=rmap.get("BM_DATE")%></td>
+			    	<td><%=rmap.get("BM_STEP")%></td>
+			    	<td><%=rmap.get("BM_HIT")%></td>
+			    	<td><%=rmap.get("BS_FILE")%></td>
 			    </tr> 
 
 <%
 	}
 }
 	%> 
-                <tr>
-                    <th data-options="field:'BM_NO'" style="width: 50px" align="center">no</th>
-                    <th data-options="field:'BM_WRITER'" style="width: 100px">writer</th>
-                    <th data-options="field:'BM_TITLE'" style="width: 100px">title</th>
-                    <th data-options="field:'BM_CONTENT'" style="width: 300px">content</th>
-                    <th data-options="field:'BM_DATE'" style="width: 100px">date</th>
-                    <th data-options="field:'BM_STEP'" style="width: 50px">step</th>
-                    <th data-options="field:'BM_HIT'" style="width: 50px">hit</th>
-                </tr>           	
-            
             </tbody>
             <div id="tb_board" style="padding:2px 5px;">
                 <a id="btn_sel" href="#" class="easyui-linkbutton" text="조회" iconCls="icon-search"

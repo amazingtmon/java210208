@@ -6,7 +6,7 @@
 	boardDetail = (List<Map<String,Object>>)request.getAttribute("boardDetail");
 	int size = 0;
 	String bm_email = null;
-	String bm_file = null;
+	String bs_file = null;
 	String bm_title = null;
 	String bm_writer = null;
 	String bm_content = null;
@@ -18,15 +18,15 @@
 	if(boardDetail != null){
 		size = boardDetail.size();
 		bm_email = boardDetail.get(0).get("BM_EMAIL").toString();
-		bm_file = boardDetail.get(0).get("BS_FILE").toString();
+		bs_file = boardDetail.get(0).get("BS_FILE").toString();
 		bm_title = boardDetail.get(0).get("BM_TITLE").toString();
 		bm_writer = boardDetail.get(0).get("BM_WRITER").toString();
 		bm_content = boardDetail.get(0).get("BM_CONTENT").toString();
 		bm_pwd = boardDetail.get(0).get("BM_PW").toString();
 		bm_no = boardDetail.get(0).get("BM_NO").toString();
-/* 		bm_group = boardDetail.get(0).get("BM_GROUP").toString();
+ 		bm_group = boardDetail.get(0).get("BM_GROUP").toString();
 		bm_pos = boardDetail.get(0).get("BM_POS").toString();
-		bm_step = boardDetail.get(0).get("BM_STEP").toString(); */
+		bm_step = boardDetail.get(0).get("BM_STEP").toString();
 	}
 %>
 <!DOCTYPE html>
@@ -40,8 +40,6 @@
 <script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript">
 function addAction(){
-	$("#f_boardAdd").attr("method","get");
-	$("#f_boardAdd").attr("action","/board/boardList.mvc?crud=ins");
 	$("#f_boardAdd").submit();
 	//부모창에 함수를 호출할때 opener.함수명();
 	//opener.boardList();
@@ -52,10 +50,28 @@ function addAction(){
 function repleForm(){
 	$("#dlg_boardAdd").dialog('open');
 }
+
+//글수정
+function updateForm(){
+	//$("#dlg_upd").dialog('open');
+	$('#dlg_upd').dialog({
+	    title: '글수정',
+	    width: 700,
+	    height: 650,
+	    closed: false,
+	    cache: false,
+	    href: 'updateForm.sp4?bm_writer=<%=bm_writer%>&bm_email=<%=bm_email%>&bm_no=<%=bm_no%>&bs_file=<%=bs_file%>',
+	    modal: true
+	});		
+}
+
+//목록으로 돌아가기
+function boardList(){
+	location.href="./getBoardList.sp4";
+}
 </script>
 </head>
 <body>
-	read.jsp in WEB-INF
 	<table align="center" id="p" class="easyui-panel" title="글상세보기"
 		data-options="footer:'#tb_read'"
 		style="width: 670px; height: 380px; padding: 10px; background: #fafafa;">
@@ -104,7 +120,7 @@ function repleForm(){
 form전송시 encType옵션이 추가되면 request객체로 사용자가 입력한 값을 꺼낼 수 없다.
 MultipartRequest  => cos.jar
  -->	
-	<form id="f_boardAdd" method="get" enctype="multipart/form-data">
+	<form id="f_boardAdd" method="post" enctype="multipart/form-data" action="boardInsert.sp4">
 	<input type="hidden" name="bm_no" value="<%=bm_no%>">
 	<input type="hidden" name="bm_group" value="<%=bm_group%>">
 	<input type="hidden" name="bm_pos" value="<%=bm_pos%>">
@@ -151,6 +167,7 @@ MultipartRequest  => cos.jar
 	   class="easyui-linkbutton" iconCls="icon-cancel">닫기</a>
 </div>
 		<!-- 댓글쓰기  끝  -->	
+<div id="dlg_upd"></div>		
 
 </body>
 </html>

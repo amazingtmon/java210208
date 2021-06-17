@@ -10,17 +10,15 @@ import com.vo.BoardMVO;
 
 public class Board41MDao {
 	Logger logger = Logger.getLogger(Board41MDao.class);
-			
 	private SqlSessionTemplate sqlSessionTemplate = null;
 	public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
-		logger.info("sqlSessionTemplate: "+ sqlSessionTemplate);
 		this.sqlSessionTemplate = sqlSessionTemplate;
 	}
 	
 	public List<Map<String, Object>> getBoardList(Map<String, Object> pmap) {
-		logger.info("getBoardList 호출성공!!");
 		List<Map<String, Object>> boardList = null;
-		boardList = sqlSessionTemplate.selectList("getBoardList", pmap);
+		//List<BoardMVO> boardList2 = null;
+		boardList = sqlSessionTemplate.selectList("getBoardList",pmap);
 		/*
 		boardList2 = sqlSessionTemplate.selectList("getBoardMap",pmap);
 		for(BoardMVO bmvo:boardList2) {
@@ -34,21 +32,37 @@ public class Board41MDao {
 	}
 	
 	public int boardMInsert(Map<String, Object> pmap) {
-		logger.info("boardMInsert 호출 성공");
+		logger.info("boardMInsert 호출 성공 : "+pmap);
 		int result = 0;
 		result = 1;
 		sqlSessionTemplate.insert("boardMInsert",pmap);
+		logger.info("result: "+result);
 		return result;
+		
 	}
-
+	
 	public void bmStepUpdate(Map<String, Object> pmap) {
 		logger.info("bmStepUpdate 호출 성공");
-		sqlSessionTemplate.update("bmStepUpdate", pmap);
+		sqlSessionTemplate.update("bmStepUpdate",pmap);		
 	}
-
+	
+	public void hitCount(int bm_no) {
+		logger.info("hitCount 호출 성공");
+		sqlSessionTemplate.update("hitCount",bm_no);		
+	}
+	
 	public int getBmGroup() {
 		logger.info("getBmGroup 호출 성공");
-		sqlSessionTemplate.selectList("getBmGroup");
-		return 0;
+		int result = 0;
+		result = sqlSessionTemplate.selectOne("getBmGroup");		
+		return result;
 	}
+	
+	public int getBmNo() {
+		logger.info("getBmNo 호출 성공");
+		int result = 0;
+		result = sqlSessionTemplate.selectOne("getBmNo");		
+		return result;
+	}
+	
 }

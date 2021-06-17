@@ -78,17 +78,32 @@ public class Board41Controller extends MultiActionController {
 		logger.info("getBoardList 호출 성공");
 		HashMapBinder hmb = new HashMapBinder(req);
 		Map<String, Object> target = new HashMap<>();
-		hmb.bind(target);
+		hmb.bind(target);//bm_no값 담음.
+		target.put("gubun", "detail");
+		logger.info("bm_no : "+target.get("bm_no"));
 		List<Map<String, Object>> boardDetail= null;
 		boardDetail = boardLogic.getBoardList(target);
-		logger.info("bm_no: "+target.get("BM_NO"));
 		//boardLogic.getBoardList(target); where bm_no=? and bm_title LIKE '%'||?||'%'
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("board/getBoardList");//페이지 이름. url은 sp4, 페이지는 jsp페이지.
-		mav.addObject("boardList", boardDetail);
-		logger.info("boardList: "+boardDetail);
+		mav.setViewName("board/read");//페이지 이름. url은 sp4, 페이지는 jsp페이지.
+		mav.addObject("boardDetail", boardDetail);
+		logger.info("boardDetail: "+boardDetail);
 		logger.info("mav: "+mav);
 
+		return mav;
+	}
+	
+	public ModelAndView updateForm(HttpServletRequest req, HttpServletResponse res) 
+			throws Exception
+	{
+		logger.info("updateForm 호출 성공");
+		HashMapBinder hmb = new HashMapBinder(req);
+		Map<String,Object> target = new HashMap<>();
+		hmb.bindPost(target);//bm_no값 담음.
+		logger.info("bm_no : "+target.get("bm_no"));
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("board/updateForm");
+		mav.addObject("target", target);
 		return mav;
 	}	
 
@@ -108,7 +123,7 @@ public class Board41Controller extends MultiActionController {
 		logger.info("boardInsert 호출 성공");
 		HashMapBinder hmb = new HashMapBinder(req);
 		Map<String, Object> pmap = new HashMap<>();
-		hmb.bind(pmap);
+		hmb.multiBind(pmap);
 		int result = 0;
 		result = boardLogic.boardInsert(pmap);
 		if(result == 1) {

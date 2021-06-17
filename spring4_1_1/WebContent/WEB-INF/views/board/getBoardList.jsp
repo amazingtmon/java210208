@@ -31,6 +31,11 @@
                 console.log("입력창 호출");
                 $('#dlg_ins').dialog('open')
             }
+            
+            function insAction(){
+                console.log("입력액션 호출");
+                $('#board_ins').submit();
+            }
            
             function boardSel(){
             	console.log("boardSel!!");
@@ -73,19 +78,15 @@
                     ]] */
                 });
                 $('#btn_sel').bind('click', function(){
-                    alert('search');
                     boardSel();
                 });
                 $('#btn_ins').bind('click', function(){
-                    alert('insert');
                     boardIns();
                 });
                 $('#btn_upd').bind('click', function(){
-                    alert('upd');
                     boardUpd();
                 });
                 $('#btn_del').bind('click', function(){
-                    alert('del');
                     boardDel();
                 });
             });
@@ -99,7 +100,6 @@
                     <th data-options="field:'BM_TITLE'" style="width: 100px">title</th>
                     <th data-options="field:'BM_CONTENT'" style="width: 300px">content</th>
                     <th data-options="field:'BM_DATE'" style="width: 100px">date</th>
-                    <th data-options="field:'BM_STEP'" style="width: 50px">step</th>
                     <th data-options="field:'BM_HIT'" style="width: 50px">hit</th>
                     <th data-options="field:'BS_FILE'" style="width: 100px">file</th>
                 </tr>
@@ -122,14 +122,28 @@ else {
 %>
 			    <tr>
 			    	<td><%=rmap.get("BM_NO")%></td>
-			    	<td><%=rmap.get("BM_WRITER")%></td>
+			    	<td>
+<!-- 너 댓글이니? -->       
+<%
+	String imgPath = "\\board\\";
+	if(Integer.parseInt(rmap.get("BM_POS").toString()) >0 ){
+		for(int j=0;j<Integer.parseInt(rmap.get("BM_POS").toString());j++){
+			out.print("&nbsp;&nbsp;");
+		}
+%>
+	<!-- 여기는 html 땅이다.  -->
+	<img src="<%=imgPath %>reply.gif" border="0">
+<%
+	}/////////////////end of if
+%>	   			    	
+			    	<%=rmap.get("BM_WRITER")%></td>
 					<td><a href="getBoardDetail.sp4?bm_no=<%=rmap.get("BM_NO")%>">
 							<%=rmap.get("BM_TITLE")%></a></td>
 			    	<td><%=rmap.get("BM_CONTENT")%></td>
 			    	<td><%=rmap.get("BM_DATE")%></td>
-			    	<td><%=rmap.get("BM_STEP")%></td>
 			    	<td><%=rmap.get("BM_HIT")%></td>
-			    	<td><%=rmap.get("BS_FILE")%></td>
+			    	<td><a href="download.jsp?bs_file=<%=rmap.get("BS_FILE") %>" style="text-decoration:none;">
+			    			<%=rmap.get("BS_FILE") %></a></td>
 			    </tr> 
 
 <%
@@ -140,11 +154,41 @@ else {
             <div id="tb_board" style="padding:2px 5px;">
                 <a id="btn_sel" href="#" class="easyui-linkbutton" text="조회" iconCls="icon-search"
                     plain="true"></a>
-                <a id="btn_ins" href="#" class="easyui-linkbutton" text="입력" iconCls="icon-add" plain="true"></a>
+                <a id="btn_ins" href="javascript:ins()" class="easyui-linkbutton" text="입력" iconCls="icon-add" plain="true"></a>
                 <a id="btn_upd" href="#" class="easyui-linkbutton" text="수정" iconCls="icon-edit" plain="true"></a>
                 <a id="btn_del" href="#" class="easyui-linkbutton" text="삭제" iconCls="icon-cancel" plain="true"></a>
             </div>
 
         </table>
+    <!--=========================== [[글쓰기 화면 시작]] =============================-->
+    <div id="dlg_ins" class="easyui-dialog" title="글쓰기" data-options="iconCls:'icon-save', closed:true, footer:'#ft_ins'" style="width:600px;height:650px;padding:10px">
+    	<form id="board_ins" method="post" enctype="multipart/form-data" action="boardInsert.sp4">    
+    	<input type="hidden" name="bm_pos" value="0">
+    	<input type="hidden" name="bm_step" value="0">
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" name="bm_title" label="제목:" labelPosition="top" data-options="prompt:'제목'" style="width:400px;">
+        </div>
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox"  name="bm_writer" label="작성자:" labelPosition="top" data-options="prompt:'작성자'" style="width:250px;">
+        </div>        
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox"  name="bm_content" label="내용:" labelPosition="top" data-options="prompt:'내용',multiline:true, width:500, height:120">
+        </div>
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" name="bm_email" label="Email:" labelPosition="top" data-options="prompt:'Enter a email address...',validType:'email'" style="width:100%;">
+        </div>
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox"  name="bm_pw" label="비밀번호:" labelPosition="top" style="width:200;">
+        </div>
+        <div style="margin-bottom:20px">
+            <input class="easyui-filebox" label="첨부파일:"  name="bs_file" labelPosition="top" data-options="width:'400px'" >
+        </div>
+    	</form>
+    </div>    
+    <div id="ft_ins">
+		<a href="javascript:insAction()" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true">저장</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',plain:true">취소</a>
+	</div>
+    <!--=========================== [[글쓰기 화면   끝 ]] =============================-->          
     </body>
     </html>

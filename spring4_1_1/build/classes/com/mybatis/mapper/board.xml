@@ -15,7 +15,7 @@
 	/*+index_desc(board_master2019 BM_MNO_PK)*/ => 힌트문.
 	-->
 	<select id="getBmNo" parameterType="int" resultType="int">
-		SELECT NVL((SELECT /*+index_desc(board_master2019 BM_MNO_PK)*/ bm_no
+		SELECT NVL((SELECT /*+index_desc(board_master2019 BOARD_MNO_PK)*/ bm_no
 					FROM board_master2019
 					WHERE rownum = 1), 0)+1 bm_no FROM dual
 	</select>
@@ -31,7 +31,7 @@
 		INSERT INTO board_master2019(bm_no, bm_title, bm_writer, bm_email
 		                           , bm_content, bm_date, bm_group, bm_pos, bm_step, bm_pw) 
 		                      values(#{bm_no},#{bm_title},#{bm_writer},#{bm_email}
-		                           , #{bm_content}, to_char(sysdate, 'YYYY-MM-DD'), 0,0,0,#{bm_pw}
+		                           , #{bm_content}, to_char(sysdate, 'YYYY-MM-DD'), #{bm_group},#{bm_pos},#{bm_step},#{bm_pw}
 		                            )
 	</insert>
 	
@@ -43,8 +43,8 @@
 	<!-- 조회수 -->
 	<update id="hitCount" parameterType="int">
 		UPDATE board_master2019
-		   SET bm_step = bm_step + 1
-		WHERE bm_group = #{value}
+		   SET bm_hit = bm_hit + 1
+		WHERE bm_no = #{value}
 	</update>
 	
 	<!-- <form> 태그로 전송 -->																																																																																																																																																																																																																																																																																																																																																																																																																																															
@@ -52,25 +52,24 @@
 		UPDATE board_master2019
 		   SET bm_step = bm_step + 1
 		 WHERE bm_group = #{bm_group}
-		 <![CDATA[ and bm_step > #{bm_step ]]>
+		 <![CDATA[ and bm_step > #{bm_step}]]>
 	</update>
 	
-	<select id="getBoardList" parameterType="map" resultType="map"> 
-		select bm.bm_no, bm.bm_title, bm.bm_writer, bm.bm_email,
-		       bm.bm_content, bm.bm_date, bm.bm_group, bm.bm_pos, 
-		       bm.bm_step, bm.bm_pw, 
-			   bs.bs_file
-        	from board_master2019 bm
-            	,board_sub2019 bs
-       		where bm.bm_no = bs.bm_no(+)
-       		<!-- select문이 true일때만 아래 if 조건문이 실행된다. -->
-        	<if test='cb_serach!=null and cb_search.equals(bm_title")'>
-       			AND bm.bm_title LIKE '%'||#{tb_search}||'%'
-       		</if> 
-       		<if test='bm_no > 0'>
-       			AND bm.bm_no = #{bm_no}
-       		</if>
-       			ORDER BY bm_group desc, bm_step asc
+	<select id="getBoardList" parameterType="map" resultType="map">
+		 SELECT bm.bm_no, bm.bm_title, bm.bm_date, bm.bm_hit
+		       ,bm.bm_group, bm.bm_pos, bm.bm_step, bm.bm_email, bm.bm_pw
+		       ,bm.bm_writer, bm.bm_content
+		       ,NVL(bs.bs_file, 'no files') bs_file
+		  FROM board_master2019 bm
+		      ,board_sub2019 bs
+		 WHERE bm.bm_no = bs.bm_no(+)	
+		<if test='cb_search!=null and cb_search.equals("bm_title")'>
+	  	   AND bm.bm_title LIKE '%'||#{tb_search}||'%'
+		</if>	 
+		<if test='bm_no > 0'>
+	  	   AND bm.bm_no = #{bm_no}
+		</if>	 
+		ORDER BY bm_group  desc, bm_step asc
 	</select>
 	
 	<select id="getBoardListAll" parameterType="map" resultType="map"> 

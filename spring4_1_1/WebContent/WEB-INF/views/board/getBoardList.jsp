@@ -29,7 +29,7 @@
             
             function ins() {
                 console.log("입력창 호출");
-                $('#dlg_ins').dialog('open')
+                $('#dlg_ins').dialog('open');
             }
             
             function insAction(){
@@ -42,7 +42,6 @@
                 $('#dg_datagrid').datagrid({
                     url: 'getBoardDetail.sp4',
                     onLoadSuccess: function(){
-                    	alert('조회호출 성공!!');
                     },
                 });
             }
@@ -142,10 +141,22 @@ else {
 			    	<td><%=rmap.get("BM_CONTENT")%></td>
 			    	<td><%=rmap.get("BM_DATE")%></td>
 			    	<td><%=rmap.get("BM_HIT")%></td>
-			    	<td><a href="download.jsp?bs_file=<%=rmap.get("BS_FILE") %>" style="text-decoration:none;">
-			    			<%=rmap.get("BS_FILE") %></a></td>
+			    	<td>
+<%
+	if(rmap.get("BS_FILE")==null || rmap.get("BS_FILE").toString().length()==8){
+%>
+			    	<%="파일없음"%>
+<%
+	}
+	else{
+%>			    			
+			    	<a href="download.jsp?bs_file=<%=rmap.get("BS_FILE") %>" style="text-decoration:none;">
+			    			<%=rmap.get("BS_FILE") %></a>
+<%
+	}
+%>			    			
+			    	</td>
 			    </tr> 
-
 <%
 	}
 }

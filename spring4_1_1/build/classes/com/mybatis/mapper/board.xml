@@ -3,11 +3,13 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="com.mybatis.mapper.BoardMapper">
-	<delete id="boardMDel" parameterType="map">
+	
+	<!-- ================== Delete Section ================= -->
+	<delete id="boardMDelte" parameterType="map">
 		DELETE FROM board_master2019 WHERE bm_no=#{bm_no}
 	</delete>
 	
-	<delete id="boardSDel" parameterType="map">
+	<delete id="boardSDelete" parameterType="map">
 		DELETE FROM board_sub2019 WHERE bm_no=#{bm_no}
 	</delete>
 	
@@ -27,6 +29,7 @@
 			FROM dual
 	</select>
 	
+	<!-- ================== Insert Section ================= -->
 	<insert id="boardMInsert" parameterType="map">
 		INSERT INTO board_master2019(bm_no, bm_title, bm_writer, bm_email
 		                           , bm_content, bm_date, bm_group, bm_pos, bm_step, bm_pw) 
@@ -39,6 +42,8 @@
 	<insert id="boardSInsert" parameterType="map">
 		INSERT INTO board_sub2019(bm_no,bs_seq,bs_file,bs_size) values(#{bm_no},#{bs_seq},#{bs_file},#{bs_size})
 	</insert>
+	
+	<!-- ================== Update Section ================= -->
 	
 	<!-- 조회수 -->
 	<update id="hitCount" parameterType="int">
@@ -54,6 +59,18 @@
 		 WHERE bm_group = #{bm_group}
 		 <![CDATA[ and bm_step > #{bm_step}]]>
 	</update>
+	
+	<update id="boardMUpdate" parameterType="map">
+		UPDATE board_master2019
+		   SET bm_title = #{bm_title}
+		   	  ,bm_writer = #{bm_writer}
+		   	  ,bm_email = #{bm_email}
+		   	  ,bm_content = #{bm_content}
+		   	  ,bm_pw = #{bm_pw}
+		 WHERE bm_no = #{bm_no}
+	</update>
+	
+		<!-- ================== Select Section ================= -->
 	
 	<select id="getBoardList" parameterType="map" resultType="map">
 		 SELECT bm.bm_no, bm.bm_title, bm.bm_date, bm.bm_hit

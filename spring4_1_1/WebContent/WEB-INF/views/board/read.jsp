@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
-<%
+<%	
 	List<Map<String,Object>> boardDetail = null;
 	boardDetail = (List<Map<String,Object>>)request.getAttribute("boardDetail");
 	int size = 0;
@@ -60,9 +60,41 @@ function updateForm(){
 	    height: 650,
 	    closed: false,
 	    cache: false,
-	    href: 'updateForm.sp4?bm_writer=<%=bm_writer%>&bm_email=<%=bm_email%>&bm_no=<%=bm_no%>&bs_file=<%=bs_file%>',
+	    href: 'updateForm.jsp?bm_writer=<%=bm_writer%>&bm_email=<%=bm_email%>&bm_no=<%=bm_no%>&bs_file=<%=bs_file%>&bm_title=<%=bm_title%>',
 	    modal: true
 	});		
+}
+
+//수정 정보 제출
+function updAction(){
+	console.log("수정액션 호출");
+	$('#board_upd').submit();
+}	
+
+//삭제 확인
+function boardDelAction(){
+	console.log("삭제확인");
+	let db_pw = <%=bm_pwd%>;
+	let u_pw = $('#user_pw').textbox('getValue');
+	if(db_pw == u_pw){
+		$.messager.confirm('Confirm','Are you sure you want to delete?',function(r){
+		    if (r){
+		    	location.href='boardDelete.sp4?bm_no=<%=bm_no%>&bs_file<%=bs_file%>';
+		    }
+		});
+	}else{
+		alert("비번이 다르네요 :)");
+		return;//함수 탈출
+	}
+	
+}	
+//삭제 모달창 open
+function boardDelView(){
+	$("#dlg_del").dialog({
+	    closed: false,
+	    cache: false,
+	    modal: true
+	});
 }
 
 //목록으로 돌아가기
@@ -78,29 +110,29 @@ function boardList(){
 		<tr>
 			<td>제목</td>
 			<td><input id="bm_title" value="<%=bm_title%>" name="bm_title"
-				data-options="width:'450px'" class="easyui-textbox"></td>
+				data-options="width:'450px', readonly:'true'" class="easyui-textbox"></td>
 		</tr>
 		<tr>
 			<td>작성자</td>
-			<td><input id="bm_writer" value="<%=bm_writer%>"
-				name="bm_writer" class="easyui-textbox"></td>
+			<td><input id="bm_writer" value="<%=bm_writer%>" name="bm_writer" 
+				data-options="readonly:'true'" class="easyui-textbox"></td>
 		</tr>
 		<tr>
 			<td>이메일</td>
 			<td><input id="bm_email" value="<%=bm_email%>" name="bm_email"
-				class="easyui-textbox"></td>
+				data-options="readonly:'true'" class="easyui-textbox"></td>
 		</tr>
 		<tr>
 			<td>내용</td>
 			<td><input id="bm_content" value="<%=bm_content%>"
 				name="bm_content"
-				data-options="multiline:'true', width:'570px', height:'90px'"
+				data-options="readonly:'true', multiline:'true', width:'570px', height:'90px'"
 				class="easyui-textbox"></td>
 		</tr>
 		<tr>
 			<td>비밀번호</td>
 			<td><input id="bm_pw" value="<%=bm_pwd%>" name="bm_pw"
-				class="easyui-passwordbox"></td>
+				data-options="readonly:'true'" class="easyui-passwordbox"></td>
 		</tr>
 	</table>
 	<div id="tb_read" style="padding: 2px 5px;" align="center">
@@ -113,7 +145,16 @@ function boardList(){
 		<a	href="javascript:boardList()" class="easyui-linkbutton"
 			iconCls="icon-search" plain="true">목록</a>
 	</div>
-	
+<!--================== [[글삭제 화면]] ==================-->
+<div id="dlg_del" title="글삭제" class="easyui-dialog" style="width:400px;height:200px;padding:10px" data-options="closed:'true',modal:'true'">
+	<div style="margin-bottom:50px">
+		<input class="easyui-textbox" data-options="width:'350px'" id="user_pw" name="user_pw" label="pass word:">
+	</div>
+	<a href="javascript:boardDelAction()" class="easyui-linkbutton" iconCls="icon-save">확인</a>
+	<a href="javascript:$('#dlg_del').dialog('close')" 
+	   class="easyui-linkbutton" iconCls="icon-cancel">닫기</a>
+</div>	
+<!--================== [[글삭제 화면 끝]] ==================-->	
 <!--================== [[댓글쓰기 화면]] ==================-->
 <div id="dlg_boardAdd" title="댓글쓰기" class="easyui-dialog" style="width:600px;height:400px;padding:10px" data-options="closed:'true',modal:'true',footer:'#tbar_boardAdd'">	
 <!-- 
@@ -166,8 +207,9 @@ MultipartRequest  => cos.jar
 	<a href="javascript:$('#dlg_boardAdd').dialog('close')" 
 	   class="easyui-linkbutton" iconCls="icon-cancel">닫기</a>
 </div>
-		<!-- 댓글쓰기  끝  -->	
-<div id="dlg_upd"></div>		
+		<!-- ==================== 댓글쓰기  끝 ==================  -->
+			
+<div id="dlg_upd" ></div>		
 
 </body>
 </html>

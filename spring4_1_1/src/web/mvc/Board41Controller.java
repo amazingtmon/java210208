@@ -93,20 +93,6 @@ public class Board41Controller extends MultiActionController {
 		return mav;
 	}
 	
-	public ModelAndView updateForm(HttpServletRequest req, HttpServletResponse res) 
-			throws Exception
-	{
-		logger.info("updateForm 호출 성공");
-		HashMapBinder hmb = new HashMapBinder(req);
-		Map<String,Object> target = new HashMap<>();
-		hmb.bindPost(target);//bm_no값 담음.
-		logger.info("bm_no : "+target.get("bm_no"));
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("board/updateForm");
-		mav.addObject("target", target);
-		return mav;
-	}	
-
 	// json으로 내보내주기.- @RestController:String, @Controller:void, ModelAndView, String
 	public void jsonGetBoardList(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		logger.info("jsonGetBoardList 호출 성공");
@@ -119,6 +105,37 @@ public class Board41Controller extends MultiActionController {
 		out.print(imsi);
 	}
 	
+	
+	public void boardUpdate(HttpServletRequest req, HttpServletResponse res) 
+			throws Exception
+	{
+		logger.info("boardUpdate 호출 성공");
+		HashMapBinder hmb = new HashMapBinder(req);
+		Map<String, Object> pmap = new HashMap<>();
+		hmb.bindPost(pmap);
+		int result = 0;
+		result = boardLogic.boardUpdate(pmap);
+		if(result == 1) {
+			res.sendRedirect("./getBoardList.sp4");
+		} else {
+			res.sendRedirect("./getFail.sp4");
+		}
+	}
+	
+	public ModelAndView updateForm(HttpServletRequest req, HttpServletResponse res) 
+			throws Exception
+	{
+		logger.info("updateForm 호출 성공");
+		HashMapBinder hmb = new HashMapBinder(req);
+		Map<String,Object> target = new HashMap<>();
+		hmb.bindPost(target);
+		logger.info("bm_no : "+target.get("bm_no"));
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("board/updateForm");
+		mav.addObject("target", target);
+		return mav;
+	}	
+
 	public void boardInsert(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		logger.info("boardInsert 호출 성공");
 		HashMapBinder hmb = new HashMapBinder(req);
@@ -126,6 +143,20 @@ public class Board41Controller extends MultiActionController {
 		hmb.multiBind(pmap);
 		int result = 0;
 		result = boardLogic.boardInsert(pmap);
+		if(result == 1) {
+			res.sendRedirect("./getBoardList.sp4");
+		} else {
+			res.sendRedirect("./getFail.sp4");
+		}
+	}
+	
+	public void boardDelete(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		logger.info("boardDelete 호출 성공");
+		HashMapBinder hmb = new HashMapBinder(req);
+		Map<String, Object> pmap = new HashMap<>();
+		hmb.bindPost(pmap);
+		int result = 0;
+		result = boardLogic.boardDelete(pmap);
 		if(result == 1) {
 			res.sendRedirect("./getBoardList.sp4");
 		} else {
